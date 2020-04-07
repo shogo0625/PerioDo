@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'home#top'
   get 'home/about'
-  get 'search/search'
+  get 'search' => 'search#search'
 
   devise_for :users
   resources :users, only: [:index, :show, :edit, :update]

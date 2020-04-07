@@ -1,0 +1,30 @@
+<div class="timer-modal-wrapper" id="timer-modal">
+	<div class="modal-content">
+		<div class="close-modal">
+			<i class="fa fa-2x fa-times-circle"></i>
+		</div>
+		<div class="action-timer">
+			<h3>さあ、私と約束しましょう。</h3>
+			<h3>何分後に行動しますか？</h3>
+			<input type="number" name="" id="minutes" class="minutes-form"><span>分後</span>
+			<h4 id="after-minutes"></h4>
+			<div class="btn btn-success" id="set-timer">この時間でセット</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-6 offset-md-3 timer-box">
+		<% if user_signed_in? %>
+			<div class="row">
+				<h3 class="on-timer-text">さあ、はじめましょう</h3>
+				<div class="btn btn-success" id="show-timer">タイマーセット</div>
+			</div>
+		<% else %>
+			<div class="row">
+				<h3 class="on-timer-text">さあ、はじめましょう</h3>
+				<%= link_to "タイマーセット", new_user_session_path, class: "btn btn-success" %>
+			</div>
+		<% end %>
+	</div>
+</div>

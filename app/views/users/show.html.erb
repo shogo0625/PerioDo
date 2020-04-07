@@ -1,2 +1,7 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<%= render "layouts/timer" %>
+
+<div class="row">
+	<div class="col-md-8 offset-md-2">
+		<%= attachment_image_tag(@user, :profile_image, size: "50x50", fallback: "noimage.png") %>
+	</div>
+</div>
