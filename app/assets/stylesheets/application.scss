@@ -14,5 +14,122 @@
  *= require_self
  */
 
-@import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+$orange: #e96e50;
+$gray: #ecf0f1;
+$white: #4e4d4a;
+$light_blue: #eef8fb;
+$blue: #2790b0;
+$black: #212529;
+
+.wrapper {
+  min-height: 100vh;
+	position: relative;
+	padding-bottom: 80px;
+	background-color: $gray;
+}
+
+.navbar {
+	margin-bottom: 20px;
+
+	.nav-item {
+		margin-top: 8px;
+	}
+
+	.nav-image {
+		margin: 0 8px;
+		color: $gray;
+	}
+
+	.nav-link {
+		margin-left: 30px;
+	}
+}
+
+footer {
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+
+	.footer-box {
+		text-align: right;
+		line-height: 60px;
+
+		a {
+			margin: 0 70px;
+			color: #FFFFFF;
+		}
+	}
+}
+
+.page-title {
+	margin-bottom: 25px;
+}
+
+/*--------- タイマー機能 ----------*/
+.timer-modal-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  display: none;
+}
+
+.modal-content {
+  position: absolute;
+  top: 20%;
+  left: 25%;
+  background-color: #e6ecf0;
+  padding: 20px 0 40px;
+  border-radius: 10px;
+  width: 600px;
+  height: auto;
+  text-align: center;
+
+  .fa-times-circle {
+	  position: absolute;
+	  top: 15px;
+	  right: 15px;
+	  cursor: pointer;
+
+	  &:hover {
+	  	font-size: 2.5em;
+	  	top: 12px;
+	  	right: 12px;
+	  }
+	}
+
+	.action-timer {
+		padding-top: 40px;
+	}
+
+	.minutes-form {
+		text-align: center;
+		height: 40px;
+		margin: 30px 0;
+		border-radius: 10px;
+	}
+}
+
+.timer-box {
+	padding: 20px;
+	margin-bottom: 30px;
+  background: white;
+  border-top: solid 5px $orange;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+
+	.on-timer-text {
+		margin: 0 20px;
+	}
+}
+/*--------- ここまで ----------*/
+
+
+
+

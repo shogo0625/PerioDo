@@ -1,2 +1,7 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+<div class="row">
+	<div class="col-md-4 offset-md-4">
+		<h2 class="page-title"><span class="fa fa-pencil-alt"></span> 新しいヒトコト</h2>
+	</div>
+</div>
+
+<%= render "posts/post_form", post: @post %>

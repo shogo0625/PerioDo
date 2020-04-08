@@ -10,6 +10,56 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="wrapper">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark stickey-top">
+      <div class="container">
+        <h3><%= link_to "PerioDo", root_path, class: "navbar-brand" %></h3>
+        <ul class="navbar-nav ml-auto">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to "Home", root_path, class: "nav-link fa fa-home active" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "探す", search_path, class: "nav-link fa fa-search active" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "新着", posts_path, class: "nav-link fa fa-pencil-alt active" %>
+          </li>
+          <li class="nav-image">
+            <%= link_to user_path(current_user), class: "nav-link" do %>
+              <%= attachment_image_tag(@user, :profile_image, size: "30x30", fallback: "noimage_white.png") %>
+            <% end %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Home", root_path, class: "nav-link fa fa-home active" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "About", home_about_path, class: "nav-link fa fa-question-circle active" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "新規登録", new_user_registration_path, class: "nav-link fa fa-user-plus active" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログイン", new_user_session_path, class: "nav-link fa fa-sign-in-alt active" %>
+          </li>
+        <% end %>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container main">
+      <%= yield %>
+    </div>
+
+    <footer>
+      <div class="footer-box bg-dark">
+        <%= link_to "About", home_about_path %>
+
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        <!-- 便宜上作成。マイページ作成後削除 -->
+      </div>
+    </footer>
+    </div>
   </body>
 </html>

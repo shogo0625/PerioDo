@@ -1,2 +1,8 @@
-<h1>Posts#edit</h1>
-<p>Find me in app/views/posts/edit.html.erb</p>
+<div class="row">
+	<div class="col-md-4 offset-md-4">
+		<h2 class="page-title"><span class="fa fa-pencil-alt"></span> ヒトコト編集</h2>
+	</div>
+</div>
+
+
+<%= render "posts/post_form", post: @post %>
