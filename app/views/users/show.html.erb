@@ -1,7 +1,21 @@
 <%= render "layouts/timer" %>
 
 <div class="row">
-	<div class="col-md-8 offset-md-2">
-		<%= attachment_image_tag(@user, :profile_image, size: "50x50", fallback: "noimage.png") %>
+	<div class="col-md-10 offset-md-1 user-index-box">
+		<%= attachment_image_tag(@user, :profile_image, size: "60x60", fallback: "noimage.png") %>
+		<%= @user.name %>
+		<% unless current_user == @user %>
+			<% if current_user.following?(@user) %>
+				<%= link_to "フォロー外す", unfollow_path(@user), method: :delete, class: "btn btn-outline-primary btn-box" %>
+			<% else %>
+				<%= link_to "フォローする", follow_path(@user), method: :post, class: "btn btn-primary btn-box" %>
+			<% end %>
+		<% else %>
+		<div class="btn-box">
+			<%= link_to "ヒトコト投稿", new_post_path, class: "btn btn-outline-dark" %>
+			<%= link_to "編集する", edit_user_path(current_user), class: "fas fa fa-edit link" %>
+		</div>
+		<% end %>
+		<div class="col-md-11 offset-md-1"><%= @user.introduction %></div>
 	</div>
 </div>

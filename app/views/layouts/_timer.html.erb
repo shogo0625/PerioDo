@@ -8,7 +8,7 @@
 			<h3>何分後に行動しますか？</h3>
 			<input type="number" name="" id="minutes" class="minutes-form"><span>分後</span>
 			<h4 id="after-minutes"></h4>
-			<div class="btn btn-success" id="set-timer">この時間でセット</div>
+			<div class="btn btn-info" id="set-timer">この時間でセット</div>
 		</div>
 	</div>
 </div>
@@ -18,12 +18,12 @@
 		<% if user_signed_in? %>
 			<div class="row">
 				<h3 class="on-timer-text">さあ、はじめましょう</h3>
-				<div class="btn btn-success" id="show-timer">タイマーセット</div>
+				<div class="btn btn-info" id="show-timer">タイマーセット</div>
 			</div>
 		<% else %>
 			<div class="row">
 				<h3 class="on-timer-text">さあ、はじめましょう</h3>
-				<%= link_to "タイマーセット", new_user_session_path, class: "btn btn-success" %>
+				<%= link_to "タイマーセット", new_user_session_path, class: "btn btn-info" %>
 			</div>
 		<% end %>
 	</div>

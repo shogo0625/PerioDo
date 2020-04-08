@@ -27,7 +27,7 @@ class User < ApplicationRecord
     following_user.include?(user)
   end
 
-  validates :name, length: {maximum: 30, minimum: 2}
+  validates :name, length: {maximum: 30, minimum: 1}
   validates :introduction, length: {maximum: 99}
 
   enum prefecture:{

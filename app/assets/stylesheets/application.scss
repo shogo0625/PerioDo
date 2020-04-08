@@ -18,6 +18,20 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+$orange: #e96e50;
+$gray: #ecf0f1;
+$white: #4e4d4a;
+$light_blue: #eef8fb;
+$blue: #2790b0;
+$black: #212529;
+
+.wrapper {
+  min-height: 100vh;
+	position: relative;
+	padding-bottom: 80px;
+	background-color: $gray;
+}
+
 .navbar {
 	margin-bottom: 20px;
 
@@ -27,6 +41,7 @@
 
 	.nav-image {
 		margin: 0 8px;
+		color: $gray;
 	}
 
 	.nav-link {
@@ -35,16 +50,26 @@
 }
 
 footer {
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+
 	.footer-box {
 		text-align: right;
 		line-height: 60px;
 
 		a {
 			margin: 0 70px;
+			color: #FFFFFF;
 		}
 	}
 }
 
+.page-title {
+	margin-bottom: 25px;
+}
+
+/*--------- タイマー機能 ----------*/
 .timer-modal-wrapper {
   position: fixed;
   top: 0;
@@ -94,14 +119,16 @@ footer {
 
 .timer-box {
 	padding: 20px;
-	margin-bottom: 35px;
-	border: 2px solid rgba(0, 0, 0, 0.7);
-	border-radius: 10px;
+	margin-bottom: 30px;
+  background: white;
+  border-top: solid 5px $orange;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
 
 	.on-timer-text {
 		margin: 0 20px;
 	}
 }
+/*--------- ここまで ----------*/
 
 
 

@@ -1,3 +1,31 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "application";
+
+.user-index-box {
+    background: white;
+    border-top: solid 5px $orange;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+    padding: 10px 0;
+
+	.user-name {
+		height: 25px;
+		line-height: 25px;
+	}
+
+	.link {
+		color: $black;
+	}
+
+	.btn-box {
+		height: 35px;
+		position: absolute;
+		top: 8px;
+		right: 50px;
+	}
+
+	.btn {
+		margin-right: 30px;
+	}
+}
