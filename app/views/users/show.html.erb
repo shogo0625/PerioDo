@@ -13,7 +13,7 @@
 		<% else %>
 		<div class="btn-box">
 			<%= link_to "ヒトコト投稿", new_post_path, class: "btn btn-outline-dark" %>
-			<%= link_to "編集する", edit_user_path(current_user), class: "fas fa fa-edit link" %>
+			<%= link_to "編集する", edit_user_path(current_user), class: "fas fa fa-edit link-to-black" %>
 		</div>
 		<% end %>
 		<div class="col-md-11 offset-md-1"><%= @user.introduction %></div>
