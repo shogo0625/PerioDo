@@ -28,7 +28,7 @@ class User < ApplicationRecord
   end
 
   validates :name, length: {maximum: 30, minimum: 1}
-  validates :introduction, length: {maximum: 99}
+  validates :introduction, length: {maximum: 100}
 
   enum prefecture:{
      "-----":0,

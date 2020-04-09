@@ -27,7 +27,7 @@
           </li>
           <li class="nav-image">
             <%= link_to user_path(current_user), class: "nav-link" do %>
-              <%= attachment_image_tag(@user, :profile_image, size: "30x30", fallback: "noimage_white.png") %>
+              <%= image_tag "noimage_white.png", size: "30x30" %>
             <% end %>
           </li>
         <% else %>

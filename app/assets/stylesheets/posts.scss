@@ -1,3 +1,42 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "application";
+
+
+.post-index-box {
+    background: white;
+    border-top: solid 5px $orange;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+    padding: 10px 0;
+
+	.link-to-black {
+		color: $black;
+	}
+
+	.post-image-field {
+		margin: 10px auto;
+		border: 1px solid $gray;
+		border-radius: 7px;
+	}
+
+	.post-link {
+		text-decoration: none;
+	}
+
+	.fa-thumbs-up, .fa-comment-alt {
+		font-size: 1.2em;
+
+		&:hover {
+			font-size: 1.3em;
+		}
+	}
+
+	.post-content-box {
+    padding: 0.3em 0.5em;
+    margin: 1em 0;
+    border-left: double 4px $orange;
+    border-right: double 4px $orange;
+    color: $black;
+	}
+}

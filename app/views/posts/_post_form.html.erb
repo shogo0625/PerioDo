@@ -1,6 +1,6 @@
-<%= form_for(post) do |f| %>
 <div class="row">
 	<div class="col-md-8 offset-2">
+		<%= form_for(post) do |f| %>
 		<div class="row">
 			<h6 class="form-title col-md-2">ヒトコト</h6>
 			<%= f.text_area :content, size: "40x7" ,class: "form-field col-md-9" %>
@@ -19,13 +19,13 @@
 			<% if post.image_id == nil %>
 				<%= image_tag "", size: "500x350", class: "form-field prev-noimage offset-md-2", id: "preview-noimage" %>
 			<% else %>
-			  <%= attachment_image_tag post, :image, size: "500x350", class: "form-field prev-image offset-md-3", id: "preview-image" %>
+			  <%= attachment_image_tag post, :image, size: "500x350", class: "form-field prev-image offset-md-2", id: "preview-image" %>
 			<% end %>
 		</div>
 
 		<div class="row">
 			<%= f.submit "投稿する", class: "btn btn-info col-md-5 offset-md-4" %>
 		</div>
+		<% end %>
 	</div>
 </div>
-<% end %>
