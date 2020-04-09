@@ -20,10 +20,13 @@
 
 $orange: #e96e50;
 $gray: #ecf0f1;
-$white: #4e4d4a;
 $light_blue: #eef8fb;
 $blue: #2790b0;
 $black: #212529;
+
+body {
+	font-family: Futura, "メイリオ", Arial;
+}
 
 .wrapper {
   min-height: 100vh;
@@ -41,7 +44,6 @@ $black: #212529;
 
 	.nav-image {
 		margin: 0 8px;
-		color: $gray;
 	}
 
 	.nav-link {
@@ -64,9 +66,15 @@ footer {
 		}
 	}
 }
+.index-page-title {
+	margin: 0 auto 25px;
+	font-weight: bold;
+}
 
 .page-title {
-	margin-bottom: 25px;
+	margin: 10px auto 25px;
+	text-align: center;
+	font-weight: bold;
 }
 
 /*--------- タイマー機能 ----------*/
@@ -116,19 +124,56 @@ footer {
 		border-radius: 10px;
 	}
 }
+/*---------- ページ上部 timer-box ----------*/
 
 .timer-box {
 	padding: 20px;
 	margin-bottom: 30px;
-  background: white;
-  border-top: solid 5px $orange;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+	background: white;
+	border-top: solid 5px $orange;
+	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
 
-	.on-timer-text {
-		margin: 0 20px;
+	.on-timer-text, .btn {
+		margin: 0 auto;
 	}
 }
 /*--------- ここまで ----------*/
+
+/*---------- 登録・編集画面共通 ----------*/
+.form-box {
+	margin: 15px 0;
+
+	.form-field {
+		margin-bottom: 40px;
+		border: 1px solid $gray;
+		border-radius: 7px;
+		outline: none;
+	}
+
+	.prev-noimage {
+		display: none;
+	}
+}
+/* user edit only */
+.user-icon {
+	border-radius: 50%;
+}
+
+.user-icon-select{
+	padding-top: 40px;
+}
+/*--------- ここまで ----------*/
+
+
+
+
+
+
+
+
+
+
+
 
 
 

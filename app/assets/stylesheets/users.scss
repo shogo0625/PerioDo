@@ -3,18 +3,14 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "application";
 
+
 .user-index-box {
     background: white;
     border-top: solid 5px $orange;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
     padding: 10px 0;
 
-	.user-name {
-		height: 25px;
-		line-height: 25px;
-	}
-
-	.link {
+	.link-to-black {
 		color: $black;
 	}
 
@@ -28,4 +24,8 @@
 	.btn {
 		margin-right: 30px;
 	}
+}
+
+.register-info {
+	font-size: 12px;
 }

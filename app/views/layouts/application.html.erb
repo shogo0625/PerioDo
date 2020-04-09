@@ -17,7 +17,7 @@
         <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to "Home", root_path, class: "nav-link fa fa-home active" %>
+            <%= link_to "トップ", root_path, class: "nav-link fa fa-home active" %>
           </li>
           <li class="nav-item">
             <%= link_to "探す", search_path, class: "nav-link fa fa-search active" %>
@@ -27,15 +27,15 @@
           </li>
           <li class="nav-image">
             <%= link_to user_path(current_user), class: "nav-link" do %>
-              <%= attachment_image_tag(@user, :profile_image, size: "30x30", fallback: "noimage_white.png") %>
+              <%= image_tag "noimage_white.png", size: "30x30" %>
             <% end %>
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to "Home", root_path, class: "nav-link fa fa-home active" %>
+            <%= link_to "ホーム", root_path, class: "nav-link fa fa-home active" %>
           </li>
           <li class="nav-item">
-            <%= link_to "About", home_about_path, class: "nav-link fa fa-question-circle active" %>
+            <%= link_to "概要", home_about_path, class: "nav-link fa fa-question-circle active" %>
           </li>
           <li class="nav-item">
             <%= link_to "新規登録", new_user_registration_path, class: "nav-link fa fa-user-plus active" %>

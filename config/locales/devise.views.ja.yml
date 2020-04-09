@@ -24,8 +24,11 @@ ja:
         current_password: "現在のパスワード"
         name: 名前
         email: "メールアドレス"
+        introduction: "自己紹介"
+        prefecture: "都道府県"
+        profile_image: "プロフィール画像"
         password: "パスワード"
-        password_confirmation: "確認用パスワード"
+        password_confirmation: "パスワード確認"
         remember_me: "次回から自動的にログイン"
     models:
       user: "ユーザ"
