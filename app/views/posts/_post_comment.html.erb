@@ -1,5 +1,5 @@
 <% post_comments.each do |pc| %>
-<div class="col-md-10 offset-md-1 post-index-box">
+<div class="col-md-10 offset-md-1 post-index-box" id="edit-<%= pc.id %>">
 	<div class="row">
 		<div class="col-md-1">
 			<%= link_to user_path(pc.user) do %>
@@ -14,8 +14,8 @@
 				</div>
 				<% if current_user == pc.user %>
 				<div class="col-md-5 offset-md-1 link-box">
-					<a href="" class="fas fa-edit link-to-black"> 編集する</a>
-					<%= link_to " 削除する", post_post_comment_path(pc), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "fas fa-trash-alt link-to-black" %>
+					<span id="show-edit-<%= pc.id %>" class="fas fa-edit link-to-black"> 編集する</span>
+					<%= link_to " 削除する", post_post_comment_path(pc.post_id, pc.id), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "fas fa-trash-alt link-to-black" %>
 				</div>
 				<% end %>
 			</div>
@@ -30,4 +30,41 @@
 		</div>
 	</div>
 </div>
+<div id="edit-comment-<%= pc.id %>" class="col-md-10 offset-md-1 edit-comment-form post-index-box">
+	<div class="row">
+		<div class="col-md-1">
+			<%= attachment_image_tag(current_user, :profile_image, size: "60x60", fallback: "noimage.png", class: "user-icon") %>
+		</div>
+		<div class="col-md-11">
+			<div class="row">
+				<div class="col-md-6">
+					<span class="ml-2"><%= current_user.name %></span>
+				</div>
+				<div id="close-<%= pc.id %>" class="col-md-3 offset-md-3">
+					<i class="fas fa-2x fa-times-circle"></i>
+				</div>
+			</div>
+			<div class="row post-content-box">
+				<%= form_with model: [pc.post, pc] do |f| %>
+					<%= f.text_area :comment, size: "60x3", class: "col-md-8 offset-md-1 comment-field" %>
+					<%= f.submit "編集", class: "col-md-2 mb-3 btn btn-sm btn-info" %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	$('#show-edit-<%= pc.id %>').click(function(){
+		$('#edit-<%= pc.id %>').hide();
+		$('#edit-comment-<%= pc.id %>').fadeIn();
+    $('textarea:visible').eq(0).focus();
+	});
+
+	$('#close-<%= pc.id %>').click(function(){
+		$('#edit-comment-<%= pc.id %>').hide();
+		$('#edit-<%= pc.id %>').fadeIn();
+	});
+</script>
+
 <% end %>

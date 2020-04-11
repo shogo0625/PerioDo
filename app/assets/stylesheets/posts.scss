@@ -14,8 +14,13 @@
 		color: $black;
 	}
 
-	.link-box a {
+	.link-box a, span{
 		margin-right: 20px;
+	}
+
+	.fa-edit:hover {
+		text-decoration: underline;
+		cursor: pointer;
 	}
 
 	.post-image-field {

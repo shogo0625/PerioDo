@@ -16,6 +16,14 @@
 	border-radius: 3px;
 }
 
-.comment-form {
+.comment-form, .edit-comment-form {
 	display: none;
+
+	.fa-times-circle {
+		cursor: pointer;
+
+	  &:hover {
+	  	font-size: 2.1em;
+	  }
+	}
 }

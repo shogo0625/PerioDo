@@ -53,5 +53,10 @@ $(function(){
     $('.comment-form').fadeIn();
     $('textarea:visible').eq(0).focus();
   });
+
+  $('#close-form').click(function(){
+    $('.comment-form').hide();
+    $('#show-comment-form').fadeIn();
+  });
 });
 // ----- コメント投稿フォーム表示 ここまで-----
