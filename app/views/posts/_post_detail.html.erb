@@ -1,0 +1,55 @@
+<div class="row">
+	<div class="col-md-1">
+		<%= link_to user_path(post.user) do %>
+			<%= attachment_image_tag(post.user, :profile_image, size: "60x60", fallback: "noimage.png", class: "user-icon") %>
+		<% end %>
+	</div>
+	<div class="col-md-11">
+		<div class="row">
+			<div class="col-md-6">
+				<%= link_to post.user.name, user_path(post.user), class: "link-to-black ml-2" %>
+			</div>
+			<% if current_user == post.user %>
+			<div class="col-md-5 offset-md-1 link-box">
+				<%= link_to " 編集する", edit_post_path(post), class: "fas fa-edit link-to-black" %>
+				<%= link_to " 削除する", post_path(post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "fas fa-trash-alt link-to-black" %>
+			</div>
+			<% end %>
+		</div>
+		<%= link_to post_path(post), class: "post-link" do %>
+		<div class="row post-content-box">
+			<div class="col-md-12"><%= simple_format(post.content) %></div>
+			<div class="col-md-6 offset-md-2">
+				<%= attachment_image_tag(post, :image, size: "350x200", class: "post-image-field") %>
+			</div>
+		</div>
+		<% end %>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-3 offset-6">
+		<% unless current_user == post.user %>
+			<% if post.favorited_by?(current_user) %>
+				<%= link_to post_favorites_path(post), method: :delete, remote: true do %>
+					<i class="fas fa-thumbs-up" aria-hidden="true" style="color: #e96e50;"></i>
+				<% end %>
+				<%= post.favorites.count %>
+			<% else %>
+				<%= link_to post_favorites_path(post), method: :post, remote: true do %>
+					<i class="far fa-thumbs-up" aria-hidden="true" style="color: black;"></i>
+				<% end %>
+				<%= post.favorites.count %>
+			<% end %>
+		<% else %>
+			<i class="fas fa-hand-holding-heart" aria-hidden="true"></i>
+			<%= post.favorites.count %>
+		<% end %>
+		<%= link_to post_path(post) do %>
+			<i class="far fa-comment-alt ml-3" aria-hidden="true" style="color:black"></i>
+		<% end %>
+		<%= post.post_comments.count %>
+	</div>
+	<div class="col-md-3">
+		<%= l post.created_at %>
+	</div>
+</div>

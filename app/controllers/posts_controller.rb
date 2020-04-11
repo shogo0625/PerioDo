@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
+
   def index
     @posts = Post.all
   end
@@ -10,24 +12,23 @@ class PostsController < ApplicationController
   def create
   	@post = current_user.posts.new(post_params)
   	if @post.save
-  		redirect_to user_path(current_user)
+  		redirect_to @post
   	else
-  		redirect_to user_path(current_user)
+  		render 'new'
   	end
   end
 
   def show
+    @post_comment = PostComment.new
   end
 
   def edit
-  	@post = Post.find(params[:id])
   	unless @post.user_id == current_user.id
   		redirect_to user_path(current_user)
   	end
   end
 
   def update
-  	@post = Post.find(params[:id])
   	if @post.update(post_params)
   		redirect_to @post
   	else
@@ -38,5 +39,9 @@ class PostsController < ApplicationController
   private
   def post_params
   	params.require(:post).permit(:content, :image)
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
   end
 end
