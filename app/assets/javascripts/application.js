@@ -20,6 +20,7 @@
 $(function() {
   $('#show-timer').click(function(){
     $('#timer-modal').fadeIn();
+    $('input:visible').eq(0).focus();
   });
 
   $('.close-modal').click(function(){
@@ -27,6 +28,7 @@ $(function() {
   });
 
 });
+// ----- タイマー機能 ここまで-----
 
 $(function() {
   function readURL(input) {
@@ -43,3 +45,13 @@ $(function() {
       readURL(this);
   });
 });
+// ----- 画像プレビュー ここまで-----
+
+$(function(){
+  $('.fake-comment-field').click(function(){
+    $('#show-comment-form').hide();
+    $('.comment-form').fadeIn();
+    $('textarea:visible').eq(0).focus();
+  });
+});
+// ----- コメント投稿フォーム表示 ここまで-----

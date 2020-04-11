@@ -1,2 +1,43 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<%= render "layouts/timer" %>
+
+<div class="row">
+	<div class="col-md-10 offset-md-1 post-index-box" id="post-<%= @post.id %>">
+		<%= render "posts/post_detail", post: @post %>
+	</div>
+</div>
+
+<div class="row" id="comment-<%= @post.id %>">
+	<%= render "posts/post_comment", post_comments: @post.post_comments %>
+</div>
+<div id="show-comment-form" class="row">
+	<div class="col-md-10 offset-md-1 post-index-box">
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+				<input class="fake-comment-field" type="text" placeholder="コメントする">
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row" id="hidden-comment-form">
+	<div class="col-md-10 offset-md-1 comment-form post-index-box">
+		<div class="row">
+			<div class="col-md-1">
+				<%= attachment_image_tag(current_user, :profile_image, size: "60x60", fallback: "noimage.png", class: "user-icon") %>
+			</div>
+			<div class="col-md-11">
+				<div class="row">
+					<div class="col-md-11">
+						<span class="ml-2"><%= current_user.name %></span>
+					</div>
+				</div>
+				<div class="row post-content-box">
+					<%= form_with model: [@post, @post_comment] do |f| %>
+						<%= f.text_area :comment, size: "60x3", class: "col-md-8 offset-md-1 comment-field" %>
+						<%= f.submit "コメント", class: "col-md-2 mb-3 btn btn-sm btn-info" %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
