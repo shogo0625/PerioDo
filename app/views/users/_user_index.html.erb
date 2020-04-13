@@ -5,9 +5,9 @@
 <div class="btn-box">
 	<% unless current_user == user %>
 		<% if current_user.following?(user) %>
-			<%= link_to "フォロー解除", unfollow_path(user), method: :delete, class: "btn btn-outline-primary" %>
+			<%= link_to "フォロー解除", unfollow_path(user), method: :delete, remote: :true, class: "btn btn-outline-primary fav-btn" %>
 		<% else %>
-			<%= link_to "フォローする", follow_path(user), method: :post, class: "btn btn-primary" %>
+			<%= link_to "フォローする", follow_path(user), method: :post, remote: :true, class: "btn btn-primary fav-btn" %>
 		<% end %>
 	<% else %>
 		<%= link_to "ヒトコト投稿", new_post_path, class: "btn btn-outline-dark" %>

@@ -28,3 +28,43 @@
 .register-info {
 	font-size: 12px;
 }
+
+.user-tab-box {
+		background: white;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+
+    .tab-boxes {
+    	padding: 0;
+    }
+
+    .tab-box {
+    	padding: 0;
+    	border-top: 2px solid $gray;
+    	border-right: 1px solid $gray;
+    	text-align: center;
+    }
+
+    .tab-btn {
+    	line-height: 40px;
+    	text-decoration: none;
+    	display: block;
+    	color: $black;
+
+    	&:hover {
+    		background-color: #FF9872;
+    	}
+    }
+
+    .active-btn {
+    	background-color: $orange;
+    	color: white;
+    }
+}
+
+.tab-content {
+	display: none;
+}
+
+.active-content {
+	display: block;
+}
