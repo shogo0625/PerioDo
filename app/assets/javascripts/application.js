@@ -17,6 +17,8 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
+// ----- タイマー機能 ここから-----
+
 $(function() {
   $('#show-timer').click(function(){
     $('#timer-modal').fadeIn();
@@ -30,6 +32,7 @@ $(function() {
 });
 // ----- タイマー機能 ここまで-----
 
+// ----- 画像プレビュー ここから-----
 $(function() {
   function readURL(input) {
       if (input.files && input.files[0]) {
@@ -47,6 +50,7 @@ $(function() {
 });
 // ----- 画像プレビュー ここまで-----
 
+// ----- コメント投稿フォーム表示 ここから-----
 $(function(){
   $('.fake-comment-field').click(function(){
     $('#show-comment-form').hide();
@@ -60,3 +64,15 @@ $(function(){
   });
 });
 // ----- コメント投稿フォーム表示 ここまで-----
+
+// ----- マイページ タブメニュー ここから-----
+$(function(){
+  $('.tab-btn').click(function(){
+    $('.tab-content').removeClass('active-content');
+    $($(this).attr("href")).addClass('active-content');
+    $('.tab-btn').removeClass('active-btn');
+    $(this).addClass('active-btn');
+  });
+});
+
+// ----- マイページ タブメニュー ここまで-----
