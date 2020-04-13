@@ -36,6 +36,11 @@ class PostsController < ApplicationController
   	end
   end
 
+  def hashtag
+    @tag = Tag.find_by(name: params[:name])
+    @posts = @tag.posts.all
+  end
+
   private
   def post_params
   	params.require(:post).permit(:content, :image)

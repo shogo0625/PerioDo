@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'home#top'
   get 'home/about'
   get 'search' => 'search#search'
+  get '/posts/tag/:name', to: "posts#hashtag", as: 'posts_tag'
 
   devise_for :users
   resources :users, only: [:index, :show, :edit, :update]
@@ -10,6 +11,6 @@ Rails.application.routes.draw do
   	resource :favorites, only: [:create, :destroy]
   end
 
-  post 'follow/:id' => 'relationships#create', as:'follow'
-  delete 'unfollow/:id' => 'relationships#destroy', as:'unfollow'
+  post 'follow/:id' => 'relationships#create', as: 'follow'
+  delete 'unfollow/:id' => 'relationships#destroy', as: 'unfollow'
 end

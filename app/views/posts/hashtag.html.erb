@@ -1,0 +1,15 @@
+<%= render "layouts/timer" %>
+
+<div class="row">
+	<div class="col-md-10 offset-md-1">
+		<h3 class="index-page-title">#<%= @tag.name %> を含むヒトコト一覧（<%= @posts.count %>件）</h3>
+	</div>
+</div>
+
+<div class="row">
+	<% @posts.each do |post| %>
+	<div class="col-md-10 offset-md-1 post-index-box post-<%= post.id %>">
+		<%= render "posts/post_detail", post: post %>
+	</div>
+	<% end %>
+</div>
