@@ -14,41 +14,45 @@
 
 <div class="tab-content active-content" id="tab1">
 	<div class="row">
-		<% @user.posts.each do |post| %>
+		<% @posts.each do |post| %>
 			<div class="col-md-10 offset-md-1 post-index-box post-<%= post.id %>">
 				<%= render "posts/post_detail", post: post %>
 			</div>
 		<% end %>
 	</div>
+	<%= render "layouts/pagination", data: @posts %>
 </div>
 
 <div class="tab-content" id="tab2">
 	<div class="row">
-		<% @user.following_user.each do |user| %>
+		<% @following_users.each do |user| %>
 			<div class="col-md-10 offset-md-1 user-index-box user-<%= user.id %>">
 				<%= render "users/user_index", user: user %>
 			</div>
 		<% end %>
 	</div>
+	<%= render "layouts/pagination", data: @following_users %>
 </div>
 
 <div class="tab-content" id="tab3">
 	<div class="row">
-		<% @user.follower_user.each do |user| %>
+		<% @follower_users.each do |user| %>
 			<div class="col-md-10 offset-md-1 user-index-box user-<%= user.id %>">
 				<%= render "users/user_index", user: user %>
 			</div>
 		<% end %>
 	</div>
+	<%= render "layouts/pagination", data: @follower_users %>
 </div>
 
 <div class="tab-content" id="tab4">
 	<div class="row">
-		<% @user.favorited_posts.each do |post| %>
+		<% @favorited_posts.each do |post| %>
 			<div class="col-md-10 offset-md-1 post-index-box post-<%= post.id %>">
 				<%= render "posts/post_detail", post: post %>
 			</div>
 		<% end %>
 	</div>
+	<%= render "layouts/pagination", data: @favorited_posts %>
 </div>
 

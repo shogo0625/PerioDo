@@ -2,7 +2,12 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = Post.all
+    if params[:search] != nil
+      @search = Post.search(search_params)
+      @posts = @search.result(distinct: true).order(created_at: :desc).page(params[:page]).per(10)
+    else
+      @posts = Post.all.order(created_at: :desc).page(params[:page]).per(10)
+    end
   end
 
   def new
@@ -38,7 +43,7 @@ class PostsController < ApplicationController
 
   def hashtag
     @tag = Tag.find_by(name: params[:name])
-    @posts = @tag.posts.all
+    @posts = @tag.posts.all.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   private
@@ -48,5 +53,9 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
+  end
+
+  def search_params
+    params.require(:search).permit(:content_cont)
   end
 end

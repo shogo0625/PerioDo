@@ -72,3 +72,6 @@ gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
 
 gem 'font-awesome-sass', '~> 5.12.0'
+
+gem 'ransack'
+gem 'kaminari', '~> 1.2.0'
