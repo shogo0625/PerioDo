@@ -1,0 +1,7 @@
+<div class="row">
+	<% @favorited_posts.each do |post| %>
+		<div class="col-md-10 offset-md-1 post-index-box post-<%= post.id %>">
+			<%= render "posts/post_detail", post: post %>
+		</div>
+	<% end %>
+</div>

@@ -13,46 +13,38 @@
 </div>
 
 <div class="tab-content active-content" id="tab1">
+	<%= render "users/tab1", collection: @posts %>
 	<div class="row">
-		<% @posts.each do |post| %>
-			<div class="col-md-10 offset-md-1 post-index-box post-<%= post.id %>">
-				<%= render "posts/post_detail", post: post %>
-			</div>
-		<% end %>
+		<div class="col-md-10 offset-md-1">
+			<%= link_to_next_page @posts, 'もっと見る', id: 'more-tab1', class: 'btn btn-light w-100 mt-2', params: {type: :tab1}, remote: true  %>
+		</div>
 	</div>
-	<%= render "layouts/pagination", data: @posts %>
 </div>
 
 <div class="tab-content" id="tab2">
+	<%= render "users/tab2", collection: @following_users %>
 	<div class="row">
-		<% @following_users.each do |user| %>
-			<div class="col-md-10 offset-md-1 user-index-box user-<%= user.id %>">
-				<%= render "users/user_index", user: user %>
-			</div>
-		<% end %>
+		<div class="col-md-10 offset-md-1">
+			<%= link_to_next_page @following_users, 'もっと見る', id: 'more-tab2', class: 'btn btn-light w-100 mt-2', params: {type: :tab2}, remote: true  %>
+		</div>
 	</div>
-	<%= render "layouts/pagination", data: @following_users %>
 </div>
 
 <div class="tab-content" id="tab3">
+	<%= render "users/tab3", collection: @follower_users %>
 	<div class="row">
-		<% @follower_users.each do |user| %>
-			<div class="col-md-10 offset-md-1 user-index-box user-<%= user.id %>">
-				<%= render "users/user_index", user: user %>
-			</div>
-		<% end %>
+		<div class="col-md-10 offset-md-1">
+			<%= link_to_next_page @follower_users, 'もっと見る', id: 'more-tab3', class: 'btn btn-light w-100 mt-2', params: {type: :tab3}, remote: true  %>
+		</div>
 	</div>
-	<%= render "layouts/pagination", data: @follower_users %>
 </div>
 
 <div class="tab-content" id="tab4">
+	<%= render "users/tab4", collection: @favorited_posts %>
 	<div class="row">
-		<% @favorited_posts.each do |post| %>
-			<div class="col-md-10 offset-md-1 post-index-box post-<%= post.id %>">
-				<%= render "posts/post_detail", post: post %>
-			</div>
-		<% end %>
+		<div class="col-md-10 offset-md-1">
+			<%= link_to_next_page @favorited_posts, 'もっと見る', id: 'more-tab4', class: 'btn btn-light w-100 mt-2', params: {type: :tab4}, remote: true  %>
+		</div>
 	</div>
-	<%= render "layouts/pagination", data: @favorited_posts %>
 </div>
 
