@@ -1,0 +1,3 @@
+$('#more-tab1').remove();
+$('#tab1').append("<%= j render 'users/tab1', collection: @posts %>");
+$('#tab1').append("<%= j link_to_next_page(@posts, 'もっと見る', id: 'more-tab1', class: 'btn btn-info', params: { type: :tab1 }, remote: true) %>");

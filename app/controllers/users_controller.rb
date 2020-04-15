@@ -10,10 +10,17 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.all.order(created_at: :desc).page(params[:page]).per(10)
-    @following_users = @user.following_user.all.order(created_at: :desc).page(params[:page]).per(10)
-    @follower_users = @user.follower_user.all.order(created_at: :desc).page(params[:page]).per(10)
+    @posts = @user.posts.all.order(created_at: :desc).page(params[:page]).per(5)
+    @following_users = @user.following_user.all.order(created_at: :desc).page(params[:page]).per(5)
+    @follower_users = @user.follower_user.all.order(created_at: :desc).page(params[:page]).per(5)
     @favorited_posts = @user.favorited_posts.all.order(created_at: :desc).page(params[:page]).per(5)
+
+    return unless request.xhr?
+
+    case params[:type]
+    when 'tab1', 'tab2', 'tab3', 'tab4'
+      render "users/#{params[:type]}"
+    end
   end
 
   def edit
