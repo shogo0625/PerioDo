@@ -75,3 +75,10 @@ gem 'font-awesome-sass', '~> 5.12.0'
 
 gem 'ransack'
 gem 'kaminari', '~> 1.2.0'
+
+gem 'dotenv-rails'
+
+group :production do
+  gem 'mysql2'
+end
+
