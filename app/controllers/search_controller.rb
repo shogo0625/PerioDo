@@ -1,11 +1,19 @@
 class SearchController < ApplicationController
+
+	PER_TAG = 15
+
   def search
     @q = User.ransack(params[:q])
     @users = @q.result(distinct: true)
-    @users = @users.order(created_at: :desc).page(params[:page]).per(10)
 
     @search = Post.ransack(params[:search], search_key: :search)
     @posts = @search.result(distinct: true)
-    @posts = @posts.order(created_at: :desc).page(params[:page]).per(5)
-  end
+
+	  @tags = Tag.all.joins(:post_tags).group(:tag_id).order('count(tag_id) desc').page(params[:page]).per(PER_TAG)
+
+	  return unless request.xhr?
+	  render '/search/tags'
+
+	 end
+
 end

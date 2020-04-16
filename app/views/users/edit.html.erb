@@ -1,7 +1,7 @@
 <div class="form-box">
   <div class="row">
     <div class="col-md-7 offset-md-3">
-      <h3 class="page-title">登録情報編集</h3>
+      <h3 class="page-title">登録情報確認</h3>
     </div>
   </div>
 
@@ -48,11 +48,12 @@
         </div>
 
         <div class="row">
-          <%= f.submit "登録する", class: "btn btn-info col-md-5 offset-md-4" %>
+          <%= f.submit "変更する", class: "btn btn-info col-md-5 offset-md-4" %>
         </div>
 
         <div class="row">
-          <%= link_to "退会する", user_registration_path, method: :delete, data: { confirm: '本当に退会しますか？' }, class: "btn btn-sm mt-5 btn-danger col-md-3 offset-md-5" %>
+          <%= link_to "ログアウト", destroy_user_session_path, class: "btn btn-sm mt-5 btn-dark col-md-3 offset-md-3" %>
+          <%= link_to "退会する", user_registration_path, method: :delete, data: { confirm: '本当に退会しますか？' }, class: "btn btn-sm mt-5 btn-danger col-md-3 offset-md-1" %>
         </div>
       <% end %>
     </div>

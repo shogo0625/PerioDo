@@ -9,8 +9,8 @@
 			<div class="col-md-6">
 				<%= link_to post.user.name, user_path(post.user), class: "link-to-black ml-2" %>
 			</div>
-			<div class="col-md-4 offset-md-2 link-box">
-				<%= link_to " 詳細", post_path(post), class: "fas fa-comments link-to-black"%>
+			<div class="col-md-5 offset-md-1 link-box">
+				<%= link_to " 詳細・コメント", post_path(post), class: "fas fa-comments link-to-black"%>
 			<% if current_user == post.user %>
 				<%= link_to " 編集", edit_post_path(post), class: "fas fa-edit link-to-black" %>
 				<%= link_to " 削除", post_path(post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "fas fa-trash-alt link-to-black" %>

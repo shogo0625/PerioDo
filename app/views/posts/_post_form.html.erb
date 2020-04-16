@@ -2,17 +2,21 @@
 	<div class="col-md-8 offset-md-2">
 		<%= form_for(post) do |f| %>
 		<div class="row">
-			<h6 class="form-title col-md-2 offset-md-1">ヒトコト</h6>
-			<%= f.text_area :content, size: "40x7" ,class: "form-field col-md-8" %>
+			<h6 class="form-title col-md-2">ヒトコト</h6>
+			<% if @tag_name == nil %>
+				<%= f.text_area :content, size: "40x7", autofocus: true, class: "form-field col-md-8" %>
+			<% else %>
+				<%= f.text_area :content, size: "40x7", value: @tag_name, autofocus: true, class: "form-field col-md-8" %>
+			<% end %>
 		</div>
 
 		<div class="row">
-			<h6 class="form-title col-md-2 offset-md-1">タグ</h6>
+			<h6 class="form-title col-md-2">タグ</h6>
 		</div>
 
 		<div class="row">
-			<h6 class="form-title col-md-2 offset-md-1">写真</h6>
-			<%= f.attachment_field :image, class: "form-field", id: "post-image" %>
+			<h6 class="form-title col-md-2">写真</h6>
+			<%= f.attachment_field :image, class: "form-field ml-3", id: "post-image" %>
 		</div>
 
 		<div class="row">
@@ -24,7 +28,7 @@
 		</div>
 
 		<div class="row">
-			<%= f.submit "投稿する", class: "btn btn-info col-md-5 offset-md-4" %>
+			<%= f.submit "投稿する", class: "btn btn-info col-md-6 offset-md-3" %>
 		</div>
 		<% end %>
 	</div>

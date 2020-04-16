@@ -1,3 +1,44 @@
 // Place all the styles related to the search controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "application";
+
+.search-box {
+    background: white;
+    border-top: solid 5px $orange;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+    padding: 10px 0;
+    margin: 10px auto 40px;
+
+    .search-contents {
+    	margin: 15px auto 0;
+    }
+
+    .search-field {
+    	border-radius: 5px;
+    	line-height: 30px;
+    	border-bottom: 1px solid silver;
+    }
+
+    .search-btn {
+    	width: 70px;
+    	border-radius: 4px;
+    	line-height: 30px;
+    	background-color: #dddddd;
+
+    	&:hover {
+    		background-color: silver;
+    		color: #333333;
+    	}
+    }
+
+    .tag-search-title {
+        text-align: center;
+        margin-top: 5px;
+    }
+
+    .tag-box {
+        margin-bottom: 10px;
+    }
+}

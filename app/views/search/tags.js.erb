@@ -1,0 +1,3 @@
+$('#more-tags').remove();
+$('#tag-index').append("<%= j render 'search/tag_index', collection: @tags %>");
+$('#tag-index').append("<%= j link_to_next_page(@tags, 'もっと見る', id: 'more-tags', class: 'btn btn-info', remote: true) %>");

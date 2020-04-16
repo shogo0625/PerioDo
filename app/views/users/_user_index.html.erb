@@ -10,8 +10,8 @@
 			<%= link_to "フォローする", follow_path(user), method: :post, remote: :true, class: "btn btn-primary fav-btn" %>
 		<% end %>
 	<% else %>
-		<%= link_to "ヒトコト投稿", new_post_path, class: "btn btn-outline-dark" %>
-		<%= link_to "編集する", edit_user_path(current_user), class: "fas fa fa-edit link-to-black" %>
+		<%= link_to "ヒトコト投稿", new_post_path, class: "btn btn-primary" %>
+		<%= link_to "登録情報", edit_user_path(current_user), class: "fas fa fa-edit link-to-black" %>
 	<% end %>
 </div>
 <div class="col-md-11 offset-md-1"><%= simple_format(user.introduction) %></div>

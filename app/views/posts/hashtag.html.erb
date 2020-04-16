@@ -2,7 +2,10 @@
 
 <div class="row">
 	<div class="col-md-10 offset-md-1">
-		<h3 class="index-page-title">#<%= @tag.name %> を含むヒトコト一覧（<%= @posts.count %>件）</h3>
+		<div class="row">
+			<h3 class="index-page-title col-md-9">#<%= @tag.name %> を含むヒトコト一覧（<%= @posts.count %>件）</h3>
+			<%= link_to "このタグで新規投稿", new_post_path(tag_name: @tag.name), class: "col-md-3 mb-4 btn btn-primary" %>
+		</div>
 	</div>
 </div>
 
