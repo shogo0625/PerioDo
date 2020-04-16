@@ -2,7 +2,11 @@
 
 <div class="row">
 	<div class="col-md-10 offset-md-1">
-		<h3 class="index-page-title">一覧</h3>
+		<% if @search_word %>
+			<h3 class="index-page-title"><%= @search_word %> を含むヒトコト（<%= @posts.count %>件）</h3>
+		<% else %>
+			<h3 class="index-page-title">みんなのヒトコト</h3>
+		<% end %>
 	</div>
 </div>
 

@@ -1,54 +1,51 @@
 <%= render "layouts/timer" %>
 
 <div class="row">
-	<div class="col-md-10 offset-md-1">
-		<div class="row">
-			<div class="col-md-3">
-				<h3 class="index-page-title">ユーザー検索</h3>
+	<div class="col-md-10 offset-md-1 search-box">
+		<div class="row search-contents">
+			<div class="col-md-3 offset-md-1">
+				<h3 class="index-page-title">ユーザーを探す</h3>
 			</div>
-			<div class="col-md-9">
-				<div class="row">
-					<%= search_form_for(@q, url: users_path) do |f| %>
-					<div class="col-md-9">
-						<%= f.search_field :name_or_introduction_cont, class: "search-field", placeholder: "名前と自己紹介から検索されます" %>
-					</div>
-					<div class="col-md-2 offset-md-1">
-						<%= f.submit "検索", class: "search-btn" %>
-					</div>
-					<% end %>
-				</div>
+			<div class="col-md-8">
+				<%= search_form_for(@q, url: users_path) do |f| %>
+					<%= f.search_field :name_or_introduction_cont, size: "38x1", class: "search-field", placeholder: "名前と自己紹介から検索されます" %>
+					<%= f.submit "検索", class: "search-btn" %>
+				<% end %>
 			</div>
 		</div>
 	</div>
 </div>
 
 <div class="row">
-	<div class="col-md-10 offset-md-1">
-		<div class="row">
-			<div class="col-md-3">
-				<h3 class="index-page-title">ヒトコト検索</h3>
+	<div class="col-md-10 offset-md-1 search-box">
+		<div class="row search-contents">
+			<div class="col-md-3 offset-md-1">
+				<h3 class="index-page-title">ヒトコトを探す</h3>
 			</div>
-			<div class="col-md-9">
-				<div class="row">
-					<%= search_form_for(@search, as: :search, url: posts_path) do |f| %>
-					<div class="col-md-9">
-						<%= f.search_field :content_cont, class: "search-field", placeholder: "本文とタグ名から検索されます" %>
-					</div>
-					<div class="col-md-2 offset-md-1">
-						<%= f.submit "検索", class: "search-btn" %>
-					</div>
-					<% end %>
-				</div>
+			<div class="col-md-8">
+				<%= search_form_for(@search, as: :search, url: posts_path) do |f| %>
+					<%= f.search_field :content_cont, size: "38x1", class: "search-field", placeholder: "本文とタグ名から検索されます" %>
+					<%= f.submit "検索", class: "search-btn" %>
+				<% end %>
 			</div>
 		</div>
 	</div>
 </div>
 
-<div class="row">
-	<% @posts.each do |post| %>
-	<div class="col-md-10 offset-md-1 post-index-box post-<%= post.id %>">
-		<%= render "posts/post_detail", post: post %>
+	<div class="row">
+		<div class="col-md-10 offset-md-1 search-box">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<h3 class="index-page-title tag-search-title">#人気のタグから探す</h3>
+				</div>
+			</div>
+			<div id="tag-index">
+				<%= render 'search/tag_index', collection: @tags %>
+				<div class="row">
+					<div class="col-md-10 offset-md-1">
+						<%= link_to_next_page @tags, 'もっと見る', id: 'more-tags', class: 'btn btn-light w-100', remote: true %>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-	<% end %>
-</div>
-<%= render "layouts/pagination", data: @posts %>
