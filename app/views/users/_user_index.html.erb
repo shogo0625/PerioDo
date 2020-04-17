@@ -1,17 +1,19 @@
 <%= link_to user_path(user) do %>
-	<%= attachment_image_tag(user, :profile_image, size: "60x60", fallback: "noimage.png", class: "user-icon") %>
+	<%= attachment_image_tag(user, :profile_image, size: "80x80", fallback: "noimage.png", class: "user-icon") %>
 	<span class="link-to-black"><%= user.name %></span>
 <% end %>
 <div class="btn-box">
-	<% unless current_user == user %>
+	<% if user_signed_in? && current_user != user %>
 		<% if current_user.following?(user) %>
 			<%= link_to "フォロー解除", unfollow_path(user), method: :delete, remote: :true, class: "btn btn-outline-primary fav-btn" %>
 		<% else %>
 			<%= link_to "フォローする", follow_path(user), method: :post, remote: :true, class: "btn btn-primary fav-btn" %>
 		<% end %>
-	<% else %>
+	<% elsif current_user == user %>
 		<%= link_to "ヒトコト投稿", new_post_path, class: "btn btn-primary" %>
 		<%= link_to "登録情報", edit_user_path(current_user), class: "fas fa fa-edit link-to-black" %>
+	<% else %>
+		<%= link_to "会員登録してつながる", new_user_registration_path, class: "btn btn-primary fav-btn" %>
 	<% end %>
 </div>
 <div class="col-md-11 offset-md-1"><%= simple_format(user.introduction) %></div>

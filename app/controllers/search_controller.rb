@@ -1,4 +1,5 @@
 class SearchController < ApplicationController
+  before_action :authenticate_user!
 
 	PER_TAG = 15
 

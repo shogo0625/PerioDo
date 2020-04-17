@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only: [:edit, :update]
+
   def index
     if params[:q] != nil
       @q = User.search(search_params)

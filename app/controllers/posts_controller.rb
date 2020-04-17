@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :show, :edit, :update]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index

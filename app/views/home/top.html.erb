@@ -1,1 +1,30 @@
 <%= render "layouts/timer" %>
+
+<div class="row">
+	<div class="col-md-10 offset-md-1">
+		<% if user_signed_in? %>
+			<h3 class="index-page-title">フォローしているみんなのヒトコト</h3>
+		<% else %>
+			<h3 class="index-page-title">みんなのヒトコト</h3>
+		<% end %>
+	</div>
+</div>
+
+<div class="row">
+	<% if @posts.count >= 1 %>
+		<% @posts.each do |post| %>
+			<div class="col-md-10 offset-md-1 post-index-box post-<%= post.id %>">
+				<%= render "posts/post_detail", post: post %>
+			</div>
+		<% end %>
+	<% else %>
+		<div class="col-md-10 offset-md-1 new-user-info">
+			<h5>ここにあなたがフォローしているユーザーのヒトコトが表示されます。</h5>
+			<h5>プロフィールや投稿から共通点などを探してみましょう！</h5>
+			<div class="row">
+				<%= link_to "探す", search_path, class: "btn btn-primary mb-4 col-md-2 offset-md-5" %>
+			</div>
+		</div>
+	<% end %>
+</div>
+<%= render "layouts/pagination", data: @posts %>
