@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :show, :edit, :update]
+  before_action :authenticate_user!, only: [:new, :create, :show, :edit, :update, :destroy]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -32,7 +32,7 @@ class PostsController < ApplicationController
 
   def edit
   	unless @post.user_id == current_user.id
-  		redirect_to user_path(current_user)
+  		redirect_to request.referrer
   	end
   end
 
@@ -42,6 +42,11 @@ class PostsController < ApplicationController
   	else
   		render 'edit'
   	end
+  end
+
+  def destroy
+    @post.destroy
+    redirect_to user_path(current_user)
   end
 
   def hashtag
