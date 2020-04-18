@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   	resources :post_comments, only: [:create, :update, :destroy]
   	resource :favorites, only: [:create, :destroy]
   end
+  resources :tasks, only: [:create, :update, :destroy]
   get 'search' => 'search#search'
   get '/posts/tag/:name', to: "posts#hashtag", as: 'posts_tag'
 

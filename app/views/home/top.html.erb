@@ -1,18 +1,30 @@
 <%= render "layouts/timer" %>
 
-<div id="todolists" class="todolists">
-	<div class="row">
-		<div class="col-md-4 task-box">
-		</div>
+<div id="new-task-form">
+	<%= render "tasks/task_form", task: @new_task %>
+</div>
+
+<div class="row title-box">
+	<div class="col-md-6 offset-md-3">
+		<h3 class="list-title">
+		<i id="create-tasks" class="fas fa-plus-circle mr-3 mt-2"></i>
+			What To Do Today
+		<i id="show-tasks" class="fas fa-arrow-circle-down ml-3 mt-2"></i>
+		<i id="hide-tasks" class="fas fa-arrow-circle-up ml-3 mt-2"></i>
+		</h3>
 	</div>
+</div>
+
+<div id="todolists" class="todolists">
+	<%= render "tasks/task_index", todo_tasks: @todo_tasks, doing_tasks: @doing_tasks, done_tasks: @done_tasks %>
 </div>
 
 <div class="row">
 	<div class="col-md-10 offset-md-1">
 		<% if user_signed_in? %>
-			<h3 class="index-page-title">フォローしているみんなのヒトコト</h3>
+			<h3 class="top-page-title">フォローしているみんなのヒトコト</h3>
 		<% else %>
-			<h3 class="index-page-title">みんなのヒトコト</h3>
+			<h3 class="top-page-title">みんなのヒトコト</h3>
 		<% end %>
 	</div>
 </div>
