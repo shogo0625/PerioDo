@@ -32,6 +32,32 @@ $(function() {
 });
 // ----- タイマー機能 ここまで-----
 
+// ----- ToDoLists ここから-----
+$(function(){
+  $('#create-tasks').click(function(){
+    $('#task-form-modal').fadeIn();
+    $('textarea:visible').eq(0).focus();
+  });
+
+  $('#close-form-modal').click(function(){
+    $('#task-form-modal').fadeOut();
+  });
+
+  $('#show-tasks').click(function(){
+    $(this).hide();
+    $('#hide-tasks').fadeIn();
+    $('#todolists').slideDown();
+    $('textarea:visible').eq(0).focus();
+  });
+
+  $('#hide-tasks').click(function(){
+    $(this).hide();
+    $('#show-tasks').fadeIn();
+    $('#todolists').slideUp();
+  });
+});
+// ----- ToDoLists ここまで-----
+
 // ----- 画像プレビュー ここから-----
 $(function() {
   function readURL(input) {
@@ -76,3 +102,7 @@ $(function(){
 });
 
 // ----- マイページ タブメニュー ここまで-----
+
+
+
+

@@ -9,7 +9,7 @@
 		<div class="col-md-11">
 			<div class="row">
 				<div class="col-md-6">
-					<%= link_to pc.user.name, user_path(pc.user), class: "link-to-black ml-2" %>
+					<%= link_to pc.user.name, user_path(pc.user), class: "link-to-black ml-3" %>
 					<i class="fas fa-level-up-alt ml-2"></i>
 				</div>
 				<% if current_user == pc.user %>
@@ -46,7 +46,7 @@
 			</div>
 			<div class="row post-content-box">
 				<%= form_with model: [pc.post, pc] do |f| %>
-					<%= f.text_area :comment, size: "60x3", class: "col-md-8 offset-md-1 comment-field" %>
+					<%= f.text_area :comment, size: "70x3", class: "col-md-8 offset-md-1 comment-field" %>
 					<%= f.submit "編集", class: "col-md-2 mb-3 btn btn-sm btn-info" %>
 				<% end %>
 			</div>

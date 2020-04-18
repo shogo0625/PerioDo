@@ -10,3 +10,8 @@ ja:
       previous: "前"
       next: "次"
       truncate: "..."
+  date:
+    order:
+      - :year
+      - :month
+      - :day

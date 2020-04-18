@@ -5,6 +5,9 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" type="text/javascript"></script>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -12,55 +15,52 @@
 
   <body>
     <div class="wrapper">
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark stickey-top">
-      <div class="container">
-        <h3><%= link_to "PerioDo", root_path, class: "navbar-brand" %></h3>
-        <ul class="navbar-nav ml-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to "トップ", root_path, class: "nav-link fa fa-home active" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "探す", search_path, class: "nav-link fa fa-search active" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "新着", posts_path, class: "nav-link fa fa-pencil-alt active" %>
-          </li>
-          <li class="nav-image">
-            <%= link_to user_path(current_user), class: "nav-link" do %>
-              <%= image_tag "noimage_white.png", size: "30x30" %>
-            <% end %>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "ホーム", root_path, class: "nav-link fa fa-home active" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "概要", home_about_path, class: "nav-link fa fa-question-circle active" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "新規登録", new_user_registration_path, class: "nav-link fa fa-user-plus active" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "ログイン", new_user_session_path, class: "nav-link fa fa-sign-in-alt active" %>
-          </li>
-        <% end %>
-        </ul>
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark stickey-top">
+        <div class="container">
+          <h3><%= link_to "PerioDo", root_path, class: "navbar-brand" %></h3>
+          <ul class="navbar-nav ml-auto">
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "トップ", root_path, class: "nav-link fa fa-home active" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "探す", search_path, class: "nav-link fa fa-search active" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "新着", posts_path, class: "nav-link fa fa-pencil-alt active" %>
+            </li>
+            <li class="nav-image">
+              <%= link_to user_path(current_user), class: "nav-link" do %>
+                <%= image_tag "noimage_white.png", size: "30x30" %>
+              <% end %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "ホーム", root_path, class: "nav-link fa fa-home active" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "概要", home_about_path, class: "nav-link fa fa-question-circle active" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "新規登録", new_user_registration_path, class: "nav-link fa fa-user-plus active" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログイン", new_user_session_path, class: "nav-link fa fa-sign-in-alt active" %>
+            </li>
+          <% end %>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="container main">
+        <%= yield %>
       </div>
-    </nav>
 
-    <div class="container main">
-      <%= yield %>
-    </div>
-
-    <footer>
-      <div class="footer-box bg-dark">
-        <%= link_to "About", home_about_path %>
-
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-        <!-- 便宜上作成。マイページ作成後削除 -->
-      </div>
-    </footer>
+      <footer>
+        <div class="footer-box bg-dark">
+          <%= link_to "About", home_about_path %>
+        </div>
+      </footer>
     </div>
   </body>
 </html>

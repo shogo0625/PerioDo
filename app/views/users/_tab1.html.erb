@@ -1,7 +1,17 @@
 <div class="row">
-	<% @posts.each do |post| %>
-		<div class="col-md-10 offset-md-1 post-index-box post-<%= post.id %>">
-			<%= render "posts/post_detail", post: post %>
+	<% if @posts.count >= 1 %>
+		<% @posts.each do |post| %>
+			<div class="col-md-10 offset-md-1 post-index-box post-<%= post.id %>">
+				<%= render "posts/post_detail", post: post %>
+			</div>
+		<% end %>
+	<% else %>
+		<div class="col-md-10 offset-md-1 new-user-info">
+			<h5>ここにあなたのヒトコトが表示されます。</h5>
+			<h5>さっそく投稿してみましょう！</h5>
+			<div class="row">
+				<%= link_to "投稿する", new_post_path, class: "btn btn-primary mb-4 col-md-2 offset-md-5" %>
+			</div>
 		</div>
 	<% end %>
 </div>

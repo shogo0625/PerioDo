@@ -1,7 +1,17 @@
 <div class="row">
-	<% @follower_users.each do |user| %>
-		<div class="col-md-10 offset-md-1 user-index-box user-<%= user.id %>">
-			<%= render "users/user_index", user: user %>
+	<% if @follower_users.count >= 1 %>
+		<% @follower_users.each do |user| %>
+			<div class="col-md-10 offset-md-1 user-index-box user-<%= user.id %>">
+				<%= render "users/user_index", user: user %>
+			</div>
+		<% end %>
+	<% else %>
+		<div class="col-md-10 offset-md-1 new-user-info">
+			<h5>ここにあなたがフォローされているユーザーが表示されます。</h5>
+			<h5>あなたから積極的にフォローしてみましょう！</h5>
+			<div class="row">
+				<%= link_to "探す", search_path, class: "btn btn-primary mb-4 col-md-2 offset-md-5" %>
+			</div>
 		</div>
 	<% end %>
 </div>

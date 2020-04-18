@@ -1,3 +1,78 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "application";
+
+
+.title-box {
+
+	.list-title {
+		text-align: center;
+		font-weight: bold;
+	}
+
+	#show-tasks, #hide-tasks, #create-tasks {
+		cursor: pointer;
+
+		&:hover {
+			font-size: 1.1em;
+		}
+	}
+
+	#hide-tasks {
+		display: none;
+	}
+}
+
+.todolists {
+	display: none;
+}
+
+.task-modal-wrapper, .edit-task-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  display: none;
+}
+
+.task-modal-content {
+	background-color: #e6ecf0;
+	border-radius: 10px;
+	margin: 150px 20%;
+	padding: 30px 0;
+
+	.fa-times-circle {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		cursor: pointer;
+
+		&:hover {
+			font-size: 2.2em;
+		}
+	}
+}
+
+.task-box {
+
+	.fas, .far {
+		color: $black;
+	}
+
+	.content-row {
+		border-top: 1px solid $black;
+		border-bottom: 1px solid $black;
+	}
+}
+
+.top-page-title {
+	margin: 30px 0 15px;
+	font-weight: bold;
+}
+
+

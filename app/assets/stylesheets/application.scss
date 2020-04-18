@@ -71,15 +71,28 @@ footer {
 	}
 }
 .index-page-title {
-	margin: 0 auto 25px;
+	margin: 0 auto 15px;
 	font-weight: bold;
 }
 
 .page-title {
-	margin: 10px auto 25px;
+	margin: 10px auto 15px;
 	text-align: center;
 	font-weight: bold;
 }
+
+.new-user-info {
+    background: white;
+    border-top: solid 5px $orange;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+    padding: 10px auto;
+
+    h5, .btn {
+    	text-align: center;
+    	margin: 30px auto 0;
+    }
+}
+
 
 /*--------- タイマー機能 ----------*/
 .timer-modal-wrapper {

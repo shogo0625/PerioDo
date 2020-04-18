@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  content: MyText
+  status: 1
+  time_limit: 2020-04-17 11:38:42
+
+two:
+  user_id: 1
+  content: MyText
+  status: 1
+  time_limit: 2020-04-17 11:38:42
