@@ -4,20 +4,22 @@
 	<%= render "tasks/task_form", task: @new_task %>
 </div>
 
-<div class="row title-box">
-	<div class="col-md-6 offset-md-3">
-		<h3 class="list-title">
-		<i id="create-tasks" class="fas fa-plus-circle mr-3 mt-2"></i>
-			What To Do Today
-		<i id="show-tasks" class="fas fa-arrow-circle-down ml-3 mt-2"></i>
-		<i id="hide-tasks" class="fas fa-arrow-circle-up ml-3 mt-2"></i>
-		</h3>
+<% if @user.present? %>
+	<div class="row title-box">
+		<div class="col-md-6 offset-md-3">
+			<h3 class="list-title">
+			<i id="create-tasks" class="fas fa-plus-circle mr-3 mt-2"></i>
+				What To Do Today
+			<i id="show-tasks" class="fas fa-arrow-circle-down ml-3 mt-2"></i>
+			<i id="hide-tasks" class="fas fa-arrow-circle-up ml-3 mt-2"></i>
+			</h3>
+		</div>
 	</div>
-</div>
 
-<div id="todolists" class="todolists">
-	<%= render "tasks/task_index", todo_tasks: @todo_tasks, doing_tasks: @doing_tasks, done_tasks: @done_tasks %>
-</div>
+	<div id="todolists" class="todolists">
+		<%= render "tasks/task_index", todo_tasks: @todo_tasks, doing_tasks: @doing_tasks, done_tasks: @done_tasks %>
+	</div>
+<% end %>
 
 <div class="row">
 	<div class="col-md-10 offset-md-1">

@@ -51,6 +51,13 @@ body {
 	}
 }
 
+.field_with_errors {
+  display: contents;
+  input {
+    @extend .is-invalid;
+  }
+}
+
 .pagination {
 	margin: 10px auto;
 }
@@ -76,7 +83,7 @@ footer {
 }
 
 .page-title {
-	margin: 10px auto 15px;
+	margin: 10px auto 25px;
 	text-align: center;
 	font-weight: bold;
 }
