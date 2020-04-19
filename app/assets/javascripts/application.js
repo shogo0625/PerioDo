@@ -20,7 +20,7 @@
 // ----- タイマー機能 ここから-----
 
 $(function() {
-  $('#show-timer').click(function(){
+  $('#show-timer-modal').click(function(){
     $('#timer-modal').fadeIn();
     $('input:visible').eq(0).focus();
   });
@@ -28,6 +28,108 @@ $(function() {
   $('.close-modal').click(function(){
     $('#timer-modal').fadeOut();
   });
+
+  var timer = document.getElementById('timer');
+  var start = document.getElementById('start');
+  var minutes = document.getElementById('minutes');
+  var reset = document.getElementById('reset');
+  var hideTimer = document.getElementById('hide-timer');
+
+  var startTime;
+  var timeLeft;
+  var timeToCountDown = 0;
+  var timerId;
+
+  function updateTimer(t) {
+    var d = new Date(t);
+    var m = d.getMinutes();
+    var s = d.getSeconds();
+    var timerString;
+    m = ('0' + m).slice(-2);
+    s = ('0' + s).slice(-2);
+    timerString = m + ':' + s;
+    // timer.textContent = m + ':' + s;
+    timer.textContent = timerString;
+    document.title = timerString + ' | ' + 'PerioDo';
+  }
+
+  function countDown(){
+    timerId = setTimeout(function(){
+      // var elapsedTime = Date.now() - startTime;
+      // timeLeft = timeToCountDown - elapsedTime
+      timeLeft = timeToCountDown - (Date.now() - startTime);
+      // console.log(timeLeft);
+      if (timeLeft < 0) {
+        clearTimeout(timerId);
+        alert('さあ、行動しましょう！頑張ってくださいね');
+        return;
+      }
+      updateTimer(timeLeft);
+      countDown();
+    }, 100);
+  }
+
+  function remainedCountDown(){
+    timerId = setTimeout(function(){
+      timeLeft = timeToCountDown - (Date.now() - startTime);
+      if (timeLeft < 0) {
+        clearTimeout(timerId);
+        sessionStorage.clear();
+        alert('さあ、行動しましょう！頑張ってくださいね');
+        return;
+      }
+      updateTimer(timeLeft);
+      remainedCountDown();
+    }, 100);
+  }
+
+  start.addEventListener('click', function(){
+    $('#timer-modal').hide();
+    $('#to-set').hide();
+    $('#to-finish').show();
+    startTime = Date.now();
+    if (minutes.value > 60) {
+      alert('60分以内で設定してください');
+    }
+    timeToCountDown += minutes.value * 60000;
+    updateTimer(timeToCountDown);
+    countDown();
+  });
+
+  reset.addEventListener('click', function(){
+    timeToCountDown = 0;
+    $('#to-finish').hide();
+    $('#to-set').show();
+  });
+
+  hideTimer.addEventListener('click', function(){
+    $('#to-finish').slideUp();
+    $('#hidden-timer').slideDown();
+  });
+
+  $('#show-timer').click(function(){
+    $('#hidden-timer').slideUp();
+    $('#to-finish').slideDown();
+  });
+
+  function redirectPage(){
+    if (timeLeft > 1) {
+      sessionStorage.setItem('number', timeLeft);
+    }
+  }
+  window.onbeforeunload = redirectPage;
+
+  window.addEventListener('DOMContentLoaded', function() {
+    var count = sessionStorage.getItem('number');
+    timeToCountDown = Number(count);
+    startTime = Date.now();
+    if (count > 0) {
+      $('#to-set').hide();
+      $('#to-finish').show();
+      updateTimer(timeToCountDown);
+      remainedCountDown();
+    }
+  })
 
 });
 // ----- タイマー機能 ここまで-----
