@@ -61,7 +61,7 @@ $(function() {
       // console.log(timeLeft);
       if (timeLeft < 0) {
         clearTimeout(timerId);
-        alert('さあ、行動しましょう！頑張ってくださいね');
+        alert('さあ、行動しましょう！頑張ってくださいね！');
         return;
       }
       updateTimer(timeLeft);
@@ -75,7 +75,7 @@ $(function() {
       if (timeLeft < 0) {
         clearTimeout(timerId);
         sessionStorage.clear();
-        alert('さあ、行動しましょう！頑張ってくださいね');
+        alert('さあ、行動しましょう！頑張ってくださいね！');
         return;
       }
       updateTimer(timeLeft);
@@ -88,8 +88,12 @@ $(function() {
     $('#to-set').hide();
     $('#to-finish').show();
     startTime = Date.now();
-    if (minutes.value > 60) {
-      alert('60分以内で設定してください');
+    if (minutes.value == 0 || minutes.value > 60) {
+      alert('1〜60分の間で設定してください');
+      minutes.value = null;
+      $('#timer-modal').fadeIn();
+      $('input:visible').eq(0).focus();
+      return;
     }
     timeToCountDown += minutes.value * 60000;
     updateTimer(timeToCountDown);

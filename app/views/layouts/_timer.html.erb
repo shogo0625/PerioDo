@@ -6,7 +6,7 @@
 		<div class="action-timer">
 			<h3>さあ、私と約束しましょう。</h3>
 			<h3>何分後に行動しますか？</h3>
-			<input type="number" name="" min="1" max="60" placeholder="最長60分" id="minutes" class="minutes-form"><span> 分後</span>
+			<input type="number" name="" placeholder="1〜60" id="minutes" class="minutes-form"><span> 分後</span>
 			<h4 id="after-minutes"></h4>
 			<button class="btn btn-info" id="start">この時間でセット</button>
 		</div>
@@ -38,8 +38,17 @@
 			</div>
 		<% else %>
 			<div class="row">
-				<h3 class="on-timer-text">さあ、はじめましょう</h3>
-				<%= link_to "タイマーセット", new_user_session_path, class: "btn btn-info" %>
+				<h3 class="col-md-8 on-timer-text">さあ、はじめましょう</h3>
+				<%= link_to "タイマーセット", new_user_session_path, class: "col-md-3 mb-1 btn btn-sm btn-info" %>
+			</div>
+			<div id="to-finish">
+				<div class="row">
+					<h2 id="timer" class="col-md-8 on-timer-text">00:00</h2>
+					<div class="col-md-4">
+						<button class="mb-1 btn btn-sm btn-info" id="reset">リセット</button>
+						<button class="mb-1 btn btn-sm btn-info" id="hide-timer">非表示</button>
+					</div>
+				</div>
 			</div>
 		<% end %>
 	</div>
