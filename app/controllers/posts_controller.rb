@@ -15,6 +15,7 @@ class PostsController < ApplicationController
   def new
   	@post = Post.new
     @tag_name = "　#" + params[:tag_name] unless params[:tag_name] == nil
+    @task_content = params[:task_content] unless params[:task_content] == nil
   end
 
   def create
@@ -31,9 +32,7 @@ class PostsController < ApplicationController
   end
 
   def edit
-  	unless @post.user_id == current_user.id
-  		redirect_to request.referrer
-  	end
+    screen_user(@post)
   end
 
   def update
@@ -58,12 +57,13 @@ class PostsController < ApplicationController
   def post_params
   	params.require(:post).permit(:content, :image)
   end
-
   def set_post
     @post = Post.find(params[:id])
   end
-
   def search_params
     params.require(:search).permit(:content_cont)
+  end
+  def screen_user(post)
+    redirect_to posts_path unless post.user.id == current_user.id
   end
 end

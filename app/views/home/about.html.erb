@@ -1,2 +1,72 @@
-<h1>Home#about</h1>
-<p>Find me in app/views/home/about.html.erb</p>
+<div class="row about-title-wrapper">
+	<div class="col-md-12">
+		<h2 class="about-title">PerioDo（ピリオド）とは？</h2>
+		<p class="about-title-text">あなたの日々の行動を手助けするために作られたSNSサイトです</p>
+	</div>
+</div>
+
+<div class="row about-contents">
+	<div class="col-md-4">
+		<h3 class="about-content-title">Actionタイマー</h3>
+		<%= image_tag 'timer.svg', size: "90x90", class: "content-image" %>
+	</div>
+	<div class="col-md-8 d-flex align-items-center">
+		<p class="about-content-text">
+			「動き出さなきゃいけないのは分かっているけど、気づけばもうこんな時間が過ぎていた。」<br>
+			「もっと早く終わらせる予定だったのに、こんなに時間を掛けてしまった。」<br>
+			みなさんにもこんな経験はありませんか？<br>
+			このタイマーがゼロになったときを行動の区切りとする。それはあなたと私達との約束です。<br>
+			時間にメリハリを持って行動し、素晴らしい一日を過ごすお手伝いをさせてください。
+		</p>
+	</div>
+</div>
+
+<div class="row about-contents">
+	<div class="col-md-4">
+		<h3 class="about-content-title">ヒトコト投稿</h3>
+		<%= image_tag 'post.svg', size: "90x90", class: "content-image" %>
+	</div>
+	<div class="col-md-8 d-flex align-items-center">
+		<p class="about-content-text">
+			あなたが何かを始めようと決めたのも、他の誰かの一言に背中を押されたからかもしれません。<br>
+			目標に向かって行動するあなたの思いも、他の人の背中を押すことがあるでしょう。<br>
+			また、時にはくだらない話で息抜きすることも、あなたの気持ちを上向きにさせます。
+		</p>
+	</div>
+</div>
+
+<div class="row about-contents">
+	<div class="col-md-4">
+		<h3 class="about-content-title">ToDoリスト</h3>
+		<%= image_tag 'todolist.svg', size: "90x90", class: "content-image" %>
+	</div>
+	<div class="col-md-8 d-flex align-items-center">
+		<p class="about-content-text">
+			登録後のトップページには、あなたの行動を管理するためのToDoリストが用意されています。<br>
+			目的を決めて行動する、効率の良い一日を共に実現させましょう。<br>
+			リスト内の【投稿】ボタンより、あなたの行動を共有することもできます。
+		</p>
+	</div>
+</div>
+
+<div class="row about-contents">
+	<div class="col-md-4">
+		<h3 class="about-content-title">つながりを大事に</h3>
+		<%= image_tag 'relationship.svg', size: "90x90", class: "content-image" %>
+	</div>
+	<div class="col-md-8 d-flex align-items-center">
+		<p class="about-content-text">
+			何に挑戦するときでも、同じ志を持った仲間の存在は大きいものです。<br>
+			ユーザー検索から仲間を見つけ、積極的にフォローしてみましょう。<br>
+			登録後のトップ画面にはフォローしているユーザーのヒトコトが表示されます。<br>
+			お互いの行動を応援できる、温かく心地の良い関係が生まれることを期待しています。
+		</p>
+	</div>
+</div>
+
+<div class="row about-contents">
+	<div class="col-md-4 offset-md-4">
+		<%= link_to "さっそく始める", new_user_registration_path, class: "btn btn-info btn-block mt-4" %>
+	</div>
+</div>
+

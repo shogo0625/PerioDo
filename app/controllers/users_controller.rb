@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update]
+  before_action :screen_user, only: [:edit, :update]
+  before_action :set_user, only: [:show, :edit, :update]
 
   def index
     if params[:q] != nil
@@ -12,7 +14,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
     @posts = @user.posts.all.order(created_at: :desc).page(params[:page]).per(PER_MYPAGE)
     @following_users = @user.following_user.all.order(created_at: :desc).page(params[:page]).per(PER_MYPAGE)
     @follower_users = @user.follower_user.all.order(created_at: :desc).page(params[:page]).per(PER_MYPAGE)
@@ -27,11 +28,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-  	@user = User.find(params[:id])
   end
 
   def update
-  	@user = User.find(params[:id])
   	if @user.update(user_params)
   		redirect_to @user
   	else
@@ -41,10 +40,17 @@ class UsersController < ApplicationController
 
   private
   def user_params
-  	params.require(:user).permit(:name, :profile_image, :introduction, :prefecture)
+  	params.require(:user).permit(:name, :email, :profile_image, :introduction, :prefecture)
   end
-
   def search_params
     params.require(:q).permit(:name_or_introduction_cont)
+  end
+  def screen_user
+    unless params[:id].to_i == current_user.id
+      redirect_to user_path(current_user)
+    end
+  end
+  def set_user
+    @user = User.find(params[:id])
   end
 end
