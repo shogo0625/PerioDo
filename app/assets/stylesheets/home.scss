@@ -16,7 +16,7 @@
 		cursor: pointer;
 
 		&:hover {
-			font-size: 1.1em;
+			color: $orange;
 		}
 	}
 
@@ -62,6 +62,11 @@
 
 	.fas, .far {
 		color: $black;
+		cursor: pointer;
+
+		&:hover {
+			color: $orange;
+		}
 	}
 
 	.content-row {

@@ -89,7 +89,7 @@ $(function() {
     $('#to-finish').show();
     startTime = Date.now();
     if (minutes.value == 0 || minutes.value > 60) {
-      alert('1〜60分の間で設定してください');
+      alert('1〜60分の間で設定してください。');
       minutes.value = null;
       $('#timer-modal').fadeIn();
       $('input:visible').eq(0).focus();
