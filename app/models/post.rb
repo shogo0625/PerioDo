@@ -4,7 +4,7 @@ class Post < ApplicationRecord
 	has_many :favorites, dependent: :destroy
 	has_many :favorited_users, through: :favorites, source: :user
 
-	has_many :post_tags
+	has_many :post_tags, dependent: :delete_all
 	has_many :tags, through: :post_tags
 
 	attachment :image, destroy: false
@@ -14,7 +14,7 @@ class Post < ApplicationRecord
     post = Post.find_by(id: self.id)
     tags  = self.content.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
     tags.uniq.map do |t|
-      tag = Tag.find_or_create_by(name: t.downcase.delete('#')) #ハッシュタグの'#'を外して保存
+      tag = Tag.find_or_create_by(name: t.delete('#')) #ハッシュタグの'#'を外して保存
       post.tags << tag
    	end
   end
@@ -24,7 +24,7 @@ class Post < ApplicationRecord
     post.tags.clear
     tags = self.content.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
     tags.uniq.map do |t|
-      tag = Tag.find_or_create_by(name: t.downcase.delete('#'))
+      tag = Tag.find_or_create_by(name: t.delete('#'))
       post.tags << tag
   	end
   end

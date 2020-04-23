@@ -76,19 +76,31 @@
 }
 
 // ------- aboutページ ---------
+.about-logo-wrapper {
+	text-align: center;
+	background-color: #ffffff;
+	border: 2px solid $orange;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+	border-radius: 15px;
+	margin-bottom: 30px;
+}
 
 .about-title-wrapper {
 	text-align: center;
-	padding: 20px;
 	font-weight: bold;
 
 	.about-title {
-		padding: 10px;
+		padding: 5px;
+		border-bottom: 1px solid #17a2b8;
+	}
+	.about-title-text {
+		line-height: 30px;
+		border-bottom: 1px solid #17a2b8;
 	}
 }
 
 .about-contents {
-	margin: 35px;
+	margin: 30px;
 
 	.about-content-title {
 		text-align: center;

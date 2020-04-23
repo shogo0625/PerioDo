@@ -52,9 +52,10 @@ class PostsController < ApplicationController
   end
 
   def hashtag
-    @tag = Tag.find_by(name: params[:name].downcase)
+    @tag = Tag.find_by(name: params[:name])
     @posts = @tag.posts.all.order(created_at: :desc).page(params[:page]).per(PER_INDEX)
   end
+
 
   private
   def post_params
