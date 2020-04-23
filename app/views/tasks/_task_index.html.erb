@@ -17,7 +17,7 @@
 						<%= l task.time_limit, format: :short if task.time_limit != nil %>
 					</div>
 					<div class="col-md-4">
-						<%= link_to "投稿", new_post_path(task_content: task.content ,tag_name: task.status), class: "btn btn-sm btn-outline-dark mb-1" %>
+						<%= link_to "投稿", new_post_path(task_id: task, tag_name: task.status), class: "btn btn-sm btn-outline-dark mb-1" %>
 					</div>
 				</div>
 				<%= render "tasks/edit_task_form", task: task %>
@@ -52,7 +52,7 @@
 						<%= l task.time_limit, format: :short if task.time_limit != nil %>
 					</div>
 					<div class="col-md-4">
-						<%= link_to "投稿", new_post_path(task_content: task.content ,tag_name: task.status), class: "btn btn-sm btn-outline-dark mb-1" %>
+						<%= link_to "投稿", new_post_path(task_id: task, tag_name: task.status), class: "btn btn-sm btn-outline-dark mb-1" %>
 					</div>
 				</div>
 				<%= render "tasks/edit_task_form", task: task %>
@@ -86,7 +86,7 @@
 						<%= l task.time_limit, format: :short if task.time_limit != nil %>
 					</div>
 					<div class="col-md-4">
-						<%= link_to "投稿", new_post_path(task_content: task.content ,tag_name: task.status), class: "btn btn-sm btn-outline-dark mb-1" %>
+						<%= link_to "投稿", new_post_path(task_id: task, tag_name: task.status), class: "btn btn-sm btn-outline-dark mb-1" %>
 					</div>
 				</div>
 				<%= render "tasks/edit_task_form", task: task %>

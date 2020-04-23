@@ -15,12 +15,13 @@ class PostsController < ApplicationController
   def new
   	@post = Post.new
     @tag_name = "　#" + params[:tag_name] unless params[:tag_name] == nil
-    @task_content = params[:task_content] unless params[:task_content] == nil
+    @task = Task.find(params[:task_id]) unless params[:task_id] == nil
   end
 
   def create
   	@post = current_user.posts.new(post_params)
   	if @post.save
+      flash[:success] = "あなたのヒトコトが投稿されました。"
   		redirect_to @post
   	else
   		render 'new'
@@ -37,6 +38,7 @@ class PostsController < ApplicationController
 
   def update
   	if @post.update(post_params)
+      flash[:success] = "あなたのヒトコトが更新されました。"
   		redirect_to @post
   	else
   		render 'edit'
@@ -45,11 +47,12 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
+    flash[:success] = "ヒトコトを削除しました。"
     redirect_to user_path(current_user)
   end
 
   def hashtag
-    @tag = Tag.find_by(name: params[:name])
+    @tag = Tag.find_by(name: params[:name].downcase)
     @posts = @tag.posts.all.order(created_at: :desc).page(params[:page]).per(PER_INDEX)
   end
 
