@@ -61,7 +61,7 @@ $(function() {
       // console.log(timeLeft);
       if (timeLeft < 0) {
         clearTimeout(timerId);
-        alert('さあ、行動しましょう！頑張ってくださいね！');
+        alert('タイマーがゼロになりました。');
         return;
       }
       updateTimer(timeLeft);
@@ -75,7 +75,7 @@ $(function() {
       if (timeLeft < 0) {
         clearTimeout(timerId);
         sessionStorage.clear();
-        alert('さあ、行動しましょう！頑張ってくださいね！');
+        alert('タイマーがゼロになりました。');
         return;
       }
       updateTimer(timeLeft);

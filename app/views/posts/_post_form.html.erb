@@ -1,17 +1,14 @@
 <div class="row">
 	<div class="col-md-8 offset-md-2">
 		<%= form_for(post) do |f| %>
+		<%= render 'layouts/error_messages', model: f.object %>
 		<div class="row">
 			<h6 class="form-title col-md-2">ヒトコト</h6>
-			<% if @tag_name == nil %>
+			<% if @tag_name == nil && @task_content == nil %>
 				<%= f.text_area :content, size: "40x7", autofocus: true, class: "form-field col-md-8" %>
 			<% else %>
-				<%= f.text_area :content, size: "40x7", value: @tag_name, autofocus: true, class: "form-field col-md-8" %>
+				<%= f.text_area :content, size: "40x7", value: "【#{@task.content}】#{l @task.time_limit, format: :short} #{@tag_name}", autofocus: true, class: "form-field col-md-8" %>
 			<% end %>
-		</div>
-
-		<div class="row">
-			<h6 class="form-title col-md-2">タグ</h6>
 		</div>
 
 		<div class="row">

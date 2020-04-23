@@ -15,3 +15,7 @@ ja:
       - :year
       - :month
       - :day
+  activerecord:
+    attributes:
+      post:
+        content: 本文

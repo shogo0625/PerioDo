@@ -7,11 +7,11 @@
     </div>
   </div>
 
+  <%= render "devise/shared/error_messages", resource: @user %>
+
   <div class="row">
     <div class="col-md-7 offset-md-3">
       <%= form_for(@user) do |f| %>
-      <%= render "devise/shared/error_messages", resource: @user %>
-
 				<div class="row">
 					<div class="form-title col-md-4">
 						<% if @user.profile_image_id == nil %>
