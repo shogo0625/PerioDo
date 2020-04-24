@@ -1,36 +1,43 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark stickey-top">
   <div class="container">
-    <h3><%= link_to "PerioDo", root_path, class: "navbar-brand" %></h3>
-    <ul class="navbar-nav ml-auto">
-    <% if user_signed_in? %>
-      <li class="nav-item">
-        <%= link_to "トップ", root_path, class: "nav-link fa fa-home active" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "探す", search_path, class: "nav-link fa fa-search active" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "新着", posts_path, class: "nav-link fa fa-pencil-alt active" %>
-      </li>
-      <li class="nav-image">
-        <%= link_to user_path(current_user), class: "nav-link" do %>
-          <%= image_tag "noimage_white.png", size: "30x30" %>
-        <% end %>
-      </li>
-    <% else %>
-      <li class="nav-item">
-        <%= link_to "ホーム", root_path, class: "nav-link fa fa-home active" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "概要", home_about_path, class: "nav-link fa fa-question-circle active" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "新規登録", new_user_registration_path, class: "nav-link fa fa-user-plus active" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "ログイン", new_user_session_path, class: "nav-link fa fa-sign-in-alt active" %>
-      </li>
+    <%= link_to root_path, class: "navbar-brand" do %>
+     <%= image_tag "logo.png", size: "180x50" %>
     <% end %>
-    </ul>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navmenu1" aria-controls="navmenu1" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navmenu1">
+      <ul class="navbar-nav ml-auto">
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to "トップ", root_path, class: "nav-link fa fa-home active" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "探す", search_path, class: "nav-link fa fa-search active" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "新着", posts_path, class: "nav-link fa fa-pencil-alt active" %>
+        </li>
+        <li class="nav-image">
+          <%= link_to user_path(current_user), class: "nav-link" do %>
+            <%= image_tag "noimage_white.png", size: "30x30" %>
+          <% end %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to "ホーム", root_path, class: "nav-link fa fa-home active" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "概要", home_about_path, class: "nav-link fa fa-question-circle active" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "新規登録", new_user_registration_path, class: "nav-link fa fa-user-plus active" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "ログイン", new_user_session_path, class: "nav-link fa fa-sign-in-alt active" %>
+        </li>
+      <% end %>
+      </ul>
+    </div>
   </div>
 </nav>
