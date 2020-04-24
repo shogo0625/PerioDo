@@ -78,6 +78,9 @@ gem 'font-awesome-sass', '~> 5.12.0'
 gem 'ransack'
 gem 'kaminari', '~> 1.2.0'
 
+gem 'cancancan'
+gem 'rails_admin'
+
 gem 'dotenv-rails'
 
 group :production do
