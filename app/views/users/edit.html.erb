@@ -2,7 +2,7 @@
 
 <div class="form-box">
   <div class="row">
-    <div class="col-md-7 offset-md-3">
+    <div class="col-md-6 offset-md-3">
       <h3 class="page-title">登録情報確認</h3>
     </div>
   </div>
@@ -10,7 +10,7 @@
   <%= render "devise/shared/error_messages", resource: @user %>
 
   <div class="row">
-    <div class="col-md-7 offset-md-3">
+    <div class="col-md-8 offset-md-2">
       <%= form_for(@user) do |f| %>
 				<div class="row">
 					<div class="form-title col-md-4">
@@ -54,7 +54,7 @@
         </div>
 
         <div class="row">
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-sm mt-5 btn-dark col-md-3 offset-md-3" %>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-sm mt-5 btn-secondary col-md-3 offset-md-3" %>
           <%= link_to "退会する", user_registration_path, method: :delete, data: { confirm: '本当に退会しますか？' }, class: "btn btn-sm mt-5 btn-danger col-md-3 offset-md-1" %>
         </div>
       <% end %>
