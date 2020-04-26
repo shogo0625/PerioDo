@@ -6,18 +6,18 @@ class UsersController < ApplicationController
   def index
     if !params[:q].nil?
       @q = User.search(search_params)
-      @users = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(PER_INDEX)
+      @users = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(INDEX)
       @search_word = @q.name_or_introduction_cont
     else
-      @users = User.all.order(created_at: :desc).page(params[:page]).per(PER_INDEX)
+      @users = User.all.order(created_at: :desc).page(params[:page]).per(INDEX)
     end
   end
 
   def show
-    @posts = @user.posts.all.order(created_at: :desc).page(params[:page]).per(PER_MYPAGE)
-    @following_users = @user.following_user.all.order(created_at: :desc).page(params[:page]).per(PER_MYPAGE)
-    @follower_users = @user.follower_user.all.order(created_at: :desc).page(params[:page]).per(PER_MYPAGE)
-    @favorited_posts = @user.favorited_posts.all.order(created_at: :desc).page(params[:page]).per(PER_MYPAGE)
+    @posts = @user.posts.all.order(created_at: :desc).page(params[:page]).per(MYPAGE)
+    @following_users = @user.following_user.all.order(created_at: :desc).page(params[:page]).per(MYPAGE)
+    @follower_users = @user.follower_user.all.order(created_at: :desc).page(params[:page]).per(MYPAGE)
+    @favorited_posts = @user.favorited_posts.all.order(created_at: :desc).page(params[:page]).per(MYPAGE)
 
     return unless request.xhr?
 

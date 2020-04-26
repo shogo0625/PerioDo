@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, :alert => exception.message
   end
 
-  PER_MYPAGE = 5
-  PER_INDEX = 10
+  MYPAGE = 5
+  INDEX = 10
 
   protected
 
