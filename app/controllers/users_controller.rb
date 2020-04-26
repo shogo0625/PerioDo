@@ -4,20 +4,20 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
 
   def index
-    if params[:q] != nil
+    if !params[:q].nil?
       @q = User.search(search_params)
-      @users = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(PER_INDEX)
+      @users = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(INDEX)
       @search_word = @q.name_or_introduction_cont
     else
-      @users = User.all.order(created_at: :desc).page(params[:page]).per(PER_INDEX)
+      @users = User.all.order(created_at: :desc).page(params[:page]).per(INDEX)
     end
   end
 
   def show
-    @posts = @user.posts.all.order(created_at: :desc).page(params[:page]).per(PER_MYPAGE)
-    @following_users = @user.following_user.all.order(created_at: :desc).page(params[:page]).per(PER_MYPAGE)
-    @follower_users = @user.follower_user.all.order(created_at: :desc).page(params[:page]).per(PER_MYPAGE)
-    @favorited_posts = @user.favorited_posts.all.order(created_at: :desc).page(params[:page]).per(PER_MYPAGE)
+    @posts = @user.posts.all.order(created_at: :desc).page(params[:page]).per(MYPAGE)
+    @following_users = @user.following_user.all.order(created_at: :desc).page(params[:page]).per(MYPAGE)
+    @follower_users = @user.follower_user.all.order(created_at: :desc).page(params[:page]).per(MYPAGE)
+    @favorited_posts = @user.favorited_posts.all.order(created_at: :desc).page(params[:page]).per(MYPAGE)
 
     return unless request.xhr?
 
@@ -31,26 +31,30 @@ class UsersController < ApplicationController
   end
 
   def update
-  	if @user.update(user_params)
+    if @user.update(user_params)
       flash[:success] = "ユーザー情報を更新しました。"
-  		redirect_to @user
-  	else
-  		render 'edit'
-  	end
+      redirect_to @user
+    else
+      render 'edit'
+    end
   end
 
   private
+
   def user_params
-  	params.require(:user).permit(:name, :email, :profile_image, :introduction, :prefecture)
+    params.require(:user).permit(:name, :email, :profile_image, :introduction, :prefecture)
   end
+
   def search_params
     params.require(:q).permit(:name_or_introduction_cont)
   end
+
   def screen_user
     unless params[:id].to_i == current_user.id
       redirect_to user_path(current_user)
     end
   end
+
   def set_user
     @user = User.find(params[:id])
   end

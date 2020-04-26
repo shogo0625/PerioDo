@@ -1,7 +1,7 @@
 class SearchController < ApplicationController
   before_action :authenticate_user!
 
-	PER_TAG = 15
+  TAG = 15
 
   def search
     @q = User.ransack(params[:q])
@@ -10,11 +10,9 @@ class SearchController < ApplicationController
     @search = Post.ransack(params[:search], search_key: :search)
     @posts = @search.result(distinct: true)
 
-	  @tags = Tag.all.joins(:post_tags).group(:tag_id).order('count(tag_id) desc').page(params[:page]).per(PER_TAG)
+    @tags = Tag.all.joins(:post_tags).group(:tag_id).order('count(tag_id) desc').page(params[:page]).per(TAG)
 
-	  return unless request.xhr?
-	  render '/search/tags'
-
-	 end
-
+    return unless request.xhr?
+    render '/search/tags'
+   end
 end

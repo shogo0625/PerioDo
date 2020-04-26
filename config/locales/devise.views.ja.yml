@@ -18,7 +18,9 @@ ja:
               invalid: "は有効でありません。"
               confirmation: "が内容とあっていません。"
             name:
+              blank: "が入力されていません。"
               too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以内に設定して下さい。"
     attributes:
       user:
         current_password: "現在のパスワード"

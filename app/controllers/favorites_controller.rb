@@ -1,18 +1,20 @@
 class FavoritesController < ApplicationController
-	before_action :authenticate_user!
-	before_action :set_post
+  before_action :authenticate_user!
+  before_action :set_post
 
-	def create
-		@favorite = current_user.favorites.new(post_id: @post.id)
-		@favorite.save
-	end
-	def destroy
-		@favorite = current_user.favorites.find_by(post_id: @post.id)
-		@favorite.destroy
-	end
+  def create
+    @favorite = current_user.favorites.new(post_id: @post.id)
+    @favorite.save
+  end
 
-	private
-	def set_post
-		@post = Post.find(params[:post_id])
-	end
+  def destroy
+    @favorite = current_user.favorites.find_by(post_id: @post.id)
+    @favorite.destroy
+  end
+
+  private
+
+  def set_post
+    @post = Post.find(params[:post_id])
+  end
 end

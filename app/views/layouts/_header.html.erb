@@ -19,7 +19,7 @@
           <%= link_to "新着", posts_path, class: "nav-link fa fa-pencil-alt active" %>
         </li>
         <li class="nav-image">
-          <%= link_to user_path(current_user), class: "nav-link" do %>
+          <%= link_to user_path(current_user), class: "nav-link", id: "mypage" do %>
             <%= image_tag "noimage_white.png", size: "30x30" %>
           <% end %>
         </li>
