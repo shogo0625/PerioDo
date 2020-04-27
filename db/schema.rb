@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_24_051030) do
+ActiveRecord::Schema.define(version: 2020_04_27_073101) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2020_04_24_051030) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "post_tags", id: false, force: :cascade do |t|
+  create_table "post_tags", force: :cascade do |t|
     t.integer "post_id"
     t.integer "tag_id"
     t.index ["post_id"], name: "index_post_tags_on_post_id"
