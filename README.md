@@ -85,4 +85,7 @@ URL: <http://periodo.site/>
 
 ### その他
 - ページネーション機能
-- 管理者権限（user/adminカラム）管理者ページ（rails_adminにて作成）
+- 管理者権限（user/adminカラム）管理者ページ（rails-adminにて作成）
+
+### 機能一覧URL
+<https://docs.google.com/spreadsheets/d/1ofR65VXcX0rTCzwGmqdJdb8IiUd0fqPfj4fweLbxHSs/edit#gid=0>
