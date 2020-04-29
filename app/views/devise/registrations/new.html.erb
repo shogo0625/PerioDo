@@ -32,8 +32,9 @@
           <div class="form-title col-md-4">
             <%= f.label :introduction %>
             <p class="register-info">※後から登録できます</p>
+            <p><span id="counter"></span>/100文字</p>
           </div>
-          <%= f.text_area :introduction, size: "20x4", class: "form-field col-md-7" %>
+          <%= f.text_area :introduction, size: "20x4", class: "form-field col-md-7", id: "input-text" %>
         </div>
 
         <div class="row">

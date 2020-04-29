@@ -190,6 +190,16 @@ $(function() {
 });
 // ----- 画像プレビュー ここまで-----
 
+// ----- フォーム共通　制限カウンター ここから-----
+$(function(){
+ $("#input-text").on("keyup", function() {
+   var countNum = String($(this).val().length);
+   $("#counter").text(countNum);
+ });
+});
+
+// ----- フォーム共通　制限カウンター ここまで-----
+
 // ----- コメント投稿フォーム表示 ここから-----
 $(function(){
   $('.fake-comment-field').click(function(){

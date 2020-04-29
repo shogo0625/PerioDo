@@ -3,26 +3,29 @@
 		<%= form_for(post) do |f| %>
 		<%= render 'layouts/error_messages', model: f.object %>
 		<div class="row">
-      <%= f.label :content, class: "form-title col-md-2" %>
+			<div class="col-md-3 form-title">
+	      <%= f.label :content %>
+	      <p><span id="counter"></span>/160文字</p>
+			</div>
 			<% if @task != nil %>
-				<%= f.text_area :content, size: "40x7", value: "【#{@task.content}】#{l @task.time_limit, format: :short} #{@tag_name}", autofocus: true, class: "form-field col-md-8" %>
+				<%= f.text_area :content, size: "40x7", value: "【#{@task.content}】#{l @task.time_limit, format: :short} #{@tag_name}", autofocus: true, class: "form-field col-md-7", id: "input-text" %>
 			<% elsif @tag_name != nil %>
-				<%= f.text_area :content, size: "40x7", value: @tag_name, autofocus: true, class: "form-field col-md-8" %>
+				<%= f.text_area :content, size: "40x7", value: @tag_name, autofocus: true, class: "form-field col-md-7", id: "input-text" %>
 			<% else %>
-				<%= f.text_area :content, size: "40x7", autofocus: true, class: "form-field col-md-8" %>
+				<%= f.text_area :content, size: "40x7", autofocus: true, class: "form-field col-md-7", id: "input-text" %>
 			<% end %>
 		</div>
 
 		<div class="row">
-      <%= f.label :image, class: "form-title col-md-2" %>
+      <%= f.label :image, class: "form-title col-md-3" %>
 			<%= f.attachment_field :image, class: "form-field ml-3", id: "post-image" %>
 		</div>
 
 		<div class="row">
 			<% if post.image_id == nil %>
-				<%= image_tag "", size: "500x350", class: "form-field prev-noimage offset-md-2", id: "preview-noimage" %>
+				<%= image_tag "", size: "430x280", class: "form-field prev-noimage offset-md-3", id: "preview-noimage" %>
 			<% else %>
-			  <%= attachment_image_tag post, :image, size: "500x350", class: "form-field prev-image offset-md-2", id: "preview-image" %>
+			  <%= attachment_image_tag post, :image, size: "390x270", class: "form-field prev-image offset-md-3", id: "preview-image" %>
 			<% end %>
 		</div>
 
