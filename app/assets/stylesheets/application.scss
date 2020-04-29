@@ -25,7 +25,8 @@ $blue: #2790b0;
 $black: #222222;
 
 body {
-	font-family: 'Muli', "Noto Sans JP", Arial, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', Osaka, 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;;
+	font-family: 'Muli', "Noto Sans JP", Arial, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', Osaka, 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+	word-wrap: break-word;
 }
 
 .wrapper {
