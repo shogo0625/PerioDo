@@ -8,8 +8,16 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="row">
-    <div class="col-md-6 offset-md-3">
+    <div class="col-md-8 offset-md-2">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <div class="row">
+          <div class="form-title col-md-4">
+            <%= image_tag "noimage.png", size: "100x100", class: "prev-image user-icon", id: "preview-noimage" %>
+            <%= f.label :profile_image %>
+          </div>
+          <%= f.attachment_field :profile_image, class: "form-field col-md-7 user-icon-select", id: "post-image" %>
+        </div>
+
         <div class="row">
           <%= f.label :name, class: "form-title col-md-4" %>
           <%= f.text_field :name, autofocus: true, class: "form-field col-md-7" %>
@@ -26,13 +34,6 @@
             <p class="register-info">※後から登録できます</p>
           </div>
           <%= f.text_area :introduction, size: "20x4", class: "form-field col-md-7" %>
-        </div>
-
-        <div class="row">
-          <%= f.label :prefecture, class: "form-title col-md-4" %>
-          <div class="form-field col-md-7">
-            <%= f.select :prefecture, User.prefectures.keys, {}, {class: "prefecture-box"} %>
-          </div>
         </div>
 
         <div class="row">

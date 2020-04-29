@@ -43,13 +43,6 @@
         </div>
 
         <div class="row">
-          <%= f.label :prefecture, class: "form-title col-md-4" %>
-          <div class="form-field col-md-7">
-            <%= f.select :prefecture, User.prefectures.keys, {}, {class: "prefecture-box"} %>
-          </div>
-        </div>
-
-        <div class="row">
           <%= f.submit "変更する", class: "btn btn-info col-md-5 offset-md-4" %>
         </div>
 
