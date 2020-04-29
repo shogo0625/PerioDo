@@ -43,14 +43,25 @@
 				<% end %>
 				<%= post.favorites.count %>
 			<% end %>
+			<% if post.commented_by?(current_user) %>
+				<%= link_to post_path(post) do %>
+					<i class="fas fa-comment-alt ml-3" aria-hidden="true" style="color: #e96e50;"></i>
+				<% end %>
+				<%= post.post_comments.count %>
+			<% else %>
+				<%= link_to post_path(post) do %>
+					<i class="far fa-comment-alt ml-3" aria-hidden="true" style="color:black;"></i>
+				<% end %>
+				<%= post.post_comments.count %>
+			<% end %>
 		<% else %>
 			<i class="fas fa-hand-holding-heart" aria-hidden="true"></i>
 			<%= post.favorites.count %>
+			<%= link_to post_path(post) do %>
+				<i class="fas fa-comments ml-3" aria-hidden="true" style="color:black;"></i>
+			<% end %>
+			<%= post.post_comments.count %>
 		<% end %>
-		<%= link_to post_path(post) do %>
-			<i class="far fa-comment-alt ml-3" aria-hidden="true" style="color:black"></i>
-		<% end %>
-		<%= post.post_comments.count %>
 	</div>
 	<div class="col-md-3">
 		<%= l post.created_at %>
