@@ -7,7 +7,7 @@
 	<div class="col-md-11">
 		<div class="row">
 			<div class="col-md-6">
-				<%= link_to post.user.name, user_path(post.user), class: "link-to-black ml-3" %>
+				<%= link_to post.user.name, user_path(post.user), class: "link-to-black ml-3", style: "font-size:18px;" %>
 			</div>
 			<div class="col-md-5 offset-md-1 link-box">
 				<%= link_to " 詳細・コメント", post_path(post), class: "fas fa-comments link-to-black"%>
@@ -19,10 +19,10 @@
 		</div>
 		<div class="row post-content-box">
 			<div class="col-md-12"><%= simple_format(render_with_hashtags(post.content)) %></div>
-			<div class="col-md-6 offset-md-2">
+			<div class="col-md-6 offset-md-3">
 			<% if post.image != nil %>
 				<%= link_to Refile.attachment_url(post, :image), 'data-lightbox' => post.image do %>
-					<%= attachment_image_tag(post, :image, size: "350x200", class: "post-image-field") %>
+					<%= attachment_image_tag(post, :image, size: "300x190", class: "post-image-field") %>
 				<% end %>
 			<% end %>
 			</div>
@@ -43,14 +43,25 @@
 				<% end %>
 				<%= post.favorites.count %>
 			<% end %>
+			<% if post.commented_by?(current_user) %>
+				<%= link_to post_path(post) do %>
+					<i class="fas fa-comment-alt ml-3" aria-hidden="true" style="color: #e96e50;"></i>
+				<% end %>
+				<%= post.post_comments.count %>
+			<% else %>
+				<%= link_to post_path(post) do %>
+					<i class="far fa-comment-alt ml-3" aria-hidden="true" style="color:black;"></i>
+				<% end %>
+				<%= post.post_comments.count %>
+			<% end %>
 		<% else %>
 			<i class="fas fa-hand-holding-heart" aria-hidden="true"></i>
 			<%= post.favorites.count %>
+			<%= link_to post_path(post) do %>
+				<i class="fas fa-comments ml-3" aria-hidden="true" style="color:black;"></i>
+			<% end %>
+			<%= post.post_comments.count %>
 		<% end %>
-		<%= link_to post_path(post) do %>
-			<i class="far fa-comment-alt ml-3" aria-hidden="true" style="color:black"></i>
-		<% end %>
-		<%= post.post_comments.count %>
 	</div>
 	<div class="col-md-3">
 		<%= l post.created_at %>

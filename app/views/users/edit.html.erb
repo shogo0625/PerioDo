@@ -37,16 +37,9 @@
         <div class="row">
           <div class="form-title col-md-4">
             <%= f.label :introduction %>
-            <p class="register-info">※100文字以内</p>
+            <p><span id="counter"></span>/100文字</p>
           </div>
-          <%= f.text_area :introduction, size: "20x4", class: "form-field col-md-7" %>
-        </div>
-
-        <div class="row">
-          <%= f.label :prefecture, class: "form-title col-md-4" %>
-          <div class="form-field col-md-7">
-            <%= f.select :prefecture, User.prefectures.keys, {}, {class: "prefecture-box"} %>
-          </div>
+          <%= f.text_area :introduction, size: "20x4", class: "form-field col-md-7", id: "input-text" %>
         </div>
 
         <div class="row">
