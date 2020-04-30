@@ -32,20 +32,15 @@
 	</div>
 </div>
 
-	<div class="row">
-		<div class="col-md-10 offset-md-1 search-box">
-			<div class="row">
-				<div class="col-md-6 offset-md-3">
-					<h3 class="index-page-title tag-search-title">#人気のタグから探す</h3>
-				</div>
-			</div>
-			<div id="tag-index">
-				<%= render 'search/tag_index', collection: @tags %>
-				<div class="row">
-					<div class="col-md-10 offset-md-1">
-						<%= link_to_next_page @tags, 'もっと見る', id: 'more-tags', class: 'btn btn-light w-100', remote: true %>
-					</div>
-				</div>
+<div class="row">
+	<div class="col-md-10 offset-md-1 search-box">
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+				<h3 class="index-page-title tag-search-title">#人気のタグから探す</h3>
 			</div>
 		</div>
+		<div id="tag-index">
+			<%= render 'search/tag_index', collection: @tags %>
+		</div>
 	</div>
+</div>
