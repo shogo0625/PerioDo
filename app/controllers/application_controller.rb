@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
   # kaminari表示数 
   MYPAGE = 5
   INDEX = 10
+  TAG = 15
 
   protected
 
