@@ -39,6 +39,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def new_guest #ポートフォリオ閲覧用ユーザーログイン
+    @user = User.find(GUEST_ID)
+    sign_in @user
+    flash[:success] = "閲覧ありがとうございます！ゲストユーザーとしてログインしました。"
+    redirect_to @user
+  end
+
   private
 
   def user_params

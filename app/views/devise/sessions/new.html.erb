@@ -27,6 +27,9 @@
         <div class="row">
           <%= f.submit "ログイン", class: "btn btn-info col-md-5 offset-md-4", style: "margin-bottom:30px" %>
         </div>
+        <div class="row">
+          <%= link_to "かんたんログイン（閲覧用）", new_guest_path, method: :post, class: "btn btn-success col-md-5 offset-md-4", style: "margin-bottom:30px" %>
+        </div>
       <% end %>
       <%= render "devise/shared/links" %>
     </div>
