@@ -25,6 +25,14 @@ $(function() {
     $('input:visible').eq(0).focus();
   });
 
+  $('#timer-modal').click(function(){
+    $(this).fadeOut();
+  });
+
+  $('.modal-content').on('click', function(e){
+    e.stopPropagation();
+  });
+
   $('.close-modal').click(function(){
     $('#timer-modal').fadeOut();
   });
@@ -153,6 +161,14 @@ $(function(){
     $('textarea:visible').eq(0).focus();
   });
 
+  $('#task-form-modal').click(function(){
+    $(this).fadeOut();
+  });
+
+  $('.task-modal-content').on('click', function(e){
+    e.stopPropagation();
+  });
+
   $('#close-form-modal').click(function(){
     $('#task-form-modal').fadeOut();
   });
@@ -226,7 +242,5 @@ $(function(){
 });
 
 // ----- マイページ タブメニュー ここまで-----
-
-
 
 

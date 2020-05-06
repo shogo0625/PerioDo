@@ -1,8 +1,6 @@
 class SearchController < ApplicationController
   before_action :authenticate_user!
 
-  TAG = 15
-
   def search
     @q = User.ransack(params[:q])
     @users = @q.result(distinct: true)
