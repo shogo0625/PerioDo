@@ -1,3 +1,5 @@
+<%= render "posts/favorited_users_modal", post: post %>
+
 <div class="row">
 	<div class="col-md-1">
 		<%= link_to user_path(post.user) do %>
@@ -10,7 +12,7 @@
 				<%= link_to post.user.name, user_path(post.user), class: "link-to-black ml-3", style: "font-size:18px;" %>
 			</div>
 			<div class="col-md-5 offset-md-1 link-box">
-				<%= link_to " 詳細・コメント", post_path(post), class: "fas fa-comments link-to-black"%>
+				<%= link_to " 詳細・コメント", post_path(post), class: "fas fa-comment link-to-black"%>
 			<% if current_user == post.user %>
 				<%= link_to " 編集", edit_post_path(post), class: "fas fa-edit link-to-black" %>
 				<%= link_to " 削除", post_path(post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "fas fa-trash-alt link-to-black" %>
@@ -55,7 +57,7 @@
 				<%= post.post_comments.count %>
 			<% end %>
 		<% else %>
-			<i class="fas fa-hand-holding-heart" aria-hidden="true"></i>
+			<i class="show-favorites-<%= post.id %> fas fa-hand-holding-heart" aria-hidden="true"></i>
 			<%= post.favorites.count %>
 			<%= link_to post_path(post) do %>
 				<i class="fas fa-comments ml-3" aria-hidden="true" style="color:black;"></i>
@@ -67,3 +69,23 @@
 		<%= l post.created_at %>
 	</div>
 </div>
+
+<script>
+	$(function(){
+	  $('.show-favorites-<%= post.id %>').click(function(){
+	    $('#favorited-users-<%= post.id %>').fadeIn();
+	  });
+
+	  $('#favorited-users-<%= post.id %>').click(function(){
+	  	$(this).fadeOut();
+	  });
+
+	  $('.favorited-users-index').on('click', function(e){
+	    e.stopPropagation();
+	  });
+
+	  $('.close-index-modal').click(function(){
+	    $('#favorited-users-<%= post.id %>').fadeOut();
+	  });
+	});
+</script>

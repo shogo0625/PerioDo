@@ -29,7 +29,17 @@
 		border-radius: 7px;
 	}
 
-	.fa-thumbs-up, .fa-comment-alt {
+	.fa-hand-holding-heart {
+		cursor: pointer;
+		font-size: 1.2em;
+
+		&:hover {
+			text-decoration: underline;
+			font-size: 1.3em;
+		}
+	}
+
+	.fa-thumbs-up, .fa-comment-alt, .fa-comments {
 		font-size: 1.2em;
 
 		&:hover {
@@ -43,5 +53,37 @@
     border-left: double 4px $orange;
     border-right: double 4px $orange;
     color: $black;
+	}
+}
+
+.favorited-users-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  display: none;
+}
+
+.favorited-users-index {
+	position: fixed;
+	top: 100px;
+	max-height: 80vh;
+	background-color: #e6ecf0;
+	border-radius: 10px;
+	padding: 50px 0;
+	overflow-y: auto;
+
+	.fa-times-circle {
+		position: absolute;
+		top: 15px;
+		right: 15px;
+		cursor: pointer;
+
+		&:hover {
+			color: $orange;
+		}
 	}
 }
