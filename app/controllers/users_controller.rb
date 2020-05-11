@@ -32,6 +32,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
+      sleep(3) # S3への画像反映のタイムラグを考慮して3秒待機
       flash[:success] = "ユーザー情報を更新しました。"
       redirect_to @user
     else

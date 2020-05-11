@@ -17,7 +17,7 @@
 						<% if @user.profile_image_id == nil %>
 							<%= image_tag "noimage.png", size: "100x100", class: "prev-image user-icon", id: "preview-noimage" %>
 						<% else %>
-						  <%= attachment_image_tag @user, :profile_image, size: "100x100", class: "prev-image user-icon", id: "preview-image" %>
+						  <%= image_tag call_user_img(@user), size: "100x100", class: "prev-image user-icon", id: "preview-image" %>
 						<% end %>
 						<%= f.label :profile_image %>
 					</div>

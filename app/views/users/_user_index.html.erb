@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-md-8">
 		<%= link_to user_path(user) do %>
-			<%= attachment_image_tag(user, :profile_image, size: "75x75", fallback: "noimage.png", class: "ml-2 user-icon") %>
+			<%= image_tag call_user_img(user), size: "75x75", class: "ml-2 user-icon" %>
 		<% end %>
 		<%= link_to user.name, user_path(user), class: "ml-2 link-to-black", style: "font-size:22px;" %>
 	</div>

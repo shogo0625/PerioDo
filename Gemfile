@@ -80,6 +80,7 @@ gem 'rails-i18n'
 
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
+gem 'refile-s3'
 
 gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'

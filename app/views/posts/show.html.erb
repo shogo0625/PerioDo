@@ -23,7 +23,7 @@
 	<div class="col-md-10 offset-md-1 comment-form post-index-box">
 		<div class="row">
 			<div class="col-md-1">
-				<%= attachment_image_tag(current_user, :profile_image, size: "60x60", fallback: "noimage.png", class: "user-icon") %>
+				<%= image_tag call_user_img(current_user), size: "60x60", fallback: "noimage.png", class: "user-icon" %>
 			</div>
 			<div class="col-md-11">
 				<div class="row">
