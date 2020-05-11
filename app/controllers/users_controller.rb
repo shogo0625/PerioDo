@@ -32,11 +32,19 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
+      sleep(3) # S3への画像反映のタイムラグを考慮して3秒待機
       flash[:success] = "ユーザー情報を更新しました。"
       redirect_to @user
     else
       render 'edit'
     end
+  end
+
+  def new_guest #ポートフォリオ閲覧用ユーザーログイン
+    @user = User.find(GUEST_ID)
+    sign_in @user
+    flash[:success] = "閲覧ありがとうございます！ゲストユーザーとしてログインしました。"
+    redirect_to @user
   end
 
   private

@@ -25,6 +25,14 @@ $(function() {
     $('input:visible').eq(0).focus();
   });
 
+  $('#timer-modal').click(function(){
+    $(this).fadeOut();
+  });
+
+  $('.modal-content').on('click', function(e){
+    e.stopPropagation();
+  });
+
   $('.close-modal').click(function(){
     $('#timer-modal').fadeOut();
   });
@@ -83,37 +91,45 @@ $(function() {
     }, 100);
   }
 
-  start.addEventListener('click', function(){
-    $('#timer-modal').hide();
-    $('#to-set').hide();
-    $('#to-finish').show();
-    startTime = Date.now();
-    if (minutes.value == 0 || minutes.value > 60) {
-      alert('1〜60分の間で設定してください。');
-      minutes.value = null;
-      $('#timer-modal').fadeIn();
-      $('input:visible').eq(0).focus();
-      return;
-    }
-    timeToCountDown += minutes.value * 60000;
-    updateTimer(timeToCountDown);
-    countDown();
+  $(function(){
+    $(start).click(function(){
+      $('#timer-modal').hide();
+      $('#to-set').hide();
+      $('#to-finish').show();
+      startTime = Date.now();
+      if (minutes.value == 0 || minutes.value > 60) {
+        alert('1〜60分の間で設定してください。');
+        minutes.value = null;
+        $('#timer-modal').fadeIn();
+        $('input:visible').eq(0).focus();
+        return;
+      }
+      timeToCountDown += minutes.value * 60000;
+      updateTimer(timeToCountDown);
+      countDown();
+    });
   });
 
-  reset.addEventListener('click', function(){
-    timeToCountDown = 0;
-    $('#to-finish').hide();
-    $('#to-set').show();
+  $(function(){
+    $(reset).click(function(){
+      timeToCountDown = 0;
+      $('#to-finish').hide();
+      $('#to-set').show();
+    });
   });
 
-  hideTimer.addEventListener('click', function(){
-    $('#to-finish').slideUp();
-    $('#hidden-timer').slideDown();
+  $(function(){
+    $(hideTimer).click(function(){
+      $('#to-finish').slideUp();
+      $('#hidden-timer').slideDown();
+    });
   });
 
-  $('#show-timer').click(function(){
-    $('#hidden-timer').slideUp();
-    $('#to-finish').slideDown();
+  $(function(){
+    $('#show-timer').click(function(){
+      $('#hidden-timer').slideUp();
+      $('#to-finish').slideDown();
+    });
   });
 
   function redirectPage(){
@@ -143,6 +159,14 @@ $(function(){
   $('#create-tasks').click(function(){
     $('#task-form-modal').fadeIn();
     $('textarea:visible').eq(0).focus();
+  });
+
+  $('#task-form-modal').click(function(){
+    $(this).fadeOut();
+  });
+
+  $('.task-modal-content').on('click', function(e){
+    e.stopPropagation();
   });
 
   $('#close-form-modal').click(function(){
@@ -182,6 +206,16 @@ $(function() {
 });
 // ----- 画像プレビュー ここまで-----
 
+// ----- フォーム共通　制限カウンター ここから-----
+$(function(){
+ $("#input-text").on("keyup", function() {
+   var countNum = String($(this).val().length);
+   $("#counter").text(countNum);
+ });
+});
+
+// ----- フォーム共通　制限カウンター ここまで-----
+
 // ----- コメント投稿フォーム表示 ここから-----
 $(function(){
   $('.fake-comment-field').click(function(){
@@ -208,7 +242,5 @@ $(function(){
 });
 
 // ----- マイページ タブメニュー ここまで-----
-
-
 
 

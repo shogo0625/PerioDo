@@ -1,3 +1,2 @@
 $('#more-tab4').remove();
 $('#tab4').append("<%= j render 'users/tab4', collection: @favorited_posts %>");
-$('#tab4').append("<%= j link_to_next_page(@favorited_posts, 'もっと見る', id: 'more-tab4', class: 'btn btn-info', params: { type: :tab4 }, remote: true) %>");

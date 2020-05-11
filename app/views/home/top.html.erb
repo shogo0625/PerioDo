@@ -24,7 +24,7 @@
 <div class="row">
 	<div class="col-md-10 offset-md-1">
 		<% if user_signed_in? %>
-			<h3 class="top-page-title">フォローしているみんなのヒトコト</h3>
+			<h3 class="top-page-title">タイムライン</h3>
 		<% else %>
 			<h3 class="top-page-title">みんなのヒトコト</h3>
 		<% end %>
@@ -40,7 +40,7 @@
 		<% end %>
 	<% else %>
 		<div class="col-md-10 offset-md-1 new-user-info">
-			<h5>ここにあなたがフォローしているユーザーのヒトコトが表示されます。</h5>
+			<h5>ここにあなたとフォローしているユーザーのヒトコトが表示されます。</h5>
 			<h5>プロフィールや投稿から共通点などを探してみましょう！</h5>
 			<div class="row">
 				<%= link_to "探す", search_path, class: "btn btn-primary mb-4 col-md-2 offset-md-5" %>
