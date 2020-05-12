@@ -36,6 +36,8 @@ require 'capistrano/rails/console'
 # require "capistrano/passenger"
 require "capistrano/puma"
 install_plugin Capistrano::Puma
+require 'dotenv'
+Dotenv.load
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
 Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
