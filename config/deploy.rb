@@ -42,7 +42,7 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/syst
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
 
-set :bucket,            "ENV['AWS_S3_BUCKET_NAME']"
-set :access_key_id,     "ENV['AWS_ACCESS_KEY_ID']"
-set :secret_access_key, "ENV['AWS_SECRET_ACCESS_KEY']"
-set :region,						"ENV['AWS_REGION']"
+set :bucket,            "AWS_S3_BUCKET_NAME"
+set :access_key_id,     "AWS_ACCESS_KEY_ID"
+set :secret_access_key, "AWS_SECRET_ACCESS_KEY"
+set :region,						"AWS_REGION"
