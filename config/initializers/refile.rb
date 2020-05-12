@@ -1,5 +1,6 @@
 require 'refile/s3'
 require 'aws-sdk'
+
 aws = {
   access_key_id: ENV['AWS_ACCESS_KEY_ID'],
   secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
@@ -8,3 +9,8 @@ aws = {
 }
 Refile.cache = Refile::S3.new(prefix: 'cache', **aws)
 Refile.store = Refile::S3.new(prefix: 'store', **aws)
+
+Aws.config.update({
+  region: 'ap-northeast-1',
+  credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY'])
+})
