@@ -1,5 +1,4 @@
 require 'refile/s3'
-require 'refile/simple_form'
 
 aws = {
   access_key_id: ENV['AWS_ACCESS_KEY_ID'],
