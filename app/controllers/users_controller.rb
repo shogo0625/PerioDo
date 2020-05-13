@@ -40,7 +40,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def delete_image
+  def delete_profile_image
     @user = User.find(params[:id])
     @user.update_column(:profile_image_id, nil)
     flash[:success] = "プロフィール画像を削除しました。"
