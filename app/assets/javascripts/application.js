@@ -150,7 +150,6 @@ $(function() {
       remainedCountDown();
     }
   })
-
 });
 // ----- タイマー機能 ここまで-----
 

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:index, :show, :edit, :update]
   post '/users/new_guest' => 'users#new_guest', as: 'new_guest' # ゲストユーザーログイン用ルート
+  patch '/users/:id/delete_image' => 'users#delete_image', as: 'delete_image'
   resources :posts do
     resources :post_comments, only: [:create, :update, :destroy]
     resource :favorites, only: [:create, :destroy]
