@@ -132,6 +132,12 @@ $(function() {
     });
   });
 
+  $(function(){
+    $('#sign-out').click(function(){
+      timeToCountDown = 0;
+    });
+  });
+
   function redirectPage(){
     if (timeLeft > 1) {
       sessionStorage.setItem('number', timeLeft);
