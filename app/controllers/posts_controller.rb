@@ -5,10 +5,10 @@ class PostsController < ApplicationController
   def index
     if !params[:search].nil?
       @search = Post.search(search_params)
-      @posts = @search.result(distinct: true).order(created_at: :desc).page(params[:page]).per(INDEX)
+      @posts = @search.result(distinct: true).page(params[:page]).per(INDEX)
       @search_word = @search.content_cont
     else
-      @posts = Post.all.order(created_at: :desc).page(params[:page]).per(INDEX)
+      @posts = Post.all.page(params[:page]).per(INDEX)
     end
   end
 
@@ -62,7 +62,7 @@ class PostsController < ApplicationController
 
   def hashtag
     @tag = Tag.find_by(name: params[:name])
-    @posts = @tag.posts.all.order(created_at: :desc).page(params[:page]).per(INDEX)
+    @posts = @tag.posts.all.page(params[:page]).per(INDEX)
   end
 
   private
