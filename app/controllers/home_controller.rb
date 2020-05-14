@@ -18,7 +18,7 @@ class HomeController < ApplicationController
       @doing_tasks = @user.tasks.where(status: 1)
       @done_tasks = @user.tasks.where(status: 2)
     else
-      @posts = Post.all.order(created_at: :desc).page(params[:page]).per(INDEX)
+      @posts = Post.all.page(params[:page]).per(INDEX)
     end
   end
 

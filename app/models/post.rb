@@ -10,6 +10,8 @@ class Post < ApplicationRecord
   attachment :image, destroy: false
   validates :content, presence: true, length: { maximum: 160 }
 
+  default_scope->{order(created_at: :desc)}
+  
   after_create do
     post = Post.find_by(id: id)
     tags = content.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
