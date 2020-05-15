@@ -1,0 +1,3 @@
+$('textarea').val("");
+$('#premade-tasks').html("<%= j(render 'premade_tasks/premade_task_index', premade_tasks: @premade_tasks) %>");
+$('#task-form-modal').hide();

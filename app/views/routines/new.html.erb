@@ -1,2 +1,52 @@
-<h1>Routines#new</h1>
-<p>Find me in app/views/routines/new.html.erb</p>
+<%= render "layouts/timer" %>
+
+<div class="row">
+	<div class="col-md-6 routine-box">
+		<div class="row">
+			<div class="col-md-12">
+				<%= link_to user_path(@user) do %>
+					<%= image_tag call_user_img(@user), size: "60x60", class: "ml-2 user-icon" %>
+				<% end %>
+				<%= link_to @user.name, user_path(@user), class: "ml-2 link-to-black", style: "font-size:22px;" %>
+			</div>
+		</div>
+		<%= form_for [@user, @routine] do |f| %>
+		<div class="row">
+			<div class="col-md-12 mt-3">
+				<p>Title :</p>
+				<%= f.text_field :title, placeholder: "ex：平日のルーティーン", class: "routine-form" %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 mt-3">
+				<p>Comment :</p>
+				<%= f.text_area :title, rows: 10, class: "routine-form" %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 mt-3">
+				<%= f.submit "この内容で作成する", class: "btn btn-sm btn-block btn-success" %>
+			</div>
+		</div>
+		<% end %>
+	</div>
+
+	<div id="new-pretask-form">
+		<%= render "premade_tasks/premade_task_form", premade_task: @new_premade_task %>
+	</div>
+
+	<div class="col-md-6 routine-box">
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+				<h4 style="text-align: center;">
+					<i id="create-pretask" class="fas fa-plus-circle mr-3"></i>
+					Tasks
+					<%= link_to "", destroy_all_premade_tasks_path, method: :delete, data: { confirm: '全てのタスクを削除しますか？' }, class: "fas fa-trash ml-3" %>
+				</h4>
+			</div>
+		</div>
+		<div id="premade-tasks">
+			<%= render "premade_tasks/premade_task_index", premade_tasks: @premade_tasks %>		
+		</div>
+	</div>
+</div>

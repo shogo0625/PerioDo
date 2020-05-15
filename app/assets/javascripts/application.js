@@ -182,7 +182,6 @@ $(function(){
     $(this).hide();
     $('#hide-tasks').fadeIn();
     $('#todolists').slideDown();
-    $('textarea:visible').eq(0).focus();
   });
 
   $('#hide-tasks').click(function(){
@@ -247,5 +246,26 @@ $(function(){
 });
 
 // ----- マイページ タブメニュー ここまで-----
+
+// ----- PremadeTasks ここから-----
+$(function(){
+  $('#create-pretask').click(function(){
+    $('#task-form-modal').fadeIn();
+    $('textarea:visible').eq(1).focus();
+  });
+
+  $('#task-form-modal').click(function(){
+    $(this).fadeOut();
+  });
+
+  $('.task-modal-content').on('click', function(e){
+    e.stopPropagation();
+  });
+
+  $('#close-form-modal').click(function(){
+    $('#task-form-modal').fadeOut();
+  });
+});
+// ----- PremadeTasks ここまで-----
 
 

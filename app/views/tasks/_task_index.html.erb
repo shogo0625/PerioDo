@@ -26,10 +26,15 @@
 						$('#task-edit-<%= task.id %>').fadeIn();
 				    $('textarea:visible').eq(0).focus();
 					});
-
 					$('#close-edit-<%= task.id %>').click(function(){
 						$('#task-edit-<%= task.id %>').hide();
 					});
+				  $('#task-edit-<%= task.id %>').click(function(){
+				    $(this).fadeOut();
+				  });
+				  $('.task-modal-content').on('click', function(e){
+				    e.stopPropagation();
+				  });
 				</script>
 			<% end %>
 		</div>
@@ -61,10 +66,15 @@
 						$('#task-edit-<%= task.id %>').fadeIn();
 				    $('textarea:visible').eq(0).focus();
 					});
-
 					$('#close-edit-<%= task.id %>').click(function(){
 						$('#task-edit-<%= task.id %>').hide();
 					});
+				  $('#task-edit-<%= task.id %>').click(function(){
+				    $(this).fadeOut();
+				  });
+				  $('.task-modal-content').on('click', function(e){
+				    e.stopPropagation();
+				  });
 				</script>
 			<% end %>
 		</div>
@@ -95,10 +105,15 @@
 						$('#task-edit-<%= task.id %>').fadeIn();
 				    $('textarea:visible').eq(0).focus();
 					});
-
 					$('#close-edit-<%= task.id %>').click(function(){
 						$('#task-edit-<%= task.id %>').hide();
 					});
+				  $('#task-edit-<%= task.id %>').click(function(){
+				    $(this).fadeOut();
+				  });
+				  $('.task-modal-content').on('click', function(e){
+				    e.stopPropagation();
+				  });
 				</script>
 			<% end %>
 		</div>

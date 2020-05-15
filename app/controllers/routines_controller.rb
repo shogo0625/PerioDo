@@ -11,6 +11,9 @@ class RoutinesController < ApplicationController
   end
 
   def new
+  	@routine = @user.routines.new
+  	@new_premade_task = @user.premade_tasks.new
+  	@premade_tasks = @user.premade_tasks.all
   end
 
   def edit
