@@ -1,0 +1,2 @@
+class PremadeTasksController < ApplicationController
+end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_27_073101) do
+ActiveRecord::Schema.define(version: 2020_05_15_020741) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
@@ -45,6 +45,14 @@ ActiveRecord::Schema.define(version: 2020_04_27_073101) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "premade_tasks", force: :cascade do |t|
+    t.integer "user_id"
+    t.text "content", null: false
+    t.time "time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
@@ -53,6 +61,23 @@ ActiveRecord::Schema.define(version: 2020_04_27_073101) do
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
     t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
+  end
+
+  create_table "routine_tasks", force: :cascade do |t|
+    t.integer "routine_id"
+    t.text "content", null: false
+    t.time "time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "routines", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "title", null: false
+    t.text "comment"
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tags", force: :cascade do |t|

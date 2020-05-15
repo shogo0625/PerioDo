@@ -1,0 +1,2 @@
+class RoutineTasksController < ApplicationController
+end

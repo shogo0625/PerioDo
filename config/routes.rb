@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   get 'home/about'
 
   devise_for :users
-  resources :users, only: [:index, :show, :edit, :update]
+  resources :users, only: [:index, :show, :edit, :update] do
+    resources :routines do
+      resources :routine_tasks, only: [:create, :update, :destroy]
+    end
+  end
+  resources :premade_tasks, only: [:create, :update, :destroy]
   post '/users/new_guest' => 'users#new_guest', as: 'new_guest' # ゲストユーザーログイン用ルート
   patch '/users/:id/delete_profile_image' => 'users#delete_profile_image', as: 'delete_profile_image'
   resources :posts do
