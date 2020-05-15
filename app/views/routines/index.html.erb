@@ -1,0 +1,61 @@
+<%= render "layouts/timer" %>
+
+<div class="row">
+	<div class="col-md-10 offset-md-1">
+		<h3 class="index-page-title">
+			<%= link_to user_path(@user), class: "link-to-black" do %>
+				<%= image_tag call_user_img(@user), size: "45x45", fallback: "noimage.png", class: "user-icon" %>
+				<%= @user.name %>
+			<% end %>
+			さんのルーティーン
+			<%= link_to "新規作成", new_user_routine_path(@user), class: "btn btn-success" if @user.id == current_user.id %>
+		</h3>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-10 offset-md-1 routines-box">
+		<ul>
+			<% unless @routines.count == 0 %>
+				<% @routines.each do |routine| %>
+					<%= link_to user_routine_path(@user, routine), class: "link-to-black" do %>
+						<li><%= routine.title %></li>
+					<% end %>
+				<% end %>
+			<% else %>
+				<li>まだルーティーンが登録されていません。</li>
+			<% end %>
+		</ul>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-10 offset-md-1">
+		<h3 class="index-page-title">
+			<%= link_to user_path(@user), class: "link-to-black" do %>
+				<%= image_tag call_user_img(@user), size: "45x45", fallback: "noimage.png", class: "user-icon" %>
+				<%= @user.name %>
+			<% end %>
+			さんの行動記録
+		</h3>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-10 offset-md-1 routines-box">
+		<ul>
+			<% unless @routine_records.count == 0 %>
+				<% @routine_records.each do |record| %>
+					<%= link_to user_routine_path(@user, record), class: "link-to-black" do %>
+						<li><%= record.title %></li>
+					<% end %>
+				<% end %>
+			<% else %>
+				<li>
+					まだ行動記録が登録されていません。
+					<%= link_to "※ToDoListの【Done】項目をダウンロードして登録できます", root_path if @user.id == current_user.id %>
+				</li>
+			<% end %>
+		</ul>
+	</div>
+</div>

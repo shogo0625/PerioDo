@@ -12,7 +12,7 @@
 					<%= f.text_area :content, size: "40x2", class: "col-md-6 form-control mb-3" %>
 				</div>
 				<div class="row">
-					<h6 class="col-md-3 offset-md-1 task-form-title">(実行時間)</h6>
+					<h6 class="col-md-3 offset-md-1 mt-2 task-form-title">実行時間</h6>
 					<%= f.datetime_select :time_limit, {start_year: Time.current.year, end_year: Time.current.year + 3, use_month_numbers: true, minute_step: 5}, {} %>
 				</div>
 				<div class="row">

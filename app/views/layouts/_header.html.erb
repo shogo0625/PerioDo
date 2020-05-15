@@ -16,7 +16,7 @@
           <%= link_to "探す", search_path, class: "nav-link fa fa-search active" %>
         </li>
         <li class="nav-item">
-          <%= link_to "新着", posts_path, class: "nav-link fa fa-pencil-alt active" %>
+          <%= link_to "行動", user_routines_path(current_user), class: "nav-link fa fa-shoe-prints active" %>
         </li>
         <li class="nav-image">
           <%= link_to user_path(current_user), class: "nav-link", id: "mypage" do %>
