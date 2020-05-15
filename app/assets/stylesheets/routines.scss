@@ -1,3 +1,28 @@
 // Place all the styles related to the routines controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "application";
+
+.link-to-black {
+	color: $black;
+}
+
+.routines-box {
+	margin: 10px 0 30px;
+
+	ul {
+	  padding: 0;
+	}
+
+	ul li {
+	  color: #404040;
+	  border-left: solid 6px $orange;/*左側の線*/
+	  border-bottom: solid 2px #dadada;/*下に灰色線*/
+	  background: white;
+	  margin-bottom: 5px;/*下のバーとの余白*/
+	  line-height: 1.7;
+	  padding: 0.7em;
+	  list-style-type: none!important;/*ポチ消す*/
+	  font-weight: bold;
+	}
+}
