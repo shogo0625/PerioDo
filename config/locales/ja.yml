@@ -4,6 +4,7 @@ ja:
       default: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
       shortest: "%H:%M"
+      combine: "%H:%M:%S"
   views:
     pagination:
       first: "最初"

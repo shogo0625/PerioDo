@@ -8,6 +8,7 @@ class RoutinesController < ApplicationController
   end
 
   def show
+  	@routine = Routine.find(params[:id])
   end
 
   def new

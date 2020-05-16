@@ -1,2 +1,49 @@
-<h1>Routines#show</h1>
-<p>Find me in app/views/routines/show.html.erb</p>
+<%= render "layouts/timer" %>
+
+<div class="row">
+	<div class="col-md-6 routine-box">
+		<div class="row">
+			<div class="col-md-12 mb-2">
+				<%= link_to user_path(@user) do %>
+					<%= image_tag call_user_img(@user), size: "60x60", class: "ml-2 user-icon" %>
+				<% end %>
+				<%= link_to @user.name, user_path(@user), class: "ml-2 link-to-black", style: "font-size:22px;" %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 mt-1">
+				<p>Title :</p>
+				<%= @routine.title %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 mt-3">
+				<p>Comment :</p>
+				<%= simple_format(@routine.comment) %>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-6 routine-box">
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+				<h4 class="mr-3" style="text-align: center;">
+					<%= link_to "", tasks_path(routine_id: @routine.id), method: :post, data: { confirm: 'このスケジュールで行動しますか？' }, class: "fas fa-upload mr-2" %>
+					Tasks
+				</h4>
+			</div>
+		</div>
+		<div class="routine-tasks-box">
+			<% @routine.routine_tasks.each do |routine_task| %>
+				<div class="row task-item">
+					<div class="col-md-3">
+						<%= l routine_task.time, format: :shortest %>
+					</div>
+					<div class="col-md-9">
+						<%= routine_task.content %>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
