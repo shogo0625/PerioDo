@@ -13,7 +13,7 @@ class HomeController < ApplicationController
       array = array.sort_by { |post| post.created_at }.reverse
       @posts = Kaminari.paginate_array(array).page(params[:page]).per(INDEX)
 
-      @new_task = @user.tasks.new
+      @task = @user.tasks.new
       @todo_tasks = @user.tasks.where(status: 0)
       @doing_tasks = @user.tasks.where(status: 1)
       @done_tasks = @user.tasks.where(status: 2)

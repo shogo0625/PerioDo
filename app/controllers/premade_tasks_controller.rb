@@ -6,7 +6,6 @@ class PremadeTasksController < ApplicationController
 	def create
 		@premade_task = current_user.premade_tasks.new(premade_task_params)
 		@premade_task.save
-		@new_premade_task = current_user.premade_tasks.new
 	end
 
 	def update

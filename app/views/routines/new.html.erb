@@ -3,16 +3,17 @@
 <div class="row">
 	<div class="col-md-6 routine-box">
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-12 mb-2">
 				<%= link_to user_path(@user) do %>
 					<%= image_tag call_user_img(@user), size: "60x60", class: "ml-2 user-icon" %>
 				<% end %>
 				<%= link_to @user.name, user_path(@user), class: "ml-2 link-to-black", style: "font-size:22px;" %>
 			</div>
 		</div>
-		<%= form_for [@user, @routine] do |f| %>
+		<%= form_with model: [@user, @routine], local: true do |f| %>
+		<%= render 'layouts/error_messages', model: f.object %>
 		<div class="row">
-			<div class="col-md-12 mt-3">
+			<div class="col-md-12 mt-1">
 				<p>Title :</p>
 				<%= f.text_field :title, placeholder: "ex：平日のルーティーン", class: "routine-form" %>
 			</div>
@@ -20,7 +21,7 @@
 		<div class="row">
 			<div class="col-md-12 mt-3">
 				<p>Comment :</p>
-				<%= f.text_area :title, rows: 10, class: "routine-form" %>
+				<%= f.text_area :comment, rows: 10, class: "routine-form" %>
 			</div>
 		</div>
 		<div class="row">
@@ -32,7 +33,7 @@
 	</div>
 
 	<div id="new-pretask-form">
-		<%= render "premade_tasks/premade_task_form", premade_task: @new_premade_task %>
+		<%= render "premade_tasks/premade_task_form", premade_task: @premade_task %>
 	</div>
 
 	<div class="col-md-6 routine-box">
