@@ -1,0 +1,3 @@
+$('textarea').eq(1).val("");
+$('#routine-tasks').html("<%= j(render 'routine_tasks/routine_task_index', routine_tasks: @routine_tasks) %>");
+$('#task-form-modal').hide();

@@ -22,6 +22,11 @@
 				<%= simple_format(@routine.comment) %>
 			</div>
 		</div>
+		<div class="row">
+			<div class="col-md-12 mt-3">
+				<h5 style="text-align: right;">Date created：<%= l @routine.created_at, format: :date %></h5>
+			</div>
+		</div>
 	</div>
 
 	<div class="col-md-6 routine-box">
@@ -30,7 +35,7 @@
 				<h4 style="text-align: center;">
 					<%= link_to "", tasks_path(routine_id: @routine.id), method: :post, data: { confirm: 'このスケジュールで行動しますか？' }, class: "fas fa-upload mr-3" %>
 					Tasks
-					<%= link_to "", edit_user_routine_path(@user, @routine), class: "fas fa-edit ml-2" %>
+					<%= link_to "", edit_user_routine_path(@user, @routine), class: "fas fa-edit ml-3" %>
 					<%= link_to "", user_routine_path(@user, @routine), method: :delete, data: { confirm: 'このスケジュールを削除しますか？' }, class: "fas fa-trash-alt ml-2" %>
 				</h4>
 			</div>

@@ -26,6 +26,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12 mt-3">
+				<%= f.hidden_field :status, :value => "Record" if @routine.status == "Record" %>
 				<%= f.submit "この内容で作成する", class: "btn btn-sm btn-block btn-success" %>
 			</div>
 		</div>
@@ -38,10 +39,10 @@
 
 	<div class="col-md-6 routine-box">
 		<div class="row">
-			<div class="col-md-6 offset-md-3">
+			<div class="col-md-8 offset-md-2">
 				<h4 style="text-align: center;">
 					<i id="create-pretask" class="fas fa-plus-circle mr-3"></i>
-					Tasks
+					New Tasks
 					<%= link_to "", destroy_all_premade_tasks_path, method: :delete, data: { confirm: '全てのタスクを削除しますか？' }, class: "fas fa-trash-alt ml-3" %>
 				</h4>
 			</div>

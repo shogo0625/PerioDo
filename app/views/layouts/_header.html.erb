@@ -10,13 +10,13 @@
       <ul class="navbar-nav ml-auto">
       <% if user_signed_in? %>
         <li class="nav-item">
-          <%= link_to "トップ", root_path, class: "nav-link fa fa-home active" %>
+          <%= link_to "トップ", root_path, class: "nav-link fas fa-home active" %>
         </li>
         <li class="nav-item">
-          <%= link_to "探す", search_path, class: "nav-link fa fa-search active" %>
+          <%= link_to "探す", search_path, class: "nav-link fas fa-search active" %>
         </li>
         <li class="nav-item">
-          <%= link_to "行動", user_routines_path(current_user), class: "nav-link fa fa-shoe-prints active" %>
+          <%= link_to "行動", user_routines_path(current_user), class: "nav-link fas fa-clock active" %>
         </li>
         <li class="nav-image">
           <%= link_to user_path(current_user), class: "nav-link", id: "mypage" do %>
@@ -25,16 +25,16 @@
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to "ホーム", root_path, class: "nav-link fa fa-home active" %>
+          <%= link_to "ホーム", root_path, class: "nav-link fas fa-home active" %>
         </li>
         <li class="nav-item">
-          <%= link_to "概要", home_about_path, class: "nav-link fa fa-question-circle active" %>
+          <%= link_to "概要", home_about_path, class: "nav-link fas fa-question-circle active" %>
         </li>
         <li class="nav-item">
-          <%= link_to "新規登録", new_user_registration_path, class: "nav-link fa fa-user-plus active" %>
+          <%= link_to "新規登録", new_user_registration_path, class: "nav-link fas fa-user-plus active" %>
         </li>
         <li class="nav-item">
-          <%= link_to "ログイン", new_user_session_path, class: "nav-link fa fa-sign-in-alt active" %>
+          <%= link_to "ログイン", new_user_session_path, class: "nav-link fas fa-sign-in-alt active" %>
         </li>
       <% end %>
       </ul>

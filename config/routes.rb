@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:index, :show, :edit, :update] do
     resources :routines do
-      resources :routine_tasks, only: [:create, :update, :destroy]
+      resources :routine_tasks, only: [:create, :update, :destroy] do
+        collection do
+          delete 'destroy_all'
+        end
+      end
     end
   end
   post '/users/new_guest' => 'users#new_guest', as: 'new_guest' # ゲストユーザーログイン用ルート
