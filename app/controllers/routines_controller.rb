@@ -16,10 +16,22 @@ class RoutinesController < ApplicationController
   		flash[:danger] = "ご指定のページにはアクセスできません。"
   		redirect_to new_user_routine_path(current_user)
   	end
-  	@routine = @user.routines.new
-  	@premade_task = @user.premade_tasks.new
-  	@premade_tasks = @user.premade_tasks.all
-  end
+	  @routine = @user.routines.new
+	  @premade_task = @user.premade_tasks.new
+	  @premade_tasks = @user.premade_tasks.all
+  	if params[:flag] == "record"
+	  	@premade_tasks.destroy_all
+	  	@done_tasks = @user.tasks.where(status: 2)
+	  	@done_tasks.each do |done_task|
+	  		pretask = @user.premade_tasks.new
+	  		pretask.content = done_task.content
+	  		pretask.time = done_task.time_limit
+	  		pretask.save
+	  	end
+	  	@premade_tasks = @user.premade_tasks.all
+	  	flash.now[:success] = "今日終えたタスクを登録します。TitleとCommentを入力して行動を記録しましょう！"
+	  end
+	end
 
   def create
    	@premade_tasks = @user.premade_tasks.all
@@ -33,13 +45,13 @@ class RoutinesController < ApplicationController
 		  		@routine_task.save
 		  		pretask.destroy
 				end
-				flash[:success] = "ルーティーンが登録されました。"
+				flash[:success] = "「#{@routine.title}」が登録されました。"
 				redirect_to user_routine_path(@user, @routine)
 			else
 				render 'new'
 			end
 		else
-			flash[:danger] = "1つ以上のタスクを登録してください。"
+			flash.now[:danger] = "1つ以上のタスクを登録してください。"
 			render 'new'
 		end
   end
@@ -56,7 +68,10 @@ class RoutinesController < ApplicationController
   end
 
   def destroy
-  	
+  	@routine = Routine.find(params[:id])
+  	@routine.destroy
+  	flash[:success] = "「#{@routine.title}」を削除しました。"
+  	redirect_to user_routines_path(@user)
   end
 
   private

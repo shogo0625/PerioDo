@@ -15,7 +15,7 @@
 		<div class="row">
 			<div class="col-md-12 mt-1">
 				<p>Title :</p>
-				<%= f.text_field :title, placeholder: "ex：平日のルーティーン", class: "routine-form" %>
+				<%= f.text_field :title, placeholder: "ex：平日のルーティーン / 今日の行動記録", class: "routine-form" %>
 			</div>
 		</div>
 		<div class="row">
@@ -42,7 +42,7 @@
 				<h4 style="text-align: center;">
 					<i id="create-pretask" class="fas fa-plus-circle mr-3"></i>
 					Tasks
-					<%= link_to "", destroy_all_premade_tasks_path, method: :delete, data: { confirm: '全てのタスクを削除しますか？' }, class: "fas fa-trash ml-3" %>
+					<%= link_to "", destroy_all_premade_tasks_path, method: :delete, data: { confirm: '全てのタスクを削除しますか？' }, class: "fas fa-trash-alt ml-3" %>
 				</h4>
 			</div>
 		</div>

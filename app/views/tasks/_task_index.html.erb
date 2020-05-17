@@ -1,7 +1,10 @@
 	<div class="row">
 		<div class="col-md-4 task-box">
 			<div class="row task-title">
-				<h3 class="offset-md-1">ToDo</h3>
+				<h3 class="offset-md-1">
+					ToDo
+					<%= link_to "", user_routines_path(@user), class: "fas fa-download ml-3" %>
+				</h3>
 			</div>
 			<% todo_tasks.each do |task| %>
 				<div class="row content-row">
@@ -80,7 +83,10 @@
 		</div>
 		<div class="col-md-4 task-box">
 			<div class="row task-title">
-				<h3 class="offset-md-1">Done</h3>
+				<h3 class="offset-md-1">
+					Done
+					<%= link_to "", new_user_routine_path(@user, flag: "record"), class: "fas fa-upload ml-3" %>
+				</h3>
 			</div>
 			<% done_tasks.each do |task| %>
 				<div class="row content-row">
