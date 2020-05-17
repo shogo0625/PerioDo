@@ -192,6 +192,25 @@ $(function(){
 });
 // ----- ToDoLists ここまで-----
 
+// ----- PremadeTasks ここから-----
+$(function(){
+  $('#create-pretask').click(function(){
+    $('#task-form-modal').fadeIn();
+    $('textarea:visible').eq(1).focus();
+  });
+});
+// ----- PremadeTasks ここまで-----
+
+// ----- RoutineTasks ここから-----
+$(function(){
+  $('#create-routine-task').click(function(){
+    $('#task-form-modal').fadeIn();
+    $('textarea:visible').eq(1).focus();
+  });
+});
+// ----- RoutineTasks ここまで-----
+
+
 // ----- 画像プレビュー ここから-----
 $(function() {
   function readURL(input) {
@@ -246,26 +265,3 @@ $(function(){
 });
 
 // ----- マイページ タブメニュー ここまで-----
-
-// ----- PremadeTasks ここから-----
-$(function(){
-  $('#create-pretask').click(function(){
-    $('#task-form-modal').fadeIn();
-    $('textarea:visible').eq(1).focus();
-  });
-
-  $('#task-form-modal').click(function(){
-    $(this).fadeOut();
-  });
-
-  $('.task-modal-content').on('click', function(e){
-    e.stopPropagation();
-  });
-
-  $('#close-form-modal').click(function(){
-    $('#task-form-modal').fadeOut();
-  });
-});
-// ----- PremadeTasks ここまで-----
-
-

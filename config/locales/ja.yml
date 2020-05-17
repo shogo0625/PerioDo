@@ -2,8 +2,10 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d %H:%M"
+      date: "%Y/%m/%d"
       short: "%m/%d %H:%M"
       shortest: "%H:%M"
+      combine: "%H:%M:%S"
   views:
     pagination:
       first: "最初"
@@ -19,5 +21,16 @@ ja:
   activerecord:
     attributes:
       post:
-        content: 本文
-        image: 画像
+        content: "本文"
+        image: "画像"
+      post_comment:
+        comment: "コメント"
+      task:
+        content: "タスク名"
+      routine:
+        title: "タイトル"
+        comment: "コメント"
+      routine_task:
+        content: "タスク名"
+      premade_task:
+        content: "タスク名"

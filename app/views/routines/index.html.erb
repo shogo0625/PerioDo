@@ -37,6 +37,7 @@
 				<%= @user.name %>
 			<% end %>
 			さんの行動記録
+			<%= link_to "ToDoList【Done】からアップロード", root_path, class: "btn btn-success" if @user.id == current_user.id %>
 		</h3>
 	</div>
 </div>
@@ -47,13 +48,13 @@
 			<% unless @routine_records.count == 0 %>
 				<% @routine_records.each do |record| %>
 					<%= link_to user_routine_path(@user, record), class: "link-to-black" do %>
-						<li><%= record.title %></li>
+						<li><%= record.title %>（<%= l record.created_at, format: :date, style: "text-align:right;" %>）</li>
 					<% end %>
 				<% end %>
 			<% else %>
 				<li>
 					まだ行動記録が登録されていません。
-					<%= link_to "※ToDoListの【Done】項目をダウンロードして登録できます", root_path if @user.id == current_user.id %>
+					<%= link_to "※ToDoListの【Done】項目をアップロードして登録できます", root_path if @user.id == current_user.id %>
 				</li>
 			<% end %>
 		</ul>

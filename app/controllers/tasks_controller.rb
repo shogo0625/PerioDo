@@ -4,8 +4,20 @@ class TasksController < ApplicationController
   before_action :set_tasks, only: [:create, :update, :destroy]
 
   def create
-    @task = current_user.tasks.new(task_params)
-    @task.save
+    if params[:routine_id]
+      @routine = Routine.find(params[:routine_id])
+      @routine.routine_tasks.each do |routine_task|
+        @task = current_user.tasks.new
+        @task.content = routine_task.content
+        @task.time_limit = Date.current.strftime('%Y-%m-%d') + " " + (l routine_task.time, format: :combine)
+        @task.save
+      end
+      flash[:success] = "スケジュールを【 ToDo 】に追加しました。今日も一日頑張りましょう！"
+      redirect_to root_path
+    else
+      @task = current_user.tasks.new(task_params)
+      @task.save
+    end
     @new_task = current_user.tasks.new # create時のみjsファイルへ渡す
   end
 

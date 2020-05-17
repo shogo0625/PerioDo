@@ -8,15 +8,16 @@
 	<div class="btn-box col-md-4 mt-2">
 		<% if user_signed_in? && current_user != user %>
 			<% if current_user.following?(user) %>
-				<%= link_to "フォロー解除", unfollow_path(user), method: :delete, remote: :true, class: "btn btn-outline-primary fav-btn" %>
+				<%= link_to "フォロー解除", unfollow_path(user), method: :delete, remote: :true, class: "btn btn-outline-primary mb-2 fas fa-check-square" %>
 			<% else %>
-				<%= link_to "フォローする", follow_path(user), method: :post, remote: :true, class: "btn btn-primary fav-btn" %>
+				<%= link_to "フォローする", follow_path(user), method: :post, remote: :true, class: "btn btn-primary mb-2 fas fa-check-square" %>
 			<% end %>
+			<%= link_to "行動記録", user_routines_path(user), class: "btn btn-success fas fa-clock" %>
 		<% elsif current_user == user %>
-			<%= link_to "ヒトコト投稿", new_post_path, class: "btn btn-primary mb-2" %>
-			<%= link_to "登録情報", edit_user_path(current_user), class: "fas fa fa-edit link-to-black" %>
+			<%= link_to "ヒトコト投稿", new_post_path, class: "btn btn-primary mb-2 fas fa-pen" %>
+			<%= link_to "登録情報", edit_user_path(current_user), class: "btn btn-info fas fa-edit" %>
 		<% else %>
-			<%= link_to "会員登録してつながる", new_user_registration_path, class: "btn btn-primary fav-btn" %>
+			<%= link_to "会員登録してつながる", new_user_registration_path, class: "btn btn-primary fas fa-user-plus" %>
 		<% end %>
 	</div>
 </div>

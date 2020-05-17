@@ -1,12 +1,12 @@
-<div id="task-form-modal" class="task-modal-wrapper">
+<div id="routine-task-edit-<%= routine_task.id %>" class="task-modal-wrapper">
 	<div class="row">
 		<div class="col-md-6 offset-md-3 task-modal-content">
 			<div class="row">
-				<div id="close-form-modal">
+				<div id="close-edit-<%= routine_task.id %>">
 					<i class="fas fa-2x fa-times-circle"></i>
 				</div>
 			</div>
-			<%= form_with model: PremadeTask.new do |f| %>
+			<%= form_with model: [@user, @routine, routine_task] do |f| %>
 				<div class="row">
 					<h6 class="col-md-3 offset-md-1 task-form-title">内容</h6>
 					<%= f.text_area :content, size: "40x2", class: "col-md-6 form-control mb-3" %>

@@ -21,7 +21,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.new(post_params)
     if @post.save
-      sleep(3) # S3への画像反映のタイムラグを考慮して3秒待機
+      sleep(3) unless @post.image_id == nil # S3への画像反映のタイムラグを考慮して3秒待機
       flash[:success] = "あなたのヒトコトが投稿されました。"
       redirect_to @post
     else
@@ -39,7 +39,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      sleep(3) # S3への画像反映のタイムラグを考慮して3秒待機
+      sleep(3) unless @post.image_id == nil # S3への画像反映のタイムラグを考慮して3秒待機
       flash[:success] = "あなたのヒトコトが更新されました。"
       redirect_to @post
     else
