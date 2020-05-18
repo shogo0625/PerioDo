@@ -9,6 +9,16 @@ class RoutinesController < ApplicationController
   end
 
   def show
+  	@routine_tasks = @routine.routine_tasks.all
+  	@array = []
+  	@routine_tasks.each do |task|
+  		if @routine_tasks.exists?(routine_id: @routine.id, id: task.id + 1)
+  			@next_task = @routine.routine_tasks.find(task.id + 1)
+  		else
+  			@next_task = @routine.routine_tasks.find(task.id)
+  		end
+  		@array.push([task.content, task.time, @next_task.time])
+  	end
   end
 
   def new
