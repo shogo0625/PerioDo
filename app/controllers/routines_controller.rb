@@ -12,12 +12,18 @@ class RoutinesController < ApplicationController
   	@routine_tasks = @routine.routine_tasks.all
   	@array = []
   	@routine_tasks.each do |task|
-  		if @routine_tasks.exists?(routine_id: @routine.id, id: task.id + 1)
-  			@next_task = @routine.routine_tasks.find(task.id + 1)
+  		@array.push([task.content, task.time])
+  	end
+  	t = 0
+		n = 1
+  	@array.each do |array|
+  		if @array[n]
+	  		@array[t][2] = @array[n][1]
+	  		n += 1
+	  		t += 1
   		else
-  			@next_task = @routine.routine_tasks.find(task.id)
+  			@array[-1][2] = @array[-1][1]
   		end
-  		@array.push([task.content, task.time, @next_task.time])
   	end
   end
 
