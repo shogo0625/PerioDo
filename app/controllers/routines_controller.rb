@@ -22,7 +22,7 @@ class RoutinesController < ApplicationController
 	  		n += 1
 	  		t += 1
   		else
-  			@array[-1][2] = @array[-1][1]
+  			@array[-1][2] = @routine.finish_time
   		end
   	end
   end
@@ -110,7 +110,7 @@ class RoutinesController < ApplicationController
   private
 
   def routine_params
-  	params.require(:routine).permit(:title, :comment, :status)
+  	params.require(:routine).permit(:title, :comment, :status, :finish_time)
   end
 
   def set_user
