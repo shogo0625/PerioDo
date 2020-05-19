@@ -12,5 +12,5 @@ class SearchController < ApplicationController
 
     return unless request.xhr?
     render '/search/tags'
-   end
+  end
 end

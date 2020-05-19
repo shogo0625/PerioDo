@@ -8,10 +8,10 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, :alert => exception.message
   end
 
-  # かんたんログイン時の指定ユーザーID 
+  # かんたんログイン時の指定ユーザーID
   GUEST_ID = 13
 
-  # kaminari表示数 
+  # kaminari表示数
   MYPAGE = 5
   INDEX = 10
   TAG = 15
