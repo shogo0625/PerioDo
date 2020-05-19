@@ -6,7 +6,7 @@ set :repo_url, "git@github.com:shogo0625/PerioDo.git"
 
 set :deploy_to, "/home/ec2-user/PerioDo"
 set :rbenv_ruby, '2.5.7'
-set :linked_files, %w{config/master.key .env}
+set :linked_files, %w(config/master.key .env)
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp

@@ -6,18 +6,18 @@ class UsersController < ApplicationController
   def index
     if !params[:q].nil?
       @q = User.search(search_params)
-      @users = @q.result(distinct: true).page(params[:page]).per(INDEX)
+      @users = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(INDEX)
       @search_word = @q.name_or_introduction_cont
     else
-      @users = User.all.page(params[:page]).per(INDEX)
+      @users = User.all.order(created_at: :desc).page(params[:page]).per(INDEX)
     end
   end
 
   def show
-    @posts = @user.posts.all.page(params[:page]).per(MYPAGE)
-    @following_users = @user.following_user.all.page(params[:page]).per(MYPAGE)
-    @follower_users = @user.follower_user.all.page(params[:page]).per(MYPAGE)
-    @favorited_posts = @user.favorited_posts.all.page(params[:page]).per(MYPAGE)
+    @posts = @user.posts.all.order(created_at: :desc).page(params[:page]).per(MYPAGE)
+    @following_users = @user.following_user.all.order(created_at: :desc).page(params[:page]).per(MYPAGE)
+    @follower_users = @user.follower_user.all.order(created_at: :desc).page(params[:page]).per(MYPAGE)
+    @favorited_posts = @user.favorited_posts.all.order(created_at: :desc).page(params[:page]).per(MYPAGE)
 
     return unless request.xhr?
 
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      sleep(3) unless @user.profile_image_id == nil # S3への画像反映のタイムラグを考慮して3秒待機
+      sleep(3) unless @user.profile_image_id.nil? # S3への画像反映のタイムラグを考慮して3秒待機
       flash[:success] = "ユーザー情報を更新しました。"
       redirect_to @user
     else
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
     redirect_to edit_user_path(@user)
   end
 
-  def new_guest #ポートフォリオ閲覧用ユーザーログイン
+  def new_guest # ポートフォリオ閲覧用ユーザーログイン
     @user = User.find(GUEST_ID)
     sign_in @user
     flash[:success] = "閲覧ありがとうございます！ゲストユーザーとしてログインしました。"

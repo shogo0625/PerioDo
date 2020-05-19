@@ -5,10 +5,10 @@ class PostsController < ApplicationController
   def index
     if !params[:search].nil?
       @search = Post.search(search_params)
-      @posts = @search.result(distinct: true).page(params[:page]).per(INDEX)
+      @posts = @search.result(distinct: true).order(created_at: :desc).page(params[:page]).per(INDEX)
       @search_word = @search.content_cont
     else
-      @posts = Post.all.page(params[:page]).per(INDEX)
+      @posts = Post.all.order(created_at: :desc).page(params[:page]).per(INDEX)
     end
   end
 
@@ -21,7 +21,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.new(post_params)
     if @post.save
-      sleep(3) unless @post.image_id == nil # S3への画像反映のタイムラグを考慮して3秒待機
+      sleep(3) unless @post.image_id.nil? # S3への画像反映のタイムラグを考慮して3秒待機
       flash[:success] = "あなたのヒトコトが投稿されました。"
       redirect_to @post
     else
@@ -39,7 +39,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      sleep(3) unless @post.image_id == nil # S3への画像反映のタイムラグを考慮して3秒待機
+      sleep(3) unless @post.image_id.nil? # S3への画像反映のタイムラグを考慮して3秒待機
       flash[:success] = "あなたのヒトコトが更新されました。"
       redirect_to @post
     else
@@ -62,7 +62,7 @@ class PostsController < ApplicationController
 
   def hashtag
     @tag = Tag.find_by(name: params[:name])
-    @posts = @tag.posts.all.page(params[:page]).per(INDEX)
+    @posts = @tag.posts.all.order(created_at: :desc).page(params[:page]).per(INDEX)
   end
 
   private

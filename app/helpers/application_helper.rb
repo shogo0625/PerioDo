@@ -17,17 +17,17 @@ module ApplicationHelper
   end
 
   def call_user_img(user)
-    unless user.profile_image_id == nil
-      image_url = "https://portfolio-resize.s3-ap-northeast-1.amazonaws.com/store/" + user.profile_image_id + "-thumbnail."
-      return image_url
-    else
+    if user.profile_image_id.nil?
       image_url = "noimage.png"
-      return image_url
+      image_url
+    else
+      image_url = "https://portfolio-resize.s3-ap-northeast-1.amazonaws.com/store/" + user.profile_image_id + "-thumbnail."
+      image_url
     end
   end
 
   def call_post_img(post)
     image_url = "https://portfolio-resize.s3-ap-northeast-1.amazonaws.com/store/" + post.image_id + "-thumbnail."
-    return image_url
+    image_url
   end
 end
