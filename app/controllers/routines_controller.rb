@@ -22,7 +22,12 @@ class RoutinesController < ApplicationController
 	  		n += 1
 	  		t += 1
   		else
-  			@array[-1][2] = @routine.finish_time
+        range = Routine.where(finish_time: '2000-01-01 00:00:00'..'2000-01-01 09:59:59')
+        if range.include?(@routine)
+          @array[-1][2] = ('2000-01-02 ') + (l @routine.finish_time, format: :combine) + " +0900"
+  			else
+          @array[-1][2] = @routine.finish_time
+        end
   		end
   	end
   end
