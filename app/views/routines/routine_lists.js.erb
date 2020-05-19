@@ -1,0 +1,2 @@
+$('#routine-lists').append("<%= j render 'routine_lists', object: @routines %>");
+$("#more-routines").replaceWith("<%= j link_to_next_page @routines, 'もっと見る', id: 'more-routines', class: 'btn btn-light w-100 mt-2', params: {status: :routine_lists}, remote: true %>");

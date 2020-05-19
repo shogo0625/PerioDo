@@ -12,19 +12,20 @@
 	</div>
 </div>
 
-<div class="tab-content active-content" id="tab1">
-	<%= render "users/tab1", collection: @posts %>
-</div>
+<div class="user-tab-content">
+	<div class="tab-content active-content" id="tab1">
+		<%= render "users/tab1", collection: @posts %>
+	</div>
 
-<div class="tab-content" id="tab2">
-	<%= render "users/tab2", collection: @following_users %>
-</div>
+	<div class="tab-content" id="tab2">
+		<%= render "users/tab2", collection: @following_users %>
+	</div>
 
-<div class="tab-content" id="tab3">
-	<%= render "users/tab3", collection: @follower_users %>
-</div>
+	<div class="tab-content" id="tab3">
+		<%= render "users/tab3", collection: @follower_users %>
+	</div>
 
-<div class="tab-content" id="tab4">
-	<%= render "users/tab4", collection: @favorited_posts %>
+	<div class="tab-content" id="tab4">
+		<%= render "users/tab4", collection: @favorited_posts %>
+	</div>
 </div>
-

@@ -1,0 +1,2 @@
+$('#record-lists').append("<%= j render 'record_lists', object: @routine_records %>");
+$("#more-records").replaceWith("<%= j link_to_next_page @routine_records, 'もっと見る', id: 'more-records', class: 'btn btn-light w-100', params: {status: :record_lists}, remote: true %>");

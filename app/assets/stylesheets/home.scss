@@ -4,7 +4,6 @@
 
 @import "application";
 
-
 .title-box {
 
 	.list-title {
@@ -20,13 +19,9 @@
 		}
 	}
 
-	#hide-tasks {
+	#show-tasks {
 		display: none;
 	}
-}
-
-.todolists {
-	display: none;
 }
 
 .task-modal-wrapper, .edit-task-modal {
@@ -72,6 +67,7 @@
 	.content-row {
 		border-top: 1px solid $black;
 		border-bottom: 1px solid $black;
+		margin-bottom: 5px;
 	}
 
 }

@@ -55,10 +55,12 @@
     }
 }
 
-.tab-content {
-	display: none;
-}
+.user-tab-content {
+    .tab-content {
+        display: none;
+    }
 
-.active-content {
-	display: block;
+    .active-content {
+        display: block;
+    }    
 }

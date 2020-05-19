@@ -4,8 +4,15 @@ class RoutinesController < ApplicationController
   before_action :set_routine, only: [:show, :edit, :update, :destroy]
 
   def index
-    @routines = @user.routines.where(status: 0).order(created_at: :desc)
-    @routine_records = @user.routines.where(status: 1).order(created_at: :desc)
+    @routines = @user.routines.where(status: 0).order(created_at: :desc).page(params[:page]).per(MYPAGE)
+    @routine_records = @user.routines.where(status: 1).order(created_at: :desc).page(params[:page]).per(MYPAGE)
+
+    return unless request.xhr?
+
+    case params[:status]
+    when 'routine_lists', 'record_lists'
+      render "routines/#{params[:status]}"
+    end
   end
 
   def show

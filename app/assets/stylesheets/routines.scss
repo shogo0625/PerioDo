@@ -7,8 +7,11 @@
 	color: $black;
 }
 
+.routine-page-title {
+	text-align: center;
+}
+
 .routines-box {
-	margin: 10px 0 30px;
 
 	ul {
 	  padding: 0;
@@ -16,13 +19,12 @@
 
 	ul li {
 	  color: #404040;
-	  border-left: solid 6px $orange;/*左側の線*/
-	  border-bottom: solid 2px #dadada;/*下に灰色線*/
+	  border-left: solid 6px $orange;
+	  border-bottom: solid 2px #dadada;
 	  background: white;
-	  margin-bottom: 5px;/*下のバーとの余白*/
-	  line-height: 1.7;
-	  padding: 0.7em;
-	  list-style-type: none!important;/*ポチ消す*/
+	  line-height: 2.3;
+	  padding: 0.9em;
+	  list-style-type: none!important;
 	  font-weight: bold;
 	}
 }
@@ -49,7 +51,7 @@
 		  padding: 0.5em 0.5em 0.5em 2em;
 		  border-bottom: 5px solid white;
 		  list-style-type: none!important;
-		  font-weight: bold; /*好みで太字に*/
+		  font-weight: bold;
 		}
 
 		.fas, .far {

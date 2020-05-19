@@ -1,0 +1,11 @@
+<ul>
+	<% unless @routines.count == 0 %>
+		<% @routines.each do |routine| %>
+			<%= link_to user_routine_path(@user, routine), class: "link-to-black" do %>
+				<li><%= routine.title %></li>
+			<% end %>
+		<% end %>
+	<% else %>
+		<li>まだルーティーンが登録されていません。</li>
+	<% end %>
+</ul>
