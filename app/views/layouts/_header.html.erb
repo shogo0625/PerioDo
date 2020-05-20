@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark stickey-top">
+<nav class="navbar navbar-dark bg-dark navbar-expand-md stickey-top">
   <div class="container">
     <%= link_to root_path, class: "navbar-brand" do %>
      <%= image_tag "logo.png", size: "180x50" %>
@@ -10,16 +10,28 @@
       <ul class="navbar-nav ml-auto">
       <% if user_signed_in? %>
         <li class="nav-item">
-          <%= link_to "トップ", root_path, class: "nav-link fas fa-home active" %>
+          <%= link_to root_path, class: "nav-link active" do %>
+            <span class="fas fa-home"></span>トップ
+          <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to "行動", user_routines_path(current_user), class: "nav-link fas fa-clock active" %>
+          <%= link_to user_routines_path(current_user), class: "nav-link active" do %>
+            <span class="fas fa-clock"></span>行動
+          <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to "探す", search_path, class: "nav-link fas fa-search active" %>
+          <%= link_to search_path, class: "nav-link active" do %>
+            <span class="fas fa-search"></span>探す
+          <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to "通知", notifications_path, class: "nav-link fas fa-bell active" %>
+          <%= link_to notifications_path, class: "nav-link active" do %>
+            <% if unchecked_notifications.any? %>
+              <span class="fas fa-bell" style="color:#efa04c;"></span>通知
+            <% else %>
+              <span class="fas fa-bell"></span>通知            
+            <% end %>
+          <% end %>
         </li>
         <li class="nav-image">
           <%= link_to user_path(current_user), class: "nav-link", id: "mypage" do %>
@@ -28,16 +40,24 @@
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to "ホーム", root_path, class: "nav-link fas fa-home active" %>
+          <%= link_to root_path, class: "nav-link active" do %>
+            <span class="fas fa-home "></span>ホーム
+          <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to "概要", home_about_path, class: "nav-link fas fa-question-circle active" %>
+          <%= link_to home_about_path, class: "nav-link active" do %>
+            <span class="fas fa-question-circle"></span>概要
+          <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to "新規登録", new_user_registration_path, class: "nav-link fas fa-user-plus active" %>
+          <%= link_to new_user_registration_path, class: "nav-link active" do %>
+            <span class="fas fa-user-plus"></span>新規登録
+          <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to "ログイン", new_user_session_path, class: "nav-link fas fa-sign-in-alt active" %>
+          <%= link_to new_user_session_path, class: "nav-link active" do %>
+            <span class="fas fa-sign-in-alt"></span>ログイン
+          <% end %>
         </li>
       <% end %>
       </ul>
