@@ -1,5 +1,5 @@
 $('textarea').val("");
 $('.post-<%= @post.id %>').html("<%= j(render 'posts/post_detail', post: @post) %>")
-$('#comment-<%= @post.id %>').html("<%= j(render 'posts/post_comment', post_comments: @post.post_comments) %>")
+$('#comment-<%= @post.id %>').html("<%= j(render 'posts/post_comment', post_comments: @post_comments) %>")
 $('.comment-form').hide();
 $('#show-comment-form').fadeIn();

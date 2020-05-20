@@ -1,0 +1,23 @@
+// Place all the styles related to the notifications controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "application";
+
+.notification-box {
+
+	ul {
+	  padding: 0;
+	}
+
+	ul li {
+	  color: #404040;
+	  border-left: solid 6px $orange;
+	  border-bottom: solid 2px #dadada;
+	  background: white;
+	  margin-bottom: 8px;
+	  line-height: 1.5;
+	  padding: 1.0em 1.0em 0 1.0em;
+	  list-style-type: none!important;
+	  font-weight: bold;
+	}
+}

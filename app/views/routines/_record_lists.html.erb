@@ -2,7 +2,7 @@
 	<% unless @routine_records.count == 0 %>
 		<% @routine_records.each do |record| %>
 			<%= link_to user_routine_path(@user, record), class: "link-to-black" do %>
-				<li><%= record.title %>（<%= l record.created_at, format: :date, style: "text-align:right;" %>）</li>
+				<li><%= record.title %>（<%= l record.created_at, format: :date %>）</li>
 			<% end %>
 		<% end %>
 	<% else %>

@@ -35,4 +35,6 @@ Rails.application.routes.draw do
 
   post 'follow/:id' => 'relationships#create', as: 'follow'
   delete 'unfollow/:id' => 'relationships#destroy', as: 'unfollow'
+
+  resources :notifications, only: :index
 end
