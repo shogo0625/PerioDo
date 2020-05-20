@@ -1,0 +1,58 @@
+<%= render "layouts/timer" %>
+
+<div class="row">
+	<div class="col-md-10 offset-md-1 mb-2">
+		<h3 class="routine-page-title">
+			<%= link_to user_path(current_user), class: "link-to-black" do %>
+				<%= image_tag call_user_img(current_user), size: "45x45", fallback: "noimage.png", class: "user-icon" %>
+				<%= current_user.name %>
+			<% end %>
+			さんへの通知一覧
+		</h3>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-10 offset-md-1 notification-box mt-2">
+		<ul>
+			<% notifications = @notifications.where.not(visitor_id: current_user.id) %>
+			<% unless notifications.count == 0 %>
+				<% notifications.each do |notification| %>
+				<% visitor = notification.visitor %>
+				<% visited = notification.visited %>
+					<li>
+						<%= link_to user_path(visitor), class: "link-to-black" do %>
+							<%= image_tag call_user_img(visitor), size: "30x30", fallback: "noimage.png", class: "user-icon" %>
+							<%= visitor.name %>
+						<% end %>
+						さんが
+						<% case notification.action %>
+						<% when 'follow' then %>
+							あなたをフォローしました。
+						<% when 'favorite' then %>
+							<%= link_to 'あなたの投稿', post_path(notification.post), style: "font-weight: bold;" %>
+							にいいねしました。
+						<% when 'post_comment' then %>
+							<% if notification.post.user_id == visited.id %>
+								<%= link_to 'あなたの投稿', post_path(notification.post), style: "font-weight: bold;" %>
+							<% else %>
+								<%= link_to user_path(visitor), class: "link-to-black" do %>
+									<%= image_tag call_user_img(visitor), size: "30x30", fallback: "noimage.png", class: "user-icon" %>
+									<%= visitor.name + "さんの投稿" %>
+								<% end %>
+							<% end %>
+							にコメントしました。
+							<p class="text-muted mb-0"><%= PostComment.find(notification.post_comment_id)&.comment %></p>
+						<% end %>
+						<p class="small text-muted text-right"><%= time_ago_in_words(notification.created_at).upcase %></p>
+					</li>
+				<% end %>
+			<% else %>
+				<li>
+					まだ通知がありません。
+					<%= link_to "マイページへ", user_path(current_user), class: "btn btn-sm btn-info " %>
+				</li>
+			<% end %>
+		</ul>
+	</div>
+</div>

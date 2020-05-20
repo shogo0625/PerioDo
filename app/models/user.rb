@@ -13,11 +13,16 @@ class User < ApplicationRecord
   has_many :premade_tasks, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorited_posts, through: :favorites, source: :post
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
   has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :following_user, through: :follower, source: :followed
   has_many :follower_user, through: :followed, source: :follower
+
+  validates :name, presence: true, length: { maximum: 30, minimum: 1 }
+  validates :introduction, length: { maximum: 100 }
 
   def follow(user_id)
     follower.create(followed_id: user_id)
@@ -31,8 +36,16 @@ class User < ApplicationRecord
     following_user.include?(user)
   end
 
-  validates :name, presence: true, length: { maximum: 30, minimum: 1 }
-  validates :introduction, length: { maximum: 100 }
+  def create_notification_follow!(current_user)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ?", current_user.id, id, 'follow'])
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        visited_id: id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
+    end
+  end
 
   enum prefecture: {
     "-----": 0,

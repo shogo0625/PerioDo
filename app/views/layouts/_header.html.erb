@@ -13,10 +13,13 @@
           <%= link_to "トップ", root_path, class: "nav-link fas fa-home active" %>
         </li>
         <li class="nav-item">
+          <%= link_to "行動", user_routines_path(current_user), class: "nav-link fas fa-clock active" %>
+        </li>
+        <li class="nav-item">
           <%= link_to "探す", search_path, class: "nav-link fas fa-search active" %>
         </li>
         <li class="nav-item">
-          <%= link_to "行動", user_routines_path(current_user), class: "nav-link fas fa-clock active" %>
+          <%= link_to "通知", notifications_path, class: "nav-link fas fa-bell active" %>
         </li>
         <li class="nav-image">
           <%= link_to user_path(current_user), class: "nav-link", id: "mypage" do %>
