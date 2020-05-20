@@ -49,8 +49,9 @@
 				<% end %>
 			<% else %>
 				<li>
-					まだ通知がありません。
-					<%= link_to "マイページへ", user_path(current_user), class: "btn btn-sm btn-info " %>
+					<p style="line-height: 2.3em;">まだ通知がありません。
+						<%= link_to "マイページへ", user_path(current_user), class: "btn btn-sm btn-info " %>
+					</p>
 				</li>
 			<% end %>
 		</ul>
