@@ -1,4 +1,4 @@
 $('textarea').val("");
-$('#comment-<%= @post.id %>').html("<%= j(render 'posts/post_comment', post_comments: @post.post_comments) %>")
+$('#comment-<%= @post.id %>').html("<%= j(render 'posts/post_comment', post_comments: @post_comments) %>")
 $('#edit-comment-<%= @post_comment.id %>').hide();
 $('#edit-<%= @post_comment.id %>').fadeIn();
