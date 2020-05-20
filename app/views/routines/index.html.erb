@@ -24,8 +24,8 @@
 <div class="tab-content routines-content">
 	<div id="routine" class="tab-pane active">
 		<div class="row">
-			<div class="col-md-10 offset-md-1 routines-box">
-				<%= link_to "新規作成", new_user_routine_path(@user), class: "btn btn-block btn-success mt-4 mb-3" if @user.id == current_user.id %>
+			<div class="col-md-10 offset-md-1 routines-box mt-4">
+				<%= link_to "新規作成", new_user_routine_path(@user), class: "btn btn-block btn-success mb-3" if @user.id == current_user.id %>
 				<div id="routine-lists">
 					<%= render 'routines/routine_lists' %>
 				</div>
@@ -39,8 +39,8 @@
 	</div>
 	<div id="record" class="tab-pane">
 		<div class="row">
-			<div class="col-md-10 offset-md-1 routines-box">
-				<%= link_to "ToDoList【Done】からアップロード", root_path, class: "btn btn-block btn-success mt-4 mb-3" if @user.id == current_user.id %>
+			<div class="col-md-10 offset-md-1 routines-box mt-4">
+				<%= link_to "ToDoList【Done】からアップロード", root_path, class: "btn btn-block btn-success mb-3" if @user.id == current_user.id %>
 				<div id="record-lists">
 					<%= render 'routines/record_lists' %>
 				</div>
