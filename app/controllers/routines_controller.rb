@@ -19,21 +19,21 @@ class RoutinesController < ApplicationController
     @routine_tasks = @routine.routine_tasks.all.order(time: :asc)
     @array = []
     @routine_tasks.each do |task|
-      @array.push([task.content, task.time])
+      @array.push([task.content, task.time]) #chartkickに渡す多重配列を作成 最終的に渡す形式 = [['内容', '開始時間', '終了時間'], ...]
     end
     t = 0
     n = 1
     @array.each do |array|
       if @array[n]
-        @array[t][2] = @array[n][1]
+        @array[t][2] = @array[n][1] # 一つ後のの配列内の'開始時間'を'終了時間'として設定
         n += 1
         t += 1
       else
-        range = Routine.where(finish_time: '2000-01-01 00:00:00'..'2000-01-01 09:59:59')
+        range = Routine.where(finish_time: '2000-01-01 00:00:00'..'2000-01-01 09:59:59') # 終了時間が24時超えたらdefaultの翌日に変換
         if range.include?(@routine)
           @array[-1][2] = '2000-01-02 ' + (l @routine.finish_time, format: :combine) + " +0900"
         else
-          @array[-1][2] = @routine.finish_time
+          @array[-1][2] = @routine.finish_time #一つ後の配列がない(Routineの最後のタスク)場合、Routine自体の終了時間を代入
         end
       end
     end
