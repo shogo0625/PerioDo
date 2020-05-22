@@ -50,12 +50,14 @@ class PostsController < ApplicationController
 
   def delete_post_image
     @post = Post.find(params[:id])
+    screen_user(@post)
     @post.update_column(:image_id, nil)
     flash[:success] = "投稿内の画像を削除しました。"
     redirect_to edit_post_path(@post)
   end
 
   def destroy
+    screen_user(@post)
     @post.destroy
     flash[:success] = "ヒトコトを削除しました。"
     redirect_to user_path(current_user)
