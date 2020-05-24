@@ -43,6 +43,6 @@ class RoutineTasksController < ApplicationController
   end
 
   def set_routine_tasks # 遷移元ページから非同期処理　jsファイルに渡すため定義
-    @routine_tasks = @routine.routine_tasks.all.order(time: :asc)
+    @routine_tasks = @routine.routine_tasks.order(time: :asc)
   end
 end
