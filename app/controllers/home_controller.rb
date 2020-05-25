@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def top
     @user = current_user
-    @posts = Post.order(created_at: :desc).page(params[:page]).per(INDEX) and return if @user.nil?
+    (@posts = Post.order(created_at: :desc).page(params[:page]).per(INDEX)) && return if @user.nil?
     # 以下、ログインユーザーの場合のタイムライン表示＆タスク表示
     @users = current_user.following_user
     timeline_posts = [] # 空の配列定義

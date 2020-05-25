@@ -19,7 +19,7 @@ class RoutinesController < ApplicationController
     @routine_tasks = @routine.routine_tasks.order(time: :asc)
     @array = []
     @routine_tasks.each do |task|
-      @array.push([task.content, task.time]) #chartkickに渡す多重配列を作成 最終的に渡す形式 = [['内容', '開始時間', '終了時間'], ...]
+      @array.push([task.content, task.time]) # chartkickに渡す多重配列を作成 最終的に渡す形式 = [['内容', '開始時間', '終了時間'], ...]
     end
     t = 0
     n = 1
@@ -33,7 +33,7 @@ class RoutinesController < ApplicationController
         if range.include?(@routine)
           @array[-1][2] = '2000-01-02 ' + (l @routine.finish_time, format: :combine) + " +0900"
         else
-          @array[-1][2] = @routine.finish_time #一つ後の配列がない(Routineの最後のタスク)場合、Routine自体の終了時間を代入
+          @array[-1][2] = @routine.finish_time # 一つ後の配列がない(Routineの最後のタスク)場合、Routine自体の終了時間を代入
         end
       end
     end
