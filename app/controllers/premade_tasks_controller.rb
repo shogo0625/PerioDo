@@ -33,6 +33,6 @@ class PremadeTasksController < ApplicationController
   end
 
   def set_premade_tasks # 遷移元ページから非同期処理　jsファイルに渡すため定義
-    @premade_tasks = current_user.premade_tasks.all.order(time: :asc)
+    @premade_tasks = current_user.premade_tasks.order(time: :asc)
   end
 end

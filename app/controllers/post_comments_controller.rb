@@ -38,14 +38,14 @@ class PostCommentsController < ApplicationController
   end
 
   def set_post
-    @post = Post.find(params[:post_id])    
+    @post = Post.find(params[:post_id])
   end
 
   def set_post_comment
-    @post_comment = PostComment.find(params[:id])    
+    @post_comment = PostComment.find(params[:id])
   end
 
   def set_post_comments
-    @post_comments = @post.post_comments.all    
+    @post_comments = @post.post_comments
   end
 end

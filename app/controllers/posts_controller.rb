@@ -3,35 +3,35 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    if !params[:search].nil?
+    if params[:search].present?
       @search = Post.search(search_params)
       @posts = @search.result(distinct: true).order(created_at: :desc).page(params[:page]).per(INDEX)
       @search_word = @search.content_cont
     else
-      @posts = Post.all.order(created_at: :desc).page(params[:page]).per(INDEX)
+      @posts = Post.order(created_at: :desc).page(params[:page]).per(INDEX)
     end
   end
 
   def new
     @post = Post.new
-    @tag_name = "　#" + params[:tag_name] unless params[:tag_name].nil?
-    @task = Task.find(params[:task_id]) unless params[:task_id].nil?
+    @tag_name = "　#" + params[:tag_name] if params[:tag_name].present?
+    @task = Task.find(params[:task_id]) if params[:task_id].present?
   end
 
   def create
     @post = current_user.posts.new(post_params)
     if @post.save
-      sleep(3) unless @post.image_id.nil? # S3への画像反映のタイムラグを考慮して3秒待機
+      sleep(3) if @post.image_id.present? # S3への画像反映のタイムラグを考慮して3秒待機
       flash[:success] = "あなたのヒトコトが投稿されました。"
       redirect_to @post
     else
-      render 'new'
+      render :new
     end
   end
 
   def show
     @post_comment = PostComment.new
-    @post_comments = @post.post_comments.all
+    @post_comments = @post.post_comments
   end
 
   def edit
@@ -40,11 +40,11 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      sleep(3) unless @post.image_id.nil? # S3への画像反映のタイムラグを考慮して3秒待機
+      sleep(3) if @post.image_id.present? # S3への画像反映のタイムラグを考慮して3秒待機
       flash[:success] = "あなたのヒトコトが更新されました。"
       redirect_to @post
     else
-      render 'edit'
+      render :edit
     end
   end
 
@@ -65,7 +65,7 @@ class PostsController < ApplicationController
 
   def hashtag
     @tag = Tag.find_by(name: params[:name])
-    @posts = @tag.posts.all.order(created_at: :desc).page(params[:page]).per(INDEX)
+    @posts = @tag.posts.order(created_at: :desc).page(params[:page]).per(INDEX)
   end
 
   private
