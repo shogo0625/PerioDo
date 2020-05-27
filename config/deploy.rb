@@ -1,5 +1,5 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.13.0"
+lock "~> 3.14.0"
 
 set :application, "PerioDo"
 set :repo_url, "git@github.com:shogo0625/PerioDo.git"
