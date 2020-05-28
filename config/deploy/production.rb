@@ -43,6 +43,13 @@ server '18.180.207.4', user: 'ec2-user', roles: %w(app web db)
 #    forward_agent: false,
 #    auth_methods: %w(password)
 #  }
+
+set :ssh_options, {
+  port: 22,
+  forward_agent: true,
+  keys: ['~/.ssh/practice-aws.pem']
+}
+
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
