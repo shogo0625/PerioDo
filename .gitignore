@@ -27,6 +27,8 @@
 /public/assets
 .byebug_history
 
+/db/mysql
+
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
