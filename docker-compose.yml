@@ -15,11 +15,10 @@ services:
     build: .
     environment: 
       - "TZ=Asia/Tokyo"
-      - SSH_AUTH_SOCK="${SSH_AUTH_SOCK}"
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - .:/myapp
-      - ${SSH_AUTH_SOCK}:${SSH_AUTH_SOCK}
+      - "~/.ssh/practice-aws.pem:/root/.ssh/practice-aws.pem"
     ports:
       - "3000:3000"
     depends_on:
