@@ -28,6 +28,7 @@
 .byebug_history
 
 /db/mysql
+.docker-sync/
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
