@@ -67,6 +67,7 @@ group :test do
   gem 'chromedriver-helper'
   gem 'webdrivers'
   gem 'launchy'
+  gem 'rspec_junit_formatter'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -75,25 +76,18 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
-
 gem 'rails-i18n'
-
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'refile-s3'
-
 gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
-
 gem 'font-awesome-sass', '~> 5.12.0'
 gem 'chartkick'
-
 gem 'ransack'
 gem 'kaminari', '~> 1.2.1'
-
 gem 'cancancan'
 gem 'rails_admin'
-
 gem 'dotenv-rails'
 
 group :production do
