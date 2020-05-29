@@ -10,7 +10,7 @@ RSpec.feature "Posts", type: :feature do
     post = FactoryBot.build(:post)
     expect do
       click_link "ヒトコト投稿"
-      fill_in "本文", with: post.content
+      find('#input-text').set(post.content)
       click_button "投稿する"
 
       expect(page).to have_content "あなたのヒトコトが投稿されました。"
@@ -26,7 +26,7 @@ RSpec.feature "Posts", type: :feature do
 
     click_link "編集"
     post.content = "本文を編集します"
-    fill_in "本文", with: post.content
+    find('#input-text').set(post.content)
     click_button "投稿する"
 
     expect(page).to have_content "あなたのヒトコトが更新されました。"
@@ -52,10 +52,10 @@ RSpec.feature "Posts", type: :feature do
 
     post = FactoryBot.build(:post)
     click_link "ヒトコト投稿"
-    fill_in "本文", with: "うちで過ごそう #StayHome"
+    fill_in "input-text", with: "うちで過ごそう #StayHome"
     click_button "投稿する"
 
-    tag = Tag.find(1)
+    tag = Tag.find_by(name: "StayHome")
     expect(page).to have_content "あなたのヒトコトが投稿されました。"
     expect(tag.name).to eq("StayHome")
   end
@@ -68,10 +68,10 @@ RSpec.feature "Posts", type: :feature do
 
     click_link "編集"
     post.content = "編集後 #AfterUpdate"
-    fill_in "本文", with: post.content
+    fill_in "input-text", with: post.content
     click_button "投稿する"
 
-    tag = Tag.find(2)
+    tag = Tag.find_by(name: "AfterUpdate")
     expect(page).to have_content "あなたのヒトコトが更新されました。"
     expect(tag.name).to eq("AfterUpdate")
   end

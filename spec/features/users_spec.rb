@@ -55,7 +55,7 @@ RSpec.feature "Users", type: :feature do
     find('#mypage').click
     click_link "登録情報"
     user.introduction = "よろしくお願いします"
-    fill_in "自己紹介", with: user.introduction
+    find('#input-text').set(user.introduction)
     click_button "変更する"
 
     expect(page).to have_content "ユーザー情報を更新しました。"
