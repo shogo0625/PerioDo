@@ -89,7 +89,7 @@ gem 'font-awesome-sass', '~> 5.12.0'
 gem 'chartkick'
 
 gem 'ransack'
-gem 'kaminari', '~> 1.2.0'
+gem 'kaminari', '~> 1.2.1'
 
 gem 'cancancan'
 gem 'rails_admin'
