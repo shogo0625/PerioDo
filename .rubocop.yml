@@ -3,11 +3,11 @@ inherit_from:
 
 # Rails用に最適化
 Rails:
-   Enabled: true
+    Enabled: true
 
 # 文字数の上限を８０文字から変更
 LineLength:
-  Max: 150
+    Max: 150
 
   #rubocopでコード解析したくないファイルやフォルダ
 AllCops:
