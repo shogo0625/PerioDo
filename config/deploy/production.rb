@@ -11,7 +11,7 @@ server '18.178.143.139', user: 'ec2-user', roles: %w(app web db)
 server '18.180.207.4', user: 'ec2-user', roles: %w(app web db)
 
 set :ssh_options, auth_methods: ['publickey'],
-                  keys: ['~/.ssh/practice-aws.pem']
+                  keys: ['~/.ssh/practice-aws.pem', '~/.ssh/id_rsa']
 
 # role-based syntax
 # ==================
