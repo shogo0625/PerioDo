@@ -33,7 +33,7 @@ class RoutinesController < ApplicationController
         if range.include?(@routine)
           @array[-1][2] = '2000-01-02 ' + (l @routine.finish_time, format: :combine) + " +0900"
         else
-          @array[-1][2] = @routine.finish_time # 一つ後の配列がない(Routineの最後のタスク)場合、Routine自体の終了時間を代入
+          @array[-1][2] = @routine.finish_time # 一つ後の配列(Routineの最後のタスク)がない場合、Routine自体の終了時間を代入
         end
       end
     end
@@ -69,6 +69,11 @@ class RoutinesController < ApplicationController
   def create
     @premade_tasks = @user.premade_tasks.order(time: :asc)
     @routine = @user.routines.new(routine_params)
+    last_task = @premade_tasks[-1]
+    if ( l @routine.finish_time, format: :shortest) <= (l last_task.time, format: :shortest)
+      flash.now[:danger] = "【最終Task完了時間】は#{l last_task.time, format: :shortest}以降に設定してください。"
+      render :new and return
+    end
     if @premade_tasks.count > 0
       if @routine.save
         @premade_tasks.each do |pretask|
@@ -101,6 +106,11 @@ class RoutinesController < ApplicationController
   def update
     @routine_tasks = @routine.routine_tasks.order(time: :asc)
     if @routine_tasks.count > 0
+      last_task = @routine_tasks[-1]
+      if (params[:routine]["finish_time(4i)"] + ":" + params[:routine]["finish_time(5i)"]) <= (l last_task.time, format: :shortest)
+        flash.now[:danger] = "【最終Task完了時間】は#{l last_task.time, format: :shortest}以降に設定してください。"
+        render :edit and return
+      end
       if @routine.update(routine_params)
         flash[:success] = "「#{@routine.title}」が更新されました。"
         redirect_to user_routine_path(@user, @routine)
