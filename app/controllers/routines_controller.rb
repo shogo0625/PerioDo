@@ -72,7 +72,8 @@ class RoutinesController < ApplicationController
     last_task = @premade_tasks[-1]
     if (l @routine.finish_time, format: :shortest) <= (l last_task.time, format: :shortest)
       flash.now[:danger] = "【最終Task完了時間】は#{l last_task.time, format: :shortest}以降に設定してください。"
-      render :new && return
+      render :new
+      return
     end
     if @premade_tasks.count > 0
       if @routine.save
@@ -109,7 +110,8 @@ class RoutinesController < ApplicationController
       last_task = @routine_tasks[-1]
       if (params[:routine]["finish_time(4i)"] + ":" + params[:routine]["finish_time(5i)"]) <= (l last_task.time, format: :shortest)
         flash.now[:danger] = "【最終Task完了時間】は#{l last_task.time, format: :shortest}以降に設定してください。"
-        render :edit && return
+        render :edit
+        return
       end
       if @routine.update(routine_params)
         flash[:success] = "「#{@routine.title}」が更新されました。"
