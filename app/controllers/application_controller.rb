@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
   MYPAGE = 5
   INDEX = 10
   TAG = 15
+  NOTES = 20
 
   protected
 

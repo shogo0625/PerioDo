@@ -1,43 +1,7 @@
 <%= render "layouts/timer" %>
 
 <div class="row">
-	<div class="col-md-6 routine-box">
-		<div class="row">
-			<div class="col-md-12 mb-2">
-				<%= link_to user_path(@user) do %>
-					<%= image_tag call_user_img(@user), size: "60x60", class: "ml-2 user-icon" %>
-				<% end %>
-				<%= link_to @user.name, user_path(@user), class: "ml-2 link-to-black", style: "font-size:22px;" %>
-			</div>
-		</div>
-		<%= form_with model: [@user, @routine], local: true do |f| %>
-		<%= render 'layouts/error_messages', model: f.object %>
-		<div class="row">
-			<div class="col-md-12 mt-1">
-				<p>Title :</p>
-				<%= f.text_field :title, placeholder: "ex：平日のルーティーン / 今日の行動記録", class: "routine-form" %>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12 mt-3">
-				<p>Comment :</p>
-				<%= f.text_area :comment, rows: 10, class: "routine-form" %>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12 mt-3">
-				<p>最終Task完了時間　<%= f.time_select :finish_time, {use_month_numbers: true, minute_step: 5, ignore_data: true}, {} %></p>
-				<p>【24時を超えて（深夜時間帯）の登録はできません(TT)】</p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12 mt-3">
-				<%= f.hidden_field :status, :value => "Record" if @routine.status == "Record" %>
-				<%= f.submit "この内容で作成する", class: "btn btn-sm btn-block btn-success" %>
-			</div>
-		</div>
-		<% end %>
-	</div>
+	<%= render "routines/routine_form", user: @user, routine: @routine %>
 
 	<div id="new-pretask-form">
 		<%= render "premade_tasks/premade_task_form", premade_task: @premade_task %>
