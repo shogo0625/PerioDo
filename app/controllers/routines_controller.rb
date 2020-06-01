@@ -17,24 +17,24 @@ class RoutinesController < ApplicationController
 
   def show
     @routine_tasks = @routine.routine_tasks.order(time: :asc)
-    @array = []
+    @task_data = []
     @routine_tasks.each do |task|
-      @array.push([task.content, task.time]) # chartkickに渡す多重配列を作成 最終的に渡す形式 = [['内容', '開始時間', '終了時間'], ...]
+      @task_data.push([task.content, task.time]) # chartkickに渡す多重配列を作成 最終的に渡す形式 = [['内容', '開始時間', '終了時間'], ...]
     end
     t = 0
     n = 1
-    @array.each do |array|
-      if @array[n]
-        @array[t][2] = @array[n][1] # 一つ後のの配列内の'開始時間'を'終了時間'として設定
-        n += 1
+    @task_data.each do |data|
+      if @task_data[n]
+        @task_data[t][2] = @task_data[n][1] # 一つ後のタスク(配列)の'開始時間'を'終了時間'として設定
         t += 1
+        n += 1
       else
-        range = Routine.where(finish_time: '2000-01-01 00:00:00'..'2000-01-01 09:59:59') # 終了時間が24時超えたらdefaultの翌日に変換
-        if range.include?(@routine)
-          @array[-1][2] = '2000-01-02 ' + (l @routine.finish_time, format: :combine) + " +0900"
-        else
-          @array[-1][2] = @routine.finish_time # 一つ後の配列(Routineの最後のタスク)がない場合、Routine自体の終了時間を代入
-        end
+        # range = Routine.where(finish_time: '2000-01-01 00:00:00'..'2000-01-01 09:59:59') # 終了時間が24時超えたらdefaultの翌日に変換
+        # if range.include?(@routine)
+        # @task_data[-1][2] = '2000-01-02 ' + (l @routine.finish_time, format: :combine) + " +0900"
+        # else
+        @task_data[-1][2] = @routine.finish_time # 一つ後の配列(Routineの最後のタスク)がない場合、Routine自体の終了時間を代入
+        # end
       end
     end
   end
@@ -55,10 +55,10 @@ class RoutinesController < ApplicationController
     if params[:flag] == "Record"
       @premade_tasks.destroy_all
       @done_tasks.each do |done_task|
-        pretask = @user.premade_tasks.new
-        pretask.content = done_task.content
-        pretask.time = done_task.time_limit
-        pretask.save
+        premade_task = @user.premade_tasks.new
+        premade_task.content = done_task.content
+        premade_task.time = done_task.time_limit
+        premade_task.save
       end
       @routine = @user.routines.new(status: 1)
       @premade_tasks = @user.premade_tasks.order(time: :asc)
@@ -69,13 +69,13 @@ class RoutinesController < ApplicationController
   def create
     @premade_tasks = @user.premade_tasks.order(time: :asc)
     @routine = @user.routines.new(routine_params)
-    last_task = @premade_tasks[-1]
-    if (l @routine.finish_time, format: :shortest) <= (l last_task.time, format: :shortest)
-      flash.now[:danger] = "【最終Task完了時間】は#{l last_task.time, format: :shortest}以降に設定してください。"
-      render :new
-      return
-    end
     if @premade_tasks.count > 0
+      last_task = @premade_tasks[-1]
+      if (l @routine.finish_time, format: :shortest) <= (l last_task.time, format: :shortest)
+        flash.now[:danger] = "【最終Task完了時間】は#{l last_task.time, format: :shortest}以降に設定してください。"
+        render :new
+        return
+      end
       if @routine.save
         @premade_tasks.each do |pretask|
           @routine_task = @routine.routine_tasks.new
