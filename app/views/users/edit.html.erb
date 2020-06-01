@@ -48,8 +48,12 @@
         </div>
 
         <div class="row">
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-sm mt-5 btn-secondary col-md-3 offset-md-3", id: "sign-out" %>
-          <%= link_to "退会する", user_registration_path, method: :delete, data: { confirm: '本当に退会しますか？' }, class: "btn btn-sm mt-5 btn-danger col-md-3 offset-md-1" %>
+          <% if current_user.guest_user? %>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-sm mt-5 btn-secondary col-md-5 offset-md-4", id: "sign-out" %>
+          <% else %>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-sm mt-5 btn-secondary col-md-3 offset-md-3", id: "sign-out" %>
+            <%= link_to "退会する", user_registration_path, method: :delete, data: { confirm: '本当に退会しますか？' }, class: "btn btn-sm mt-5 btn-danger col-md-3 offset-md-1" %>
+          <% end %>
         </div>
       <% end %>
     </div>
