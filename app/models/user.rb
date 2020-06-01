@@ -49,7 +49,7 @@ class User < ApplicationRecord
 
   def guest_user?
     guest_id = 13
-    return true if self.id == guest_id
+    return true if id == guest_id
   end
 
   # enum prefecture: {
