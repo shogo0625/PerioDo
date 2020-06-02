@@ -35,8 +35,10 @@
 				<h4 style="text-align: center;">
 					<%= link_to "", tasks_path(routine_id: @routine.id), method: :post, data: { confirm: 'このスケジュールで行動しますか？' }, class: "fas fa-upload mr-3" %>
 					Tasks
+					<% if @user.id == current_user.id %>
 					<%= link_to "", edit_user_routine_path(@user, @routine), class: "fas fa-edit ml-3" %>
 					<%= link_to "", user_routine_path(@user, @routine), method: :delete, data: { confirm: 'このスケジュールを削除しますか？' }, class: "fas fa-trash-alt ml-2" %>
+					<% end %>
 				</h4>
 			</div>
 		</div>
