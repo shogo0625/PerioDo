@@ -3,64 +3,63 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "application";
 
-
 .user-index-box {
-    background: white;
-    border-top: solid 5px $orange;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
-    padding: 10px 0;
+  background: white;
+  border-top: solid 5px $orange;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+  padding: 10px 0;
 
-	.link-to-black {
-		color: $black;
-	}
+  .link-to-black {
+    color: $black;
+  }
 
-	.btn {
-		margin-right: 30px;
-    }
+  .btn {
+    margin-right: 30px;
+  }
 }
 
 .register-info {
-	font-size: 12px;
+  font-size: 12px;
 }
 
 .user-tab-box {
-	background: white;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+  background: white;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
 
-    .tab-boxes {
-    	padding: 0;
+  .tab-boxes {
+    padding: 0;
+  }
+
+  .tab-box {
+    padding: 0;
+    border-top: 2px solid $gray;
+    border-right: 1px solid $gray;
+    text-align: center;
+  }
+
+  .tab-btn {
+    line-height: 40px;
+    text-decoration: none;
+    display: block;
+    color: $black;
+
+    &:hover {
+      background-color: #ff9872;
     }
+  }
 
-    .tab-box {
-    	padding: 0;
-    	border-top: 2px solid $gray;
-    	border-right: 1px solid $gray;
-    	text-align: center;
-    }
-
-    .tab-btn {
-    	line-height: 40px;
-    	text-decoration: none;
-    	display: block;
-    	color: $black;
-
-    	&:hover {
-    		background-color: #FF9872;
-    	}
-    }
-
-    .active-btn {
-    	background-color: $orange;
-    	color: white;
-    }
+  .active-btn {
+    background-color: $orange;
+    color: white;
+  }
 }
 
 .user-tab-content {
-    .tab-content {
-        display: none;
-    }
+  .tab-content {
+    display: none;
+  }
 
-    .active-content {
-        display: block;
-    }    
+  .active-content {
+    display: block;
+  }
 }

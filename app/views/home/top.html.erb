@@ -1,51 +1,51 @@
 <%= render "layouts/timer" %>
 
 <div id="new-task-form">
-	<%= render "tasks/task_form", task: @task %>
+  <%= render "tasks/task_form", task: @task %>
 </div>
 
 <% if @user.present? %>
-	<div class="row title-box">
-		<div class="col-md-6 offset-md-3">
-			<h3 class="list-title">
-			<i id="create-tasks" class="fas fa-plus-circle mr-3 mt-2"></i>
-				What To Do Today
-			<i id="show-tasks" class="fas fa-arrow-circle-down ml-3 mt-2"></i>
-			<i id="hide-tasks" class="fas fa-arrow-circle-up ml-3 mt-2"></i>
-			</h3>
-		</div>
-	</div>
+  <div class="row title-box">
+    <div class="col-md-6 offset-md-3">
+      <h3 class="list-title">
+        <i id="create-tasks" class="fas fa-plus-circle mr-3 mt-2"></i>
+          What To Do Today
+        <i id="show-tasks" class="fas fa-arrow-circle-down ml-3 mt-2"></i>
+        <i id="hide-tasks" class="fas fa-arrow-circle-up ml-3 mt-2"></i>
+      </h3>
+    </div>
+  </div>
 
-	<div id="todolists" class="todolists">
-		<%= render "tasks/task_index", todo_tasks: @todo_tasks, doing_tasks: @doing_tasks, done_tasks: @done_tasks %>
-	</div>
+  <div id="todolists" class="todolists">
+    <%= render "tasks/task_index", todo_tasks: @todo_tasks, doing_tasks: @doing_tasks, done_tasks: @done_tasks %>
+  </div>
 <% end %>
 
 <div class="row">
-	<div class="col-md-10 offset-md-1">
-		<% if user_signed_in? %>
-			<h3 class="top-page-title">タイムライン</h3>
-		<% else %>
-			<h3 class="top-page-title">みんなのヒトコト</h3>
-		<% end %>
-	</div>
+  <div class="col-md-10 offset-md-1">
+    <% if user_signed_in? %>
+      <h3 class="top-page-title">タイムライン</h3>
+    <% else %>
+      <h3 class="top-page-title">みんなのヒトコト</h3>
+    <% end %>
+  </div>
 </div>
 
 <div class="row">
-	<% if @posts.count >= 1 %>
-		<% @posts.each do |post| %>
-			<div class="col-md-10 offset-md-1 post-index-box post-<%= post.id %>">
-				<%= render "posts/post_detail", post: post %>
-			</div>
-		<% end %>
-	<% else %>
-		<div class="col-md-10 offset-md-1 new-user-info">
-			<h5>ここにあなたとフォローしているユーザーのヒトコトが表示されます。</h5>
-			<h5>プロフィールや投稿から共通点などを探してみましょう！</h5>
-			<div class="row">
-				<%= link_to "探す", search_path, class: "btn btn-primary mb-4 col-md-2 offset-md-5" %>
-			</div>
-		</div>
-	<% end %>
+  <% if @posts.count >= 1 %>
+    <% @posts.each do |post| %>
+      <div class="col-md-10 offset-md-1 post-index-box post-<%= post.id %>">
+        <%= render "posts/post_detail", post: post %>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="col-md-10 offset-md-1 new-user-info">
+      <h5>ここにあなたとフォローしているユーザーのヒトコトが表示されます。</h5>
+      <h5>プロフィールや投稿から共通点などを探してみましょう！</h5>
+      <div class="row">
+        <%= link_to "探す", search_path, class: "btn btn-primary mb-4 col-md-2 offset-md-5" %>
+      </div>
+    </div>
+  <% end %>
 </div>
 <%= render "layouts/pagination", data: @posts %>

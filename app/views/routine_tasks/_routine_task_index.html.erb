@@ -1,40 +1,40 @@
 <div class="routine-tasks-box">
-	<% unless routine_tasks.count == 0 %>
-		<% routine_tasks.each do |routine_task| %>
-			<div class="row task-item">
-				<div class="col-md-3">
-					<%= l routine_task.time, format: :shortest %>
-				</div>
-				<div class="col-md-6">
-					<%= routine_task.content %>
-				</div>
-				<div class="col-md-3">
-					<i id="update-routine-<%= routine_task.id %>" class="fas fa-edit mr-2"></i>
-					<%= link_to "", user_routine_routine_task_path(@user, @routine, routine_task), method: :delete, remote: :true, class: "fas fa-trash-alt mr-2" %>
-				</div>
-			</div>
-			<%= render "routine_tasks/edit_routine_task_form", routine_task: routine_task %>
-			<script>
-				$('#update-routine-<%= routine_task.id %>').click(function(){
-					$('#routine-task-edit-<%= routine_task.id %>').fadeIn();
-			    $('textarea:visible').eq(1).focus();
-				});
-				$('#close-edit-<%= routine_task.id %>').click(function(){
-					$('#routine-task-edit-<%= routine_task.id %>').hide();
-				});
-			  $('#routine-task-edit-<%= routine_task.id %>').click(function(){
-			    $(this).fadeOut();
-			  });
-			  $('.task-modal-content').on('click', function(e){
-			    e.stopPropagation();
-			  });
-			</script>
-		<% end %>
-	<% else %>
-		<div class="row task-item mt-2">
-			<div class="col-md-12 mt-1">
-				<h5><span class="fa fa-plus-circle"></span>ボタンから新しく登録できます！</h5>
-			</div>
-		</div>
-	<% end %>
+  <% unless routine_tasks.count == 0 %>
+    <% routine_tasks.each do |routine_task| %>
+      <div class="row task-item">
+        <div class="col-md-3">
+          <%= l routine_task.time, format: :shortest %>
+        </div>
+        <div class="col-md-6">
+          <%= routine_task.content %>
+        </div>
+        <div class="col-md-3">
+          <i id="update-routine-<%= routine_task.id %>" class="fas fa-edit mr-2"></i>
+          <%= link_to "", user_routine_routine_task_path(@user, @routine, routine_task), method: :delete, remote: :true, class: "fas fa-trash-alt mr-2" %>
+        </div>
+      </div>
+      <%= render "routine_tasks/edit_routine_task_form", routine_task: routine_task %>
+      <script>
+        $('#update-routine-<%= routine_task.id %>').click(function(){
+          $('#routine-task-edit-<%= routine_task.id %>').fadeIn();
+          $('textarea:visible').eq(1).focus();
+        });
+        $('#close-edit-<%= routine_task.id %>').click(function(){
+          $('#routine-task-edit-<%= routine_task.id %>').hide();
+        });
+        $('#routine-task-edit-<%= routine_task.id %>').click(function(){
+          $(this).fadeOut();
+        });
+        $('.task-modal-content').on('click', function(e){
+          e.stopPropagation();
+        });
+      </script>
+    <% end %>
+  <% else %>
+    <div class="row task-item mt-2">
+      <div class="col-md-12 mt-1">
+        <h5><span class="fa fa-plus-circle"></span>ボタンから新しく登録できます！</h5>
+      </div>
+    </div>
+  <% end %>
 </div>

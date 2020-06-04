@@ -1,26 +1,26 @@
 <%= render "layouts/timer" %>
 
 <div class="row">
-	<%= render "routines/routine_form", user: @user, routine: @routine %>
+  <%= render "routines/routine_form", user: @user, routine: @routine %>
 
-	<div id="new-routine-task-form">
-		<%= render "routine_tasks/routine_task_form", routine_task: @routine_task %>
-	</div>
+  <div id="new-routine-task-form">
+    <%= render "routine_tasks/routine_task_form", routine_task: @routine_task %>
+  </div>
 
-	<div class="col-md-6 routine-box">
-		<div class="row">
-			<div class="col-md-8 offset-md-2">
-				<h4 style="text-align: center;">
-					<i id="create-routine-task" class="fas fa-plus-circle mr-3"></i>
-					Edit Tasks
-					<%= link_to "", destroy_all_user_routine_routine_tasks_path(@user, @routine), method: :delete, data: { confirm: '全てのタスクを削除しますか？' }, class: "fas fa-trash-alt ml-3" %>
-				</h4>
-			</div>
-		</div>
-		<div id="routine-tasks">
-			<%= render "routine_tasks/routine_task_index", routine_tasks: @routine_tasks %>		
-		</div>
-	</div>
+  <div class="col-md-6 routine-box">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <h4 style="text-align: center;">
+          <i id="create-routine-task" class="fas fa-plus-circle mr-3"></i>
+          Edit Tasks
+          <%= link_to "", destroy_all_user_routine_routine_tasks_path(@user, @routine), method: :delete, data: { confirm: '全てのタスクを削除しますか？' }, class: "fas fa-trash-alt ml-3" %>
+        </h4>
+      </div>
+    </div>
+    <div id="routine-tasks">
+      <%= render "routine_tasks/routine_task_index", routine_tasks: @routine_tasks %>		
+    </div>
+  </div>
 </div>
 
 <%= render "layouts/redirect_back" %>

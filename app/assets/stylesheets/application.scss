@@ -25,33 +25,34 @@ $blue: #2790b0;
 $black: #222222;
 
 body {
-	font-family: 'Muli', "Noto Sans JP", Arial, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', Osaka, 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
-	word-wrap: break-word;
+  font-family: "Muli", "Noto Sans JP", Arial, "ヒラギノ角ゴ Pro W3",
+    "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック",
+    "MS PGothic", sans-serif;
+  word-wrap: break-word;
 }
 
 .wrapper {
   min-height: 100vh;
-	position: relative;
-	padding-bottom: 80px;
-	background-color: $gray;
+  position: relative;
+  padding-bottom: 80px;
+  background-color: $gray;
 }
 
 .navbar {
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 
-	.nav-item {
-		margin-top: 3px;
-		font-weight: bold;
+  .nav-item {
+    margin-top: 3px;
+    font-weight: bold;
+  }
 
-	}
+  .nav-image {
+    margin: 0 8px;
+  }
 
-	.nav-image {
-		margin: 0 8px;
-	}
-
-	.nav-link {
-		margin-left: 30px;
-	}
+  .nav-link {
+    margin-left: 30px;
+  }
 }
 
 .field_with_errors {
@@ -62,47 +63,47 @@ body {
 }
 
 .pagination {
-	margin: 10px auto;
+  margin: 10px auto;
 }
 
 footer {
-	width: 100%;
-	position: absolute;
-	bottom: 0;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
 
-	.footer-box {
-		text-align: right;
-		line-height: 60px;
+  .footer-box {
+    text-align: right;
+    line-height: 60px;
 
-		a {
-			padding: 0 40px;
-			color: #FFFFFF;
-		}
-	}
+    a {
+      padding: 0 40px;
+      color: #ffffff;
+    }
+  }
 }
 .index-page-title {
-	margin: 0 auto 15px;
-	font-weight: bold;
+  margin: 0 auto 15px;
+  font-weight: bold;
 }
 
 .page-title {
-	margin: 10px auto 25px;
-	text-align: center;
-	font-weight: bold;
+  margin: 10px auto 25px;
+  text-align: center;
+  font-weight: bold;
 }
 
 .new-user-info {
-    background: white;
-    border-top: solid 5px $orange;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
-    padding: 10px auto;
+  background: white;
+  border-top: solid 5px $orange;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+  padding: 10px auto;
 
-    h5, .btn {
-    	text-align: center;
-    	margin: 30px auto 0;
-    }
+  h5,
+  .btn {
+    text-align: center;
+    margin: 30px auto 0;
+  }
 }
-
 
 /*--------- タイマー機能 ----------*/
 .timer-modal-wrapper {
@@ -117,7 +118,7 @@ footer {
 }
 
 .modal-content {
-	margin: 150px auto 0;
+  margin: 150px auto 0;
   background-color: #e6ecf0;
   padding: 20px 0 40px;
   border-radius: 10px;
@@ -126,87 +127,72 @@ footer {
   text-align: center;
 
   .fa-times-circle {
-	  position: absolute;
-	  top: 15px;
-	  right: 15px;
-	  cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
 
-	  &:hover {
-	  	color: $orange;
-	  }
-	}
+    &:hover {
+      color: $orange;
+    }
+  }
 
-	.action-timer {
-		padding-top: 40px;
-	}
+  .action-timer {
+    padding-top: 40px;
+  }
 
-	.minutes-form {
-		text-align: center;
-		height: 40px;
-		margin: 30px 0;
-		border-radius: 10px;
-	}
+  .minutes-form {
+    text-align: center;
+    height: 40px;
+    margin: 30px 0;
+    border-radius: 10px;
+  }
 }
 /*---------- ページ上部 timer-box ----------*/
 
 .timer-box {
-	padding: 20px;
-	margin-bottom: 30px;
-	background: white;
-	border-radius: 8px;
-	box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.22);
-	text-align: center;
+  padding: 20px;
+  margin-bottom: 30px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.22);
+  text-align: center;
 
-	#hidden-timer {
-		display: none;
-	}
+  #hidden-timer {
+    display: none;
+  }
 
-	#to-finish {
-		display: none;
+  #to-finish {
+    display: none;
 
-		.btn {
-			margin-top: 5px;
-		}
-	}
+    .btn {
+      margin-top: 5px;
+    }
+  }
 }
 /*--------- ここまで ----------*/
 
 /*---------- 登録・編集画面共通 ----------*/
 .form-box {
-	margin: 15px 0;
+  margin: 15px 0;
 
-	.form-field {
-		margin-bottom: 40px;
-		border: 1px solid $gray;
-		border-radius: 7px;
-		outline: none;
-	}
+  .form-field {
+    margin-bottom: 40px;
+    border: 1px solid $gray;
+    border-radius: 7px;
+    outline: none;
+  }
 
-	.prev-noimage {
-		display: none;
-	}
+  .prev-noimage {
+    display: none;
+  }
 }
 /* user edit only */
 .user-icon {
-	border-radius: 50%;
+  border-radius: 50%;
 }
 
-.user-icon-select{
-	padding-top: 40px;
+.user-icon-select {
+  padding-top: 40px;
 }
 /*--------- ここまで ----------*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

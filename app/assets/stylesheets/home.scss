@@ -5,26 +5,29 @@
 @import "application";
 
 .title-box {
+  .list-title {
+    text-align: center;
+    font-weight: bold;
+  }
 
-	.list-title {
-		text-align: center;
-		font-weight: bold;
-	}
+  #show-tasks,
+  #hide-tasks,
+  #create-tasks,
+  .login {
+    cursor: pointer;
 
-	#show-tasks, #hide-tasks, #create-tasks, .login {
-		cursor: pointer;
+    &:hover {
+      color: $orange;
+    }
+  }
 
-		&:hover {
-			color: $orange;
-		}
-	}
-
-	#show-tasks {
-		display: none;
-	}
+  #show-tasks {
+    display: none;
+  }
 }
 
-.task-modal-wrapper, .edit-task-modal {
+.task-modal-wrapper,
+.edit-task-modal {
   position: fixed;
   top: 0;
   right: 0;
@@ -36,95 +39,78 @@
 }
 
 .task-modal-content {
-	background-color: #e6ecf0;
-	border-radius: 10px;
-	margin: 150px 10%;
-	padding: 40px 0;
+  background-color: #e6ecf0;
+  border-radius: 10px;
+  margin: 150px 10%;
+  padding: 40px 0;
 
-	.fa-times-circle {
-		position: absolute;
-		top: 10px;
-		right: 10px;
-		cursor: pointer;
+  .fa-times-circle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
 
-		&:hover {
-			color: $orange;
-		}
-	}
+    &:hover {
+      color: $orange;
+    }
+  }
 }
 
 .task-box {
+  .fas,
+  .far {
+    color: $black;
+    cursor: pointer;
 
-	.fas, .far {
-		color: $black;
-		cursor: pointer;
+    &:hover {
+      color: $orange;
+    }
+  }
 
-		&:hover {
-			color: $orange;
-		}
-	}
-
-	.content-row {
-		border-top: 1px solid $black;
-		border-bottom: 1px solid $black;
-		margin-bottom: 5px;
-	}
-
+  .content-row {
+    border-top: 1px solid $black;
+    border-bottom: 1px solid $black;
+    margin-bottom: 5px;
+  }
 }
 
 .top-page-title {
-	margin: 30px 0 15px;
-	font-weight: bold;
+  margin: 30px 0 15px;
+  font-weight: bold;
 }
 
 // ------- aboutページ ---------
 .about-logo-wrapper {
-	text-align: center;
-	background-color: #ffffff;
-	border: 2px solid $orange;
+  text-align: center;
+  background-color: #ffffff;
+  border: 2px solid $orange;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
-	border-radius: 15px;
-	margin-bottom: 30px;
+  border-radius: 15px;
+  margin-bottom: 30px;
 }
 
 .about-title-wrapper {
-	text-align: center;
-	font-weight: bold;
+  text-align: center;
+  font-weight: bold;
 
-	.about-title {
-		padding: 5px;
-		border-bottom: 1px solid #17a2b8;
-	}
-	.about-title-text {
-		line-height: 30px;
-		border-bottom: 1px solid #17a2b8;
-	}
+  .about-title {
+    padding: 5px;
+    border-bottom: 1px solid #17a2b8;
+  }
+  .about-title-text {
+    line-height: 30px;
+    border-bottom: 1px solid #17a2b8;
+  }
 }
 
 .about-contents {
-	margin: 30px;
+  margin: 30px;
 
-	.about-content-title {
-		text-align: center;
-	}
-	.content-image {
-		width: 100%;
-		margin: 0 auto 10px;
-	}
-
+  .about-content-title {
+    text-align: center;
+  }
+  .content-image {
+    width: 100%;
+    margin: 0 auto 10px;
+  }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

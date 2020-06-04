@@ -5,40 +5,40 @@
 @import "application";
 
 .search-box {
-    background: white;
-    border-top: solid 5px $orange;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
-    padding: 10px 0;
-    margin: 10px auto 30px;
+  background: white;
+  border-top: solid 5px $orange;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+  padding: 10px 0;
+  margin: 10px auto 30px;
 
-    .search-contents {
-    	margin: 30px auto 15px;
+  .search-contents {
+    margin: 30px auto 15px;
+  }
+
+  .search-field {
+    border-radius: 5px;
+    line-height: 30px;
+    border-bottom: 1px solid silver;
+  }
+
+  .search-btn {
+    width: 70px;
+    border-radius: 4px;
+    line-height: 30px;
+    background-color: #dddddd;
+
+    &:hover {
+      background-color: silver;
+      color: #333333;
     }
+  }
 
-    .search-field {
-    	border-radius: 5px;
-    	line-height: 30px;
-    	border-bottom: 1px solid silver;
-    }
+  .tag-search-title {
+    text-align: center;
+    margin-top: 5px;
+  }
 
-    .search-btn {
-    	width: 70px;
-    	border-radius: 4px;
-    	line-height: 30px;
-    	background-color: #dddddd;
-
-    	&:hover {
-    		background-color: silver;
-    		color: #333333;
-    	}
-    }
-
-    .tag-search-title {
-        text-align: center;
-        margin-top: 5px;
-    }
-
-    .tag-box {
-        margin-bottom: 10px;
-    }
+  .tag-box {
+    margin-bottom: 10px;
+  }
 }

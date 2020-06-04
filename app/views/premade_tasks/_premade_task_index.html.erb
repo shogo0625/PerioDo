@@ -1,40 +1,40 @@
 <div class="routine-tasks-box">
-	<% unless premade_tasks.count == 0 %>
-		<% premade_tasks.each do |premade_task| %>
-			<div class="row task-item">
-				<div class="col-md-3">
-					<%= l premade_task.time, format: :shortest %>
-				</div>
-				<div class="col-md-6">
-					<%= premade_task.content %>
-				</div>
-				<div class="col-md-3">
-					<i id="update-pre-<%= premade_task.id %>" class="fas fa-edit mr-2"></i>
-					<%= link_to "", premade_task_path(premade_task), method: :delete, remote: :true, class: "fas fa-trash-alt mr-2" %>
-				</div>
-			</div>
-			<%= render "premade_tasks/edit_premade_task_form", premade_task: premade_task %>
-			<script>
-				$('#update-pre-<%= premade_task.id %>').click(function(){
-					$('#pretask-edit-<%= premade_task.id %>').fadeIn();
-			    $('textarea:visible').eq(1).focus();
-				});
-				$('#close-edit-<%= premade_task.id %>').click(function(){
-					$('#pretask-edit-<%= premade_task.id %>').hide();
-				});
-			  $('#pretask-edit-<%= premade_task.id %>').click(function(){
-			    $(this).fadeOut();
-			  });
-			  $('.task-modal-content').on('click', function(e){
-			    e.stopPropagation();
-			  });
-			</script>
-		<% end %>
-	<% else %>
-		<div class="row task-item mt-2">
-			<div class="col-md-12 mt-1">
-				<h5><span class="fa fa-plus-circle"></span>ボタンから新しく登録できます！</h5>
-			</div>
-		</div>
-	<% end %>
+  <% unless premade_tasks.count == 0 %>
+    <% premade_tasks.each do |premade_task| %>
+      <div class="row task-item">
+        <div class="col-md-3">
+          <%= l premade_task.time, format: :shortest %>
+        </div>
+        <div class="col-md-6">
+          <%= premade_task.content %>
+        </div>
+        <div class="col-md-3">
+          <i id="update-pre-<%= premade_task.id %>" class="fas fa-edit mr-2"></i>
+          <%= link_to "", premade_task_path(premade_task), method: :delete, remote: :true, class: "fas fa-trash-alt mr-2" %>
+        </div>
+      </div>
+      <%= render "premade_tasks/edit_premade_task_form", premade_task: premade_task %>
+      <script>
+        $('#update-pre-<%= premade_task.id %>').click(function(){
+          $('#pretask-edit-<%= premade_task.id %>').fadeIn();
+          $('textarea:visible').eq(1).focus();
+        });
+        $('#close-edit-<%= premade_task.id %>').click(function(){
+          $('#pretask-edit-<%= premade_task.id %>').hide();
+        });
+        $('#pretask-edit-<%= premade_task.id %>').click(function(){
+          $(this).fadeOut();
+        });
+        $('.task-modal-content').on('click', function(e){
+          e.stopPropagation();
+        });
+      </script>
+    <% end %>
+  <% else %>
+    <div class="row task-item mt-2">
+      <div class="col-md-12 mt-1">
+        <h5><span class="fa fa-plus-circle"></span>ボタンから新しく登録できます！</h5>
+      </div>
+    </div>
+  <% end %>
 </div>

@@ -1,14 +1,14 @@
 <ul>
-	<% unless @routine_records.count == 0 %>
-		<% @routine_records.each do |record| %>
-			<%= link_to user_routine_path(@user, record), class: "link-to-black" do %>
-				<li><%= record.title %>（<%= l record.created_at, format: :date %>）</li>
-			<% end %>
-		<% end %>
-	<% else %>
-		<li>
-			まだ行動記録が登録されていません。
-			<%= link_to "※ToDoListの【Done】項目をアップロードして登録できます", root_path if @user.id == current_user.id %>
-		</li>
-	<% end %>
+  <% unless @routine_records.count == 0 %>
+    <% @routine_records.each do |record| %>
+      <%= link_to user_routine_path(@user, record), class: "link-to-black" do %>
+        <li><%= record.title %>（<%= l record.created_at, format: :date %>）</li>
+      <% end %>
+    <% end %>
+  <% else %>
+    <li>
+      まだ行動記録が登録されていません。
+      <%= link_to "※ToDoListの【Done】項目をアップロードして登録できます", root_path if @user.id == current_user.id %>
+    </li>
+  <% end %>
 </ul>

@@ -5,25 +5,26 @@
 @import "application";
 
 .fake-comment-field {
-	width: 100%;
-	text-align: center;
-	border-radius: 3px;
-	outline: none;
+  width: 100%;
+  text-align: center;
+  border-radius: 3px;
+  outline: none;
 }
 
 .comment-field {
-	border: 1px solid gray;
-	border-radius: 3px;
+  border: 1px solid gray;
+  border-radius: 3px;
 }
 
-.comment-form, .edit-comment-form {
-	display: none;
+.comment-form,
+.edit-comment-form {
+  display: none;
 
-	.fa-times-circle {
-		cursor: pointer;
+  .fa-times-circle {
+    cursor: pointer;
 
-	  &:hover {
-	  	color: $orange;
-	  }
-	}
+    &:hover {
+      color: $orange;
+    }
+  }
 }

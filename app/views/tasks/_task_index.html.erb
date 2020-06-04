@@ -1,126 +1,126 @@
-	<div class="row">
-		<div class="col-md-4 task-box">
-			<div class="row task-title">
-				<h3 class="offset-md-1">
-					ToDo
-					<%= link_to "", user_routines_path(current_user), class: "fas fa-download ml-3" %>
-				</h3>
-			</div>
-			<% todo_tasks.each do |task| %>
-				<div class="row content-row">
-					<div class="col-md-8">
-						<h6 class="mt-1"><%= task.content %></h6>
-					</div>
-					<div class="col-md-4">
-						<i id="update-todo-<%= task.id %>" class="fas fa-edit mr-2"></i>
-						<%= link_to "", task_path(task), method: :delete, remote: :true, class: "fas fa-trash-alt mr-2" %>
-						<%= link_to "", task_path(task, status: 1), method: :patch, remote: :true, class: "fas fa-arrow-right" %>
-					</div>
-					<div class="col-md-8">
-						<%= l task.time_limit, format: :short if task.time_limit != nil %>
-					</div>
-					<div class="col-md-4">
-						<%= link_to "投稿", new_post_path(task_id: task, tag_name: task.status), class: "btn btn-sm btn-outline-dark mb-1" %>
-					</div>
-				</div>
-				<%= render "tasks/edit_task_form", task: task %>
-				<script>
-					$('#update-todo-<%= task.id %>').click(function(){
-						$('#task-edit-<%= task.id %>').fadeIn();
-				    $('textarea:visible').eq(0).focus();
-					});
-					$('#close-edit-<%= task.id %>').click(function(){
-						$('#task-edit-<%= task.id %>').hide();
-					});
-				  $('#task-edit-<%= task.id %>').click(function(){
-				    $(this).fadeOut();
-				  });
-				  $('.task-modal-content').on('click', function(e){
-				    e.stopPropagation();
-				  });
-				</script>
-			<% end %>
-		</div>
-		<div class="col-md-4 task-box">
-			<div class="row task-title">
-				<h3 class="offset-md-1">Doing</h3>
-			</div>
-			<% doing_tasks.each do |task| %>
-				<div class="row content-row">
-					<div class="col-md-7">
-						<h6 class="mt-1"><%= task.content %></h6>
-					</div>
-					<div class="col-md-5">
-						<%= link_to "", task_path(task, status: 0), method: :patch, remote: :true, class: "fas fa-arrow-left mr-2" %>
-						<i id="update-doing-<%= task.id %>" class="fas fa-edit mr-2"></i>
-						<%= link_to "", task_path(task), method: :delete, remote: :true, class: "fas fa-trash-alt mr-2" %>
-						<%= link_to "", task_path(task, status: 2), method: :patch, remote: :true, class: "fas fa-arrow-right" %>
-					</div>
-					<div class="col-md-8">
-						<%= l task.time_limit, format: :short if task.time_limit != nil %>
-					</div>
-					<div class="col-md-4">
-						<%= link_to "投稿", new_post_path(task_id: task, tag_name: task.status), class: "btn btn-sm btn-outline-dark mb-1" %>
-					</div>
-				</div>
-				<%= render "tasks/edit_task_form", task: task %>
-				<script>
-					$('#update-doing-<%= task.id %>').click(function(){
-						$('#task-edit-<%= task.id %>').fadeIn();
-				    $('textarea:visible').eq(0).focus();
-					});
-					$('#close-edit-<%= task.id %>').click(function(){
-						$('#task-edit-<%= task.id %>').hide();
-					});
-				  $('#task-edit-<%= task.id %>').click(function(){
-				    $(this).fadeOut();
-				  });
-				  $('.task-modal-content').on('click', function(e){
-				    e.stopPropagation();
-				  });
-				</script>
-			<% end %>
-		</div>
-		<div class="col-md-4 task-box">
-			<div class="row task-title">
-				<h3 class="offset-md-1">
-					Done
-					<%= link_to "", new_user_routine_path(current_user, flag: "Record"), class: "fas fa-upload ml-3" %>
-				</h3>
-			</div>
-			<% done_tasks.each do |task| %>
-				<div class="row content-row">
-					<div class="col-md-8">
-						<h6 class="mt-1"><%= task.content %></h6>
-					</div>
-					<div class="col-md-4">
-						<%= link_to "", task_path(task, status: 1), method: :patch, remote: :true, class: "fas fa-arrow-left mr-2" %>
-						<i id="update-done-<%= task.id %>" class="fas fa-edit mr-2"></i>
-						<%= link_to "", task_path(task), method: :delete, remote: :true, class: "fas fa-trash-alt" %>
-					</div>
-					<div class="col-md-8">
-						<%= l task.time_limit, format: :short if task.time_limit != nil %>
-					</div>
-					<div class="col-md-4">
-						<%= link_to "投稿", new_post_path(task_id: task, tag_name: task.status), class: "btn btn-sm btn-outline-dark mb-1" %>
-					</div>
-				</div>
-				<%= render "tasks/edit_task_form", task: task %>
-				<script>
-					$('#update-done-<%= task.id %>').click(function(){
-						$('#task-edit-<%= task.id %>').fadeIn();
-				    $('textarea:visible').eq(0).focus();
-					});
-					$('#close-edit-<%= task.id %>').click(function(){
-						$('#task-edit-<%= task.id %>').hide();
-					});
-				  $('#task-edit-<%= task.id %>').click(function(){
-				    $(this).fadeOut();
-				  });
-				  $('.task-modal-content').on('click', function(e){
-				    e.stopPropagation();
-				  });
-				</script>
-			<% end %>
-		</div>
-	</div>
+<div class="row">
+  <div class="col-md-4 task-box">
+    <div class="row task-title">
+      <h3 class="offset-md-1">
+        ToDo
+        <%= link_to "", user_routines_path(current_user), class: "fas fa-download ml-3" %>
+      </h3>
+    </div>
+    <% todo_tasks.each do |task| %>
+      <div class="row content-row">
+        <div class="col-md-8">
+          <h6 class="mt-1"><%= task.content %></h6>
+        </div>
+        <div class="col-md-4">
+          <i id="update-todo-<%= task.id %>" class="fas fa-edit mr-2"></i>
+          <%= link_to "", task_path(task), method: :delete, remote: :true, class: "fas fa-trash-alt mr-2" %>
+          <%= link_to "", task_path(task, status: 1), method: :patch, remote: :true, class: "fas fa-arrow-right" %>
+        </div>
+        <div class="col-md-8">
+          <%= l task.time_limit, format: :short if task.time_limit != nil %>
+        </div>
+        <div class="col-md-4">
+          <%= link_to "投稿", new_post_path(task_id: task, tag_name: task.status), class: "btn btn-sm btn-outline-dark mb-1" %>
+        </div>
+      </div>
+      <%= render "tasks/edit_task_form", task: task %>
+      <script>
+        $('#update-todo-<%= task.id %>').click(function(){
+          $('#task-edit-<%= task.id %>').fadeIn();
+          $('textarea:visible').eq(0).focus();
+        });
+        $('#close-edit-<%= task.id %>').click(function(){
+          $('#task-edit-<%= task.id %>').hide();
+        });
+        $('#task-edit-<%= task.id %>').click(function(){
+          $(this).fadeOut();
+        });
+        $('.task-modal-content').on('click', function(e){
+          e.stopPropagation();
+        });
+      </script>
+    <% end %>
+  </div>
+  <div class="col-md-4 task-box">
+    <div class="row task-title">
+      <h3 class="offset-md-1">Doing</h3>
+    </div>
+    <% doing_tasks.each do |task| %>
+      <div class="row content-row">
+        <div class="col-md-7">
+          <h6 class="mt-1"><%= task.content %></h6>
+        </div>
+        <div class="col-md-5">
+          <%= link_to "", task_path(task, status: 0), method: :patch, remote: :true, class: "fas fa-arrow-left mr-2" %>
+          <i id="update-doing-<%= task.id %>" class="fas fa-edit mr-2"></i>
+          <%= link_to "", task_path(task), method: :delete, remote: :true, class: "fas fa-trash-alt mr-2" %>
+          <%= link_to "", task_path(task, status: 2), method: :patch, remote: :true, class: "fas fa-arrow-right" %>
+        </div>
+        <div class="col-md-8">
+          <%= l task.time_limit, format: :short if task.time_limit != nil %>
+        </div>
+        <div class="col-md-4">
+          <%= link_to "投稿", new_post_path(task_id: task, tag_name: task.status), class: "btn btn-sm btn-outline-dark mb-1" %>
+        </div>
+      </div>
+      <%= render "tasks/edit_task_form", task: task %>
+      <script>
+        $('#update-doing-<%= task.id %>').click(function(){
+          $('#task-edit-<%= task.id %>').fadeIn();
+          $('textarea:visible').eq(0).focus();
+        });
+        $('#close-edit-<%= task.id %>').click(function(){
+          $('#task-edit-<%= task.id %>').hide();
+        });
+        $('#task-edit-<%= task.id %>').click(function(){
+          $(this).fadeOut();
+        });
+        $('.task-modal-content').on('click', function(e){
+          e.stopPropagation();
+        });
+      </script>
+    <% end %>
+  </div>
+  <div class="col-md-4 task-box">
+    <div class="row task-title">
+      <h3 class="offset-md-1">
+        Done
+        <%= link_to "", new_user_routine_path(current_user, flag: "Record"), class: "fas fa-upload ml-3" %>
+      </h3>
+    </div>
+    <% done_tasks.each do |task| %>
+      <div class="row content-row">
+        <div class="col-md-8">
+          <h6 class="mt-1"><%= task.content %></h6>
+        </div>
+        <div class="col-md-4">
+          <%= link_to "", task_path(task, status: 1), method: :patch, remote: :true, class: "fas fa-arrow-left mr-2" %>
+          <i id="update-done-<%= task.id %>" class="fas fa-edit mr-2"></i>
+          <%= link_to "", task_path(task), method: :delete, remote: :true, class: "fas fa-trash-alt" %>
+        </div>
+        <div class="col-md-8">
+          <%= l task.time_limit, format: :short if task.time_limit != nil %>
+        </div>
+        <div class="col-md-4">
+          <%= link_to "投稿", new_post_path(task_id: task, tag_name: task.status), class: "btn btn-sm btn-outline-dark mb-1" %>
+        </div>
+      </div>
+      <%= render "tasks/edit_task_form", task: task %>
+      <script>
+        $('#update-done-<%= task.id %>').click(function(){
+          $('#task-edit-<%= task.id %>').fadeIn();
+          $('textarea:visible').eq(0).focus();
+        });
+        $('#close-edit-<%= task.id %>').click(function(){
+          $('#task-edit-<%= task.id %>').hide();
+        });
+        $('#task-edit-<%= task.id %>').click(function(){
+          $(this).fadeOut();
+        });
+        $('.task-modal-content').on('click', function(e){
+          e.stopPropagation();
+        });
+      </script>
+    <% end %>
+  </div>
+</div>
