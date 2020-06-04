@@ -1,31 +1,31 @@
 <%= render "layouts/timer" %>
 
 <div class="row">
-	<div class="col-md-10 offset-md-1 user-index-box user-<%= @user.id %>">
-		<%= render "users/user_index", user: @user %>
-	</div>
+  <div class="col-md-10 offset-md-1 user-index-box user-<%= @user.id %>">
+    <%= render "users/user_index", user: @user %>
+  </div>
 </div>
 
 <div class="row">
-	<div class="col-md-10 offset-md-1 user-tab-box" id="user-boxes">
-		<%= render "users/tab_boxes", user: @user %>
-	</div>
+  <div class="col-md-10 offset-md-1 user-tab-box" id="user-boxes">
+    <%= render "users/tab_boxes", user: @user %>
+  </div>
 </div>
 
 <div class="user-tab-content">
-	<div class="tab-content active-content" id="tab1">
-		<%= render "users/tab1", collection: @posts %>
-	</div>
+  <div class="tab-content active-content" id="tab1">
+    <%= render "users/tab1", collection: @posts %>
+  </div>
 
-	<div class="tab-content" id="tab2">
-		<%= render "users/tab2", collection: @following_users %>
-	</div>
+  <div class="tab-content" id="tab2">
+    <%= render "users/tab2", collection: @following_users %>
+  </div>
 
-	<div class="tab-content" id="tab3">
-		<%= render "users/tab3", collection: @follower_users %>
-	</div>
+  <div class="tab-content" id="tab3">
+    <%= render "users/tab3", collection: @follower_users %>
+  </div>
 
-	<div class="tab-content" id="tab4">
-		<%= render "users/tab4", collection: @favorited_posts %>
-	</div>
+  <div class="tab-content" id="tab4">
+    <%= render "users/tab4", collection: @favorited_posts %>
+  </div>
 </div>

@@ -1,21 +1,21 @@
 <%= render "layouts/timer" %>
 
 <div class="row">
-	<div class="col-md-10 offset-md-1">
-		<% if @search_word %>
-			<h3 class="index-page-title"><%= @search_word %> を含むユーザー（<%= @users.count %>件）</h3>
-		<% else %>
-			<h3 class="index-page-title">みんなのプロフィール</h3>
-		<% end %>
-	</div>
+  <div class="col-md-10 offset-md-1">
+    <% if @search_word %>
+      <h3 class="index-page-title"><%= @search_word %> を含むユーザー（<%= @users.count %>件）</h3>
+    <% else %>
+      <h3 class="index-page-title">みんなのプロフィール</h3>
+    <% end %>
+  </div>
 </div>
 
 <div class="row">
-	<% @users.each do |user| %>
-	<div class="col-md-10 offset-md-1 user-index-box user-<%= user.id %>">
-		<%= render "users/user_index", user: user %>
-	</div>
-	<% end %>
+  <% @users.each do |user| %>
+  <div class="col-md-10 offset-md-1 user-index-box user-<%= user.id %>">
+    <%= render "users/user_index", user: user %>
+  </div>
+  <% end %>
 </div>
 <%= render "layouts/pagination", data: @users %>
 

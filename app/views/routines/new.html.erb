@@ -1,26 +1,26 @@
 <%= render "layouts/timer" %>
 
 <div class="row">
-	<%= render "routines/routine_form", user: @user, routine: @routine %>
+  <%= render "routines/routine_form", user: @user, routine: @routine %>
 
-	<div id="new-pretask-form">
-		<%= render "premade_tasks/premade_task_form", premade_task: @premade_task %>
-	</div>
+  <div id="new-pretask-form">
+    <%= render "premade_tasks/premade_task_form", premade_task: @premade_task %>
+  </div>
 
-	<div class="col-md-6 routine-box">
-		<div class="row">
-			<div class="col-md-8 offset-md-2">
-				<h4 style="text-align: center;">
-					<i id="create-pretask" class="fas fa-plus-circle mr-3"></i>
-					New Tasks
-					<%= link_to "", destroy_all_premade_tasks_path, method: :delete, data: { confirm: '全てのタスクを削除しますか？' }, class: "fas fa-trash-alt ml-3" %>
-				</h4>
-			</div>
-		</div>
-		<div id="premade-tasks">
-			<%= render "premade_tasks/premade_task_index", premade_tasks: @premade_tasks %>		
-		</div>
-	</div>
+  <div class="col-md-6 routine-box">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <h4 style="text-align: center;">
+          <i id="create-pretask" class="fas fa-plus-circle mr-3"></i>
+          New Tasks
+          <%= link_to "", destroy_all_premade_tasks_path, method: :delete, data: { confirm: '全てのタスクを削除しますか？' }, class: "fas fa-trash-alt ml-3" %>
+        </h4>
+      </div>
+    </div>
+    <div id="premade-tasks">
+      <%= render "premade_tasks/premade_task_index", premade_tasks: @premade_tasks %>		
+    </div>
+  </div>
 </div>
 
 <%= render "layouts/redirect_back" %>

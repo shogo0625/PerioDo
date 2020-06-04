@@ -1,22 +1,22 @@
 <div class="row">
-	<% if @posts.count >= 1 %>
-		<% @posts.each do |post| %>
-			<div class="col-md-10 offset-md-1 post-index-box post-<%= post.id %>">
-				<%= render "posts/post_detail", post: post %>
-			</div>
-		<% end %>
-	<% else %>
-		<div class="col-md-10 offset-md-1 new-user-info">
-			<h5>ここにヒトコトが表示されます。</h5>
-			<h5>あなたもさっそく投稿してみましょう。</h5>
-			<div class="row">
-				<%= link_to "投稿する", new_post_path, class: "btn btn-primary mb-4 col-md-2 offset-md-5" %>
-			</div>
-		</div>
-	<% end %>
+  <% if @posts.count >= 1 %>
+    <% @posts.each do |post| %>
+      <div class="col-md-10 offset-md-1 post-index-box post-<%= post.id %>">
+        <%= render "posts/post_detail", post: post %>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="col-md-10 offset-md-1 new-user-info">
+      <h5>ここにヒトコトが表示されます。</h5>
+      <h5>あなたもさっそく投稿してみましょう。</h5>
+      <div class="row">
+        <%= link_to "投稿する", new_post_path, class: "btn btn-primary mb-4 col-md-2 offset-md-5" %>
+      </div>
+    </div>
+  <% end %>
 </div>
 <div class="row">
-	<div class="col-md-10 offset-md-1">
-		<%= link_to_next_page @posts, 'もっと見る', id: 'more-tab1', class: 'btn btn-light w-100 mt-2', params: {type: :tab1}, remote: true  %>
-	</div>
+  <div class="col-md-10 offset-md-1">
+    <%= link_to_next_page @posts, 'もっと見る', id: 'more-tab1', class: 'btn btn-light w-100 mt-2', params: {type: :tab1}, remote: true  %>
+  </div>
 </div>

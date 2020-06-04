@@ -12,18 +12,18 @@
   <div class="row">
     <div class="col-md-8 offset-md-2">
       <%= form_for(@user) do |f| %>
-				<div class="row">
-					<div class="form-title col-md-4">
-						<% if @user.profile_image_id == nil %>
-							<%= image_tag "noimage.png", size: "100x100", class: "prev-image user-icon", id: "preview-noimage" %>
-						<% else %>
-						  <%= image_tag call_user_img(@user), size: "100x100", class: "prev-image user-icon", id: "preview-image" %><br>
+        <div class="row">
+          <div class="form-title col-md-4">
+            <% if @user.profile_image_id == nil %>
+              <%= image_tag "noimage.png", size: "100x100", class: "prev-image user-icon", id: "preview-noimage" %>
+            <% else %>
+              <%= image_tag call_user_img(@user), size: "100x100", class: "prev-image user-icon", id: "preview-image" %><br>
               <%= link_to "現在の写真を削除", delete_profile_image_path(@user), method: :patch %>
-						<% end %>
-						<%= f.label :profile_image %>
-					</div>
-					<%= f.attachment_field :profile_image, class: "form-field col-md-7 user-icon-select", id: "post-image" %>
-				</div>
+            <% end %>
+            <%= f.label :profile_image %>
+          </div>
+          <%= f.attachment_field :profile_image, class: "form-field col-md-7 user-icon-select", id: "post-image" %>
+        </div>
 
         <div class="row">
           <%= f.label :name, class: "form-title col-md-4" %>

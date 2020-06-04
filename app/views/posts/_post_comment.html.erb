@@ -1,72 +1,69 @@
 <% post_comments.each do |pc| %>
 <div class="col-md-10 offset-md-1 post-index-box" id="edit-<%= pc.id %>">
-	<div class="row">
-		<div class="col-md-1">
-			<%= link_to user_path(pc.user) do %>
-				<%= image_tag call_user_img(pc.user), size: "60x60", fallback: "noimage.png", class: "user-icon" %>
-			<% end %>
-		</div>
-		<div class="col-md-11">
-			<div class="row">
-				<div class="col-md-6">
-					<%= link_to pc.user.name, user_path(pc.user), class: "link-to-black ml-3" %>
-					<i class="fas fa-level-up-alt ml-2"></i>
-				</div>
-				<% if current_user == pc.user %>
-				<div class="col-md-5 offset-md-1 link-box">
-					<span id="show-edit-<%= pc.id %>" class="fas fa-edit link-to-black"> 編集する</span>
-					<%= link_to " 削除する", post_post_comment_path(pc.post, pc), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "fas fa-trash-alt link-to-black" %>
-				</div>
-				<% end %>
-			</div>
-			<div class="row post-content-box">
-				<div class="col-md-12"><%= simple_format(pc.comment) %></div>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-3 offset-md-9">
-			<%= l pc.created_at %>
-		</div>
-	</div>
+  <div class="row">
+    <div class="col-md-1">
+      <%= link_to user_path(pc.user) do %>
+        <%= image_tag call_user_img(pc.user), size: "60x60", fallback: "noimage.png", class: "user-icon" %>
+      <% end %>
+    </div>
+    <div class="col-md-11">
+      <div class="row">
+        <div class="col-md-6">
+          <%= link_to pc.user.name, user_path(pc.user), class: "link-to-black ml-3" %>
+          <i class="fas fa-level-up-alt ml-2"></i>
+        </div>
+        <% if current_user == pc.user %>
+        <div class="col-md-5 offset-md-1 link-box">
+          <span id="show-edit-<%= pc.id %>" class="fas fa-edit link-to-black"> 編集する</span>
+          <%= link_to " 削除する", post_post_comment_path(pc.post, pc), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "fas fa-trash-alt link-to-black" %>
+        </div>
+        <% end %>
+      </div>
+      <div class="row post-content-box">
+        <div class="col-md-12"><%= simple_format(pc.comment) %></div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3 offset-md-9">
+      <%= l pc.created_at %>
+    </div>
+  </div>
 </div>
 <div id="edit-comment-<%= pc.id %>" class="col-md-10 offset-md-1 edit-comment-form post-index-box">
-	<div class="row">
-		<div class="col-md-1">
-			<%= image_tag call_user_img(current_user), size: "60x60", fallback: "noimage.png", class: "user-icon" %>
-		</div>
-		<div class="col-md-11">
-			<div class="row">
-				<div class="col-md-6">
-					<span class="ml-2"><%= current_user.name %></span>
-				</div>
-				<div id="close-<%= pc.id %>" class="col-md-3 offset-md-3">
-					<i class="fas fa-2x fa-times-circle"></i>
-				</div>
-			</div>
-			<div class="row post-content-box">
-				<%= form_with model: [pc.post, pc], method: :patch do |f| %>
-					<%= f.text_area :comment, size: "70x3", class: "col-md-8 offset-md-1 comment-field" %>
-					<%= f.submit "編集", class: "col-md-2 mb-3 btn btn-sm btn-info" %>
-				<% end %>
-			</div>
-		</div>
-	</div>
+  <div class="row">
+    <div class="col-md-1">
+      <%= image_tag call_user_img(current_user), size: "60x60", fallback: "noimage.png", class: "user-icon" %>
+    </div>
+    <div class="col-md-11">
+      <div class="row">
+        <div class="col-md-6">
+          <span class="ml-2"><%= current_user.name %></span>
+        </div>
+        <div id="close-<%= pc.id %>" class="col-md-3 offset-md-3">
+          <i class="fas fa-2x fa-times-circle"></i>
+        </div>
+      </div>
+      <div class="row post-content-box">
+        <%= form_with model: [pc.post, pc], method: :patch do |f| %>
+          <%= f.text_area :comment, size: "70x3", class: "col-md-8 offset-md-1 comment-field" %>
+          <%= f.submit "編集", class: "col-md-2 mb-3 btn btn-sm btn-info" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
-
-	$('#show-edit-<%= pc.id %>').click(function(){
-		$('#edit-<%= pc.id %>').hide();
-		$('#edit-comment-<%= pc.id %>').fadeIn();
+  $('#show-edit-<%= pc.id %>').click(function(){
+    $('#edit-<%= pc.id %>').hide();
+    $('#edit-comment-<%= pc.id %>').fadeIn();
     $('textarea:visible').eq(0).focus();
-	});
+});
 
-	$('#close-<%= pc.id %>').click(function(){
-		$('#edit-comment-<%= pc.id %>').hide();
-		$('#edit-<%= pc.id %>').fadeIn();
-	});
-
+  $('#close-<%= pc.id %>').click(function(){
+    $('#edit-comment-<%= pc.id %>').hide();
+    $('#edit-<%= pc.id %>').fadeIn();
+  });
 </script>
-
 <% end %>

@@ -1,18 +1,18 @@
 <div class="row">
-	<div class="col-md-11 offset-md-1">
-		<div class="row">
-			<% @tags.each do |tag| %>
-			<div class="col-md-4 tag-box">
-				<%= link_to posts_tag_path(tag.name), class: "tag-link" do %>
-				<h5>#<%= tag.name %>（<%= tag.post_tags.count %>）</h5>
-				<% end %>
-			</div>
-			<% end %>
-		</div>
-	</div>
+  <div class="col-md-11 offset-md-1">
+    <div class="row">
+      <% @tags.each do |tag| %>
+      <div class="col-md-4 tag-box">
+        <%= link_to posts_tag_path(tag.name), class: "tag-link" do %>
+          <h5>#<%= tag.name %>（<%= tag.post_tags.count %>）</h5>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+  </div>
 </div>
 <div class="row">
-	<div class="col-md-10 offset-md-1">
-		<%= link_to_next_page @tags, 'もっと見る', id: 'more-tags', class: 'btn btn-light w-100', remote: true %>
-	</div>
+  <div class="col-md-10 offset-md-1">
+    <%= link_to_next_page @tags, 'もっと見る', id: 'more-tags', class: 'btn btn-light w-100', remote: true %>
+  </div>
 </div>

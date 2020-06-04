@@ -1,22 +1,22 @@
 <div class="row">
-	<% if @follower_users.count >= 1 %>
-		<% @follower_users.each do |user| %>
-			<div class="col-md-10 offset-md-1 user-index-box user-<%= user.id %>">
-				<%= render "users/user_index", user: user %>
-			</div>
-		<% end %>
-	<% else %>
-		<div class="col-md-10 offset-md-1 new-user-info">
-			<h5>ここにフォローされているユーザーが表示されます。</h5>
-			<h5>あなたも積極的にフォローしてみましょう。</h5>
-			<div class="row">
-				<%= link_to "探す", search_path, class: "btn btn-primary mb-4 col-md-2 offset-md-5" %>
-			</div>
-		</div>
-	<% end %>
+  <% if @follower_users.count >= 1 %>
+    <% @follower_users.each do |user| %>
+      <div class="col-md-10 offset-md-1 user-index-box user-<%= user.id %>">
+        <%= render "users/user_index", user: user %>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="col-md-10 offset-md-1 new-user-info">
+      <h5>ここにフォローされているユーザーが表示されます。</h5>
+      <h5>あなたも積極的にフォローしてみましょう。</h5>
+      <div class="row">
+        <%= link_to "探す", search_path, class: "btn btn-primary mb-4 col-md-2 offset-md-5" %>
+      </div>
+    </div>
+  <% end %>
 </div>
 <div class="row">
-	<div class="col-md-10 offset-md-1">
-		<%= link_to_next_page @follower_users, 'もっと見る', id: 'more-tab3', class: 'btn btn-light w-100 mt-2', params: {type: :tab3}, remote: true  %>
-	</div>
+  <div class="col-md-10 offset-md-1">
+    <%= link_to_next_page @follower_users, 'もっと見る', id: 'more-tab3', class: 'btn btn-light w-100 mt-2', params: {type: :tab3}, remote: true  %>
+  </div>
 </div>

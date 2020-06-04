@@ -1,55 +1,55 @@
 <%= render "layouts/timer" %>
 
 <div class="row">
-	<div class="col-md-10 offset-md-1 mb-2">
-		<h3 class="routine-page-title">
-			<%= link_to user_path(@user), class: "link-to-black" do %>
-				<%= image_tag call_user_img(@user), size: "45x45", fallback: "noimage.png", class: "user-icon" %>
-				<%= @user.name %>
-			<% end %>
-			さんのスケジュール
-		</h3>
-	</div>
+  <div class="col-md-10 offset-md-1 mb-2">
+    <h3 class="routine-page-title">
+      <%= link_to user_path(@user), class: "link-to-black" do %>
+        <%= image_tag call_user_img(@user), size: "45x45", fallback: "noimage.png", class: "user-icon" %>
+        <%= @user.name %>
+      <% end %>
+      さんのスケジュール
+    </h3>
+  </div>
 </div>
 
 <ul class="nav nav-tabs nav-justified routines-tab">
-	<li class="nav-item">
-		<a class="nav-link active link-to-black" data-toggle="tab" href="#routine">ルーティーン</a>
-	</li>
-	<li class="nav-item">
-		<a class="nav-link link-to-black" data-toggle="tab" href="#record">行動記録</a>
-	</li>
+  <li class="nav-item">
+    <a class="nav-link active link-to-black" data-toggle="tab" href="#routine">ルーティーン</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link link-to-black" data-toggle="tab" href="#record">行動記録</a>
+  </li>
 </ul>
 
 <div class="tab-content routines-content">
-	<div id="routine" class="tab-pane active">
-		<div class="row">
-			<div class="col-md-10 offset-md-1 routines-box mt-4">
-				<%= link_to "新規作成", new_user_routine_path(@user), class: "btn btn-block btn-success mb-3" if @user.id == current_user.id %>
-				<div id="routine-lists">
-					<%= render 'routines/routine_lists' %>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-10 offset-md-1">
-				<%= link_to_next_page @routines, 'もっと見る', id: 'more-routines', class: 'btn btn-light w-100', params: {status: :routine_lists}, remote: true %>
-			</div>
-		</div>
-	</div>
-	<div id="record" class="tab-pane">
-		<div class="row">
-			<div class="col-md-10 offset-md-1 routines-box mt-4">
-				<%= link_to "ToDoList【Done】からアップロード", root_path, class: "btn btn-block btn-success mb-3" if @user.id == current_user.id %>
-				<div id="record-lists">
-					<%= render 'routines/record_lists' %>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-10 offset-md-1">
-				<%= link_to_next_page @routine_records, 'もっと見る', id: 'more-records', class: 'btn btn-light w-100', params: {status: :record_lists}, remote: true %>
-			</div>
-		</div>
-	</div>
+  <div id="routine" class="tab-pane active">
+    <div class="row">
+      <div class="col-md-10 offset-md-1 routines-box mt-4">
+        <%= link_to "新規作成", new_user_routine_path(@user), class: "btn btn-block btn-success mb-3" if @user.id == current_user.id %>
+        <div id="routine-lists">
+          <%= render 'routines/routine_lists' %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <%= link_to_next_page @routines, 'もっと見る', id: 'more-routines', class: 'btn btn-light w-100', params: {status: :routine_lists}, remote: true %>
+      </div>
+    </div>
+  </div>
+  <div id="record" class="tab-pane">
+    <div class="row">
+      <div class="col-md-10 offset-md-1 routines-box mt-4">
+        <%= link_to "ToDoList【Done】からアップロード", root_path, class: "btn btn-block btn-success mb-3" if @user.id == current_user.id %>
+        <div id="record-lists">
+          <%= render 'routines/record_lists' %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <%= link_to_next_page @routine_records, 'もっと見る', id: 'more-records', class: 'btn btn-light w-100', params: {status: :record_lists}, remote: true %>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,69 +1,69 @@
 <%= render "layouts/timer" %>
 
 <div class="row">
-	<div class="col-md-6 routine-box">
-		<div class="row">
-			<div class="col-md-12 mb-2">
-				<%= link_to user_path(@user) do %>
-					<%= image_tag call_user_img(@user), size: "60x60", class: "ml-2 user-icon" %>
-				<% end %>
-				<%= link_to @user.name, user_path(@user), class: "ml-2 link-to-black", style: "font-size:22px;" %>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12 mt-1">
-				<p>Title :</p>
-				<%= @routine.title %>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12 mt-3">
-				<p>Comment :</p>
-				<%= simple_format(@routine.comment) %>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12 mt-3">
-				<h5 style="text-align: right;">Date created：<%= l @routine.created_at, format: :date %></h5>
-			</div>
-		</div>
-	</div>
+  <div class="col-md-6 routine-box">
+    <div class="row">
+      <div class="col-md-12 mb-2">
+        <%= link_to user_path(@user) do %>
+          <%= image_tag call_user_img(@user), size: "60x60", class: "ml-2 user-icon" %>
+        <% end %>
+        <%= link_to @user.name, user_path(@user), class: "ml-2 link-to-black", style: "font-size:22px;" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 mt-1">
+        <p>Title :</p>
+        <%= @routine.title %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 mt-3">
+        <p>Comment :</p>
+        <%= simple_format(@routine.comment) %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 mt-3">
+        <h5 style="text-align: right;">Date created：<%= l @routine.created_at, format: :date %></h5>
+      </div>
+    </div>
+  </div>
 
-	<div class="col-md-6 routine-box">
-		<div class="row">
-			<div class="col-md-8 offset-md-2">
-				<h4 style="text-align: center;">
-					<%= link_to "", tasks_path(routine_id: @routine.id), method: :post, data: { confirm: 'このスケジュールで行動しますか？' }, class: "fas fa-upload mr-3" %>
-					Tasks
-					<% if @user.id == current_user.id %>
-					<%= link_to "", edit_user_routine_path(@user, @routine), class: "fas fa-edit ml-3" %>
-					<%= link_to "", user_routine_path(@user, @routine), method: :delete, data: { confirm: 'このスケジュールを削除しますか？' }, class: "fas fa-trash-alt ml-2" %>
-					<% end %>
-				</h4>
-			</div>
-		</div>
-		<div class="routine-tasks-box">
-			<% @routine.routine_tasks.each do |routine_task| %>
-				<div class="row task-item">
-					<div class="col-md-3">
-						<%= l routine_task.time, format: :shortest %>
-					</div>
-					<div class="col-md-9">
-						<%= routine_task.content %>
-					</div>
-				</div>
-			<% end %>
-			<div class="row task-item">
-				<div class="col-md-3">
-					<%= l @routine.finish_time, format: :shortest %>
-				</div>
-				<div class="col-md-9">
-					<span>最終タスク終了</span>
-				</div>
-			</div>
-		</div>
-	</div>
-	<%= timeline @task_data %>
+  <div class="col-md-6 routine-box">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <h4 style="text-align: center;">
+          <%= link_to "", tasks_path(routine_id: @routine.id), method: :post, data: { confirm: 'このスケジュールで行動しますか？' }, class: "fas fa-upload mr-3" %>
+          Tasks
+          <% if @user.id == current_user.id %>
+            <%= link_to "", edit_user_routine_path(@user, @routine), class: "fas fa-edit ml-3" %>
+            <%= link_to "", user_routine_path(@user, @routine), method: :delete, data: { confirm: 'このスケジュールを削除しますか？' }, class: "fas fa-trash-alt ml-2" %>
+          <% end %>
+        </h4>
+      </div>
+    </div>
+    <div class="routine-tasks-box">
+      <% @routine.routine_tasks.each do |routine_task| %>
+        <div class="row task-item">
+          <div class="col-md-3">
+            <%= l routine_task.time, format: :shortest %>
+          </div>
+          <div class="col-md-9">
+            <%= routine_task.content %>
+          </div>
+        </div>
+      <% end %>
+      <div class="row task-item">
+        <div class="col-md-3">
+          <%= l @routine.finish_time, format: :shortest %>
+        </div>
+        <div class="col-md-9">
+          <span>最終タスク終了</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= timeline @task_data %>
 </div>
 
 <%= render "layouts/redirect_back" %>

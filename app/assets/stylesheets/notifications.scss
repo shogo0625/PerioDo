@@ -4,20 +4,19 @@
 @import "application";
 
 .notification-box {
+  ul {
+    padding: 0;
+  }
 
-	ul {
-	  padding: 0;
-	}
-
-	ul li {
-	  color: #404040;
-	  border-left: solid 6px $orange;
-	  border-bottom: solid 2px #dadada;
-	  background: white;
-	  margin-bottom: 8px;
-	  line-height: 1.5;
-	  padding: 1.0em 1.0em 0 1.0em;
-	  list-style-type: none!important;
-	  font-weight: bold;
-	}
+  ul li {
+    color: #404040;
+    border-left: solid 6px $orange;
+    border-bottom: solid 2px #dadada;
+    background: white;
+    margin-bottom: 8px;
+    line-height: 1.5;
+    padding: 1em 1em 0 1em;
+    list-style-type: none !important;
+    font-weight: bold;
+  }
 }

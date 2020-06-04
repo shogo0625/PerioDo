@@ -1,39 +1,39 @@
 <div id="favorited-users-<%= post.id %>" class="favorited-users-modal">
-	<div class="row">
-		<div class="col-md-6 offset-md-3 favorited-users-index">
-			<div class="row">
-				<div class="close-index-modal">
-					<i class="fas fa-2x fa-times-circle"></i>
-				</div>
-			</div>
-			<div class="row">
-				<% unless post.favorited_users.count == 0 %>
-					<% post.favorited_users.each do |user| %>
-						<div class="col-md-10 offset-md-1 user-index-box">
-								<div class="row">
-									<div class="col-md-7">
-										<%= link_to user_path(user) do %>
-											<%= image_tag call_user_img(user), size: "40x40", fallback: "noimage.png", class: "ml-2 user-icon" %>
-										<% end %>
-										<%= link_to user.name, user_path(user), class: "ml-2 link-to-black" %>
-									</div>
-									<div class="btn-box col-md-4 offset-md-1 mt-1">
-										<%= link_to "詳細を見る", user_path(user), class: "btn btn-sm btn-info" %>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-11 offset-md-1">
-										<p class="intro-text"><%= simple_format(user.introduction) %></p>
-									</div>
-								</div>
-						</div>
-					<% end %>
-				<% else %>
-					<div class="col-md-6 offset-md-3">
-						<h5>まだいいねされていません。</h5>
-					</div>
-				<% end %>
-			</div>
-		</div>
-	</div>
+  <div class="row">
+    <div class="col-md-6 offset-md-3 favorited-users-index">
+      <div class="row">
+        <div class="close-index-modal">
+          <i class="fas fa-2x fa-times-circle"></i>
+        </div>
+      </div>
+      <div class="row">
+        <% unless post.favorited_users.count == 0 %>
+          <% post.favorited_users.each do |user| %>
+            <div class="col-md-10 offset-md-1 user-index-box">
+              <div class="row">
+                <div class="col-md-7">
+                  <%= link_to user_path(user) do %>
+                    <%= image_tag call_user_img(user), size: "40x40", fallback: "noimage.png", class: "ml-2 user-icon" %>
+                  <% end %>
+                  <%= link_to user.name, user_path(user), class: "ml-2 link-to-black" %>
+                </div>
+                <div class="btn-box col-md-4 offset-md-1 mt-1">
+                  <%= link_to "詳細を見る", user_path(user), class: "btn btn-sm btn-info" %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-11 offset-md-1">
+                  <p class="intro-text"><%= simple_format(user.introduction) %></p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="col-md-6 offset-md-3">
+            <h5>まだいいねされていません。</h5>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
