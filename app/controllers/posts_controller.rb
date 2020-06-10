@@ -6,6 +6,7 @@ class PostsController < ApplicationController
     if params[:search].present?
       @search = Post.search(search_params)
       @posts = @search.result(distinct: true).order(created_at: :desc).page(params[:page]).per(INDEX)
+      @posts_count = @search.result(distinct: true)
       @search_word = @search.content_cont
     else
       @posts = Post.order(created_at: :desc).page(params[:page]).per(INDEX)
@@ -66,6 +67,7 @@ class PostsController < ApplicationController
   def hashtag
     @tag = Tag.find_by(name: params[:name])
     @posts = @tag.posts.order(created_at: :desc).page(params[:page]).per(INDEX)
+    @posts_count = @tag.posts
   end
 
   private
