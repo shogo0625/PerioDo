@@ -52,6 +52,6 @@ class User < ApplicationRecord
   end
 
   def select_tasks_by(status: status)
-    self.tasks.where(status: status).order(time_limit: :asc)
+    tasks.where(status: status).order(time_limit: :asc)
   end
 end

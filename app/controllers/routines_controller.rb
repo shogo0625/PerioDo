@@ -26,7 +26,7 @@ class RoutinesController < ApplicationController
     n = 1 # next
     @task_data.each do
       if @task_data[n]
-         # 一つ後のタスク(配列)の'開始時間'を'終了時間'として設定
+        # 一つ後のタスク(配列)の'開始時間'を'終了時間'として設定
         @task_data[t][2] = @task_data[n][1]
         t += 1
         n += 1

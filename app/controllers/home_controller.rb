@@ -14,7 +14,7 @@ class HomeController < ApplicationController
     @posts = Kaminari.paginate_array(timeline_posts).page(params[:page]).per(INDEX)
     # ToDoListのタスク　下3行でstatus毎に取得
     @task = @user.tasks.new
-    @todo_tasks  = @user.select_tasks_by(status: 'ToDo')
+    @todo_tasks = @user.select_tasks_by(status: 'ToDo')
     @doing_tasks = @user.select_tasks_by(status: 'Doing')
     @done_tasks  = @user.select_tasks_by(status: 'Done')
   end
