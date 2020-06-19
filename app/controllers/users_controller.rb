@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   end
 
   def delete_profile_image
-    @user = User.find(params[:id])
+    set_user
     @user.update_column(:profile_image_id, nil)
     flash[:success] = "プロフィール画像を削除しました。"
     redirect_to edit_user_path(@user)
