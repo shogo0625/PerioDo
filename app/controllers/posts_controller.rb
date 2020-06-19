@@ -44,7 +44,7 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       # S3への画像反映のタイムラグを考慮して3秒待機
       sleep(3) if @post.image_id.present?
-      flash[:success] = "あなたのヒトコトが投稿されました。"
+      flash[:success] = "あなたのヒトコトが更新されました。"
       redirect_to @post
     else
       render :edit
