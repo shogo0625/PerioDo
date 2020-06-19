@@ -8,7 +8,7 @@ class TasksController < ApplicationController
       @routine = Routine.find(params[:routine_id])
       @routine.routine_tasks.each do |routine_task|
         @task = current_user.tasks.new
-        @task.content = routine_task.content
+        @task.content    = routine_task.content
         @task.time_limit = Date.current.strftime('%Y-%m-%d ') + (l routine_task.time, format: :combine)
         @task.save
       end
@@ -43,9 +43,10 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
   end
 
-  def set_tasks # 遷移元topページから非同期処理　jsファイルに渡すため定義
-    @todo_tasks = current_user.tasks.where(status: 0).order(time_limit: :asc)
-    @doing_tasks = current_user.tasks.where(status: 1).order(time_limit: :asc)
-    @done_tasks = current_user.tasks.where(status: 2).order(time_limit: :asc)
+  def set_tasks
+    # 遷移元topページから非同期処理　jsファイルに渡すため定義
+    @todo_tasks  = current_user.select_tasks_by(status: 'ToDo')
+    @doing_tasks = current_user.select_tasks_by(status: 'Doing')
+    @done_tasks  = current_user.select_tasks_by(status: 'Done')
   end
 end

@@ -63,7 +63,7 @@
       </div>
     </div>
   </div>
-  <%= timeline @task_data %>
+  <%= timeline @task_data unless @task_data.empty? %>
 </div>
 
 <%= render "layouts/redirect_back" %>

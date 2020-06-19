@@ -6,7 +6,7 @@ class PostsController < ApplicationController
     if params[:search].present?
       @search = Post.search(search_params)
       @posts = @search.result(distinct: true).order(created_at: :desc).page(params[:page]).per(INDEX)
-      @posts_count = @search.result(distinct: true)
+      @posts_count = @search.result(distinct: true).count
       @search_word = @search.content_cont
     else
       @posts = Post.order(created_at: :desc).page(params[:page]).per(INDEX)
@@ -22,7 +22,8 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.new(post_params)
     if @post.save
-      sleep(3) if @post.image_id.present? # S3への画像反映のタイムラグを考慮して3秒待機
+      # S3への画像反映のタイムラグを考慮して3秒待機
+      sleep(3) if @post.image_id.present?
       flash[:success] = "あなたのヒトコトが投稿されました。"
       redirect_to @post
     else
@@ -41,7 +42,8 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      sleep(3) if @post.image_id.present? # S3への画像反映のタイムラグを考慮して3秒待機
+      # S3への画像反映のタイムラグを考慮して3秒待機
+      sleep(3) if @post.image_id.present?
       flash[:success] = "あなたのヒトコトが更新されました。"
       redirect_to @post
     else
@@ -50,7 +52,7 @@ class PostsController < ApplicationController
   end
 
   def delete_post_image
-    @post = Post.find(params[:id])
+    set_post
     screen_user(@post)
     @post.update_column(:image_id, nil)
     flash[:success] = "投稿内の画像を削除しました。"
@@ -67,7 +69,7 @@ class PostsController < ApplicationController
   def hashtag
     @tag = Tag.find_by(name: params[:name])
     @posts = @tag.posts.order(created_at: :desc).page(params[:page]).per(INDEX)
-    @posts_count = @tag.posts
+    @posts_count = @tag.posts.count
   end
 
   private

@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     if params[:q].present?
       @q = User.search(search_params)
       @users = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(INDEX)
-      @users_count = @q.result(distinct: true)
+      @users_count = @q.result(distinct: true).count
       @search_word = @q.name_or_introduction_cont
     else
       @users = User.order(created_at: :desc).page(params[:page]).per(INDEX)
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   end
 
   def delete_profile_image
-    @user = User.find(params[:id])
+    set_user
     @user.update_column(:profile_image_id, nil)
     flash[:success] = "プロフィール画像を削除しました。"
     redirect_to edit_user_path(@user)

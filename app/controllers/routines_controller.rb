@@ -8,7 +8,6 @@ class RoutinesController < ApplicationController
     @routine_records = @user.routines.where(status: 1).order(created_at: :desc).page(params[:page]).per(MYPAGE)
 
     return unless request.xhr?
-
     case params[:status]
     when 'routine_lists', 'record_lists'
       render "routines/#{params[:status]}"
@@ -16,25 +15,24 @@ class RoutinesController < ApplicationController
   end
 
   def show
+    # chartkickに渡す多重配列の形式 -> [['内容', '開始時間', '終了時間'], [...],..]
     @routine_tasks = @routine.routine_tasks.order(time: :asc)
     @task_data = []
     @routine_tasks.each do |task|
-      @task_data.push([task.content, task.time]) # chartkickに渡す多重配列を作成 最終的に渡す形式 = [['内容', '開始時間', '終了時間'], ...]
+      @task_data.push([task.content, task.time])
     end
-    t = 0
-    n = 1
-    @task_data.each do |data|
+    # この時点の配列(@task_data) ['内容(content)', '開始時間(time)']
+    t = 0 # this
+    n = 1 # next
+    @task_data.each do
       if @task_data[n]
-        @task_data[t][2] = @task_data[n][1] # 一つ後のタスク(配列)の'開始時間'を'終了時間'として設定
+        # 一つ後のタスク(配列)の'開始時間'を'終了時間'として設定
+        @task_data[t][2] = @task_data[n][1]
         t += 1
         n += 1
       else
-        # range = Routine.where(finish_time: '2000-01-01 00:00:00'..'2000-01-01 09:59:59') # 終了時間が24時超えたらdefaultの翌日に変換
-        # if range.include?(@routine)
-        # @task_data[-1][2] = '2000-01-02 ' + (l @routine.finish_time, format: :combine) + " +0900"
-        # else
-        @task_data[-1][2] = @routine.finish_time # 一つ後の配列(Routineの最後のタスク)がない場合、Routine自体の終了時間を代入
-        # end
+        # 一つ後の配列がない(Routineの最後のタスク)場合、Routine自体の終了時間を代入
+        @task_data[-1][2] = @routine.finish_time
       end
     end
   end
@@ -57,7 +55,7 @@ class RoutinesController < ApplicationController
       @done_tasks.each do |done_task|
         premade_task = @user.premade_tasks.new
         premade_task.content = done_task.content
-        premade_task.time = done_task.time_limit
+        premade_task.time    = done_task.time_limit
         premade_task.save
       end
       @routine = @user.routines.new(status: 1)
@@ -80,7 +78,7 @@ class RoutinesController < ApplicationController
         @premade_tasks.each do |pretask|
           @routine_task = @routine.routine_tasks.new
           @routine_task.content = pretask.content
-          @routine_task.time = pretask.time
+          @routine_task.time    = pretask.time
           @routine_task.save
           pretask.destroy
         end
