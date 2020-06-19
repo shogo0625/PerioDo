@@ -2,22 +2,21 @@ class HomeController < ApplicationController
   def top
     @user = current_user
     (@posts = Post.order(created_at: :desc).page(params[:page]).per(INDEX)) && return if @user.nil?
-    # 以下、ログインユーザーの場合のタイムライン表示＆タスク表示
-    @users = current_user.following_user
-    timeline_posts = [] # 空の配列定義
-    @users.each do |user|
+    # タイムライン取得　フォローしているユーザーのポストと自分のポストを結合する
+    @following_users = current_user.following_user
+    timeline_posts = []
+    @following_users.each do |user|
       posts = user.posts
-      timeline_posts.concat(posts) # フォローしているユーザーのポストを空の配列に代入・結合していく
+      timeline_posts.concat(posts)
     end
     my_posts = current_user.posts
-    timeline_posts.concat(my_posts) # 選択されたユーザーの投稿も結合　タイムライン表示
-    timeline_posts = timeline_posts.sort_by { |post| post.created_at }.reverse
+    timeline_posts.concat(my_posts).sort! { |post| post.created_at }.reverse
     @posts = Kaminari.paginate_array(timeline_posts).page(params[:page]).per(INDEX)
-
+    # ToDoListのタスク　下3行でstatus毎に取得
     @task = @user.tasks.new
-    @todo_tasks = @user.tasks.where(status: 0).order(time_limit: :asc)
-    @doing_tasks = @user.tasks.where(status: 1).order(time_limit: :asc)
-    @done_tasks = @user.tasks.where(status: 2).order(time_limit: :asc)
+    @todo_tasks  = @user.select_tasks_by(status: 'ToDo')
+    @doing_tasks = @user.select_tasks_by(status: 'Doing')
+    @done_tasks  = @user.select_tasks_by(status: 'Done')
   end
 
   def about

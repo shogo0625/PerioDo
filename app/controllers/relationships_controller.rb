@@ -12,6 +12,7 @@ class RelationshipsController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:id]) # Ajax jsファイルに渡す
+     # 非同期処理 jsファイルに渡す
+    @user = User.find(params[:id])
   end
 end
