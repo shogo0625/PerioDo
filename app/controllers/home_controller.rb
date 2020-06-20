@@ -10,7 +10,8 @@ class HomeController < ApplicationController
       timeline_posts.concat(posts)
     end
     my_posts = current_user.posts
-    timeline_posts.concat(my_posts).sort! { |post| post.created_at }.reverse
+    timeline_posts.concat(my_posts)
+    timeline_posts = timeline_posts.sort_by { |post| post.created_at }.reverse
     @posts = Kaminari.paginate_array(timeline_posts).page(params[:page]).per(INDEX)
     # ToDoListのタスク　下3行でstatus毎に取得
     @task = @user.tasks.new
