@@ -53,9 +53,10 @@ class RoutinesController < ApplicationController
     if params[:flag] == "Record"
       @premade_tasks.destroy_all
       @done_tasks.each do |done_task|
-        premade_task = @user.premade_tasks.new
-        premade_task.content = done_task.content
-        premade_task.time    = done_task.time_limit
+        premade_task = @user.premade_tasks.new(
+          content: done_task.content,
+          time: done_task.time_limit
+        )
         premade_task.save
       end
       @routine = @user.routines.new(status: 1)
@@ -75,12 +76,13 @@ class RoutinesController < ApplicationController
         return
       end
       if @routine.save
-        @premade_tasks.each do |pretask|
-          @routine_task = @routine.routine_tasks.new
-          @routine_task.content = pretask.content
-          @routine_task.time    = pretask.time
+        @premade_tasks.each do |premade_task|
+          @routine_task = @routine.routine_tasks.new(
+            content: premade_task.content,
+            time: premade_task.time
+          )
           @routine_task.save
-          pretask.destroy
+          premade_task.destroy
         end
         flash[:success] = "「#{@routine.title}」が登録されました。"
         redirect_to user_routine_path(@user, @routine)
