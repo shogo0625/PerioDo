@@ -7,9 +7,10 @@ class TasksController < ApplicationController
     if params[:routine_id]
       @routine = Routine.find(params[:routine_id])
       @routine.routine_tasks.each do |routine_task|
-        @task = current_user.tasks.new
-        @task.content    = routine_task.content
-        @task.time_limit = Date.current.strftime('%Y-%m-%d ') + (l routine_task.time, format: :combine)
+        @task = current_user.tasks.new(
+          content: routine_task.content,
+          time_limit: Date.current.strftime('%Y-%m-%d ') + (l routine_task.time, format: :combine)
+        )
         @task.save
       end
       flash[:success] = "スケジュールを【 ToDo 】に追加しました。今日も一日頑張りましょう！"

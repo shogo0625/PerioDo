@@ -48,7 +48,7 @@ class User < ApplicationRecord
   end
 
   def guest_user?
-    return true if id == 13 # Ann Walker(テストユーザー)
+    id == 13 # Ann Walker(テストユーザー)
   end
 
   def select_tasks_by(status: status)
