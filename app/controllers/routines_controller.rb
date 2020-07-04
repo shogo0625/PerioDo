@@ -4,6 +4,10 @@ class RoutinesController < ApplicationController
   before_action :set_routine, only: [:show, :edit, :update, :destroy]
 
   def index
+    if params[:flag] == "Download"
+      flash.now[:success] = "ルーティーン or 行動記録を１つ選択してToDoリストへアップロードしましょう！"
+    end
+
     @routines = @user.routines.where(status: 0).order(created_at: :desc).page(params[:page]).per(MYPAGE)
     @routine_records = @user.routines.where(status: 1).order(created_at: :desc).page(params[:page]).per(MYPAGE)
 

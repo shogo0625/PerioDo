@@ -33,7 +33,7 @@
     <div class="row">
       <div class="col-md-8 offset-md-2">
         <h4 style="text-align: center;">
-          <%= link_to "", tasks_path(routine_id: @routine.id), method: :post, data: { confirm: 'このスケジュールで行動しますか？' }, class: "fas fa-upload mr-3" %>
+          <%= link_to "", tasks_path(routine_id: @routine.id), method: :post, data: { confirm: 'このスケジュールをToDoリストへアップロードしますか？' }, class: "fas fa-upload mr-3", title: "下記タスクをまとめてToDoListに移動" %>
           Tasks
           <% if @user.id == current_user.id %>
             <%= link_to "", edit_user_routine_path(@user, @routine), class: "fas fa-edit ml-3" %>
