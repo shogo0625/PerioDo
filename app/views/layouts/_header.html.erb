@@ -29,13 +29,13 @@
             <% if unchecked_notifications.any? %>
               <span class="fas fa-bell" style="color:#efa04c;"></span>通知
             <% else %>
-              <span class="fas fa-bell"></span>通知            
+              <span class="fas fa-bell"></span>通知
             <% end %>
           <% end %>
         </li>
-        <li class="nav-image">
-          <%= link_to user_path(current_user), class: "nav-link", id: "mypage" do %>
-            <%= image_tag "noimage_white.png", size: "30x30" %>
+        <li class="nav-item">
+          <%= link_to user_path(current_user), class: "nav-link active", id: "mypage" do %>
+            <span class="fas fa-address-card">マイページ</span>
           <% end %>
         </li>
       <% else %>
