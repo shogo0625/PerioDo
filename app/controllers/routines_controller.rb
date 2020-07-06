@@ -5,7 +5,7 @@ class RoutinesController < ApplicationController
 
   def index
     if params[:flag] == "Download"
-      flash.now[:success] = "ルーティーン or 行動記録を１つ選択してToDoリストへアップロードしましょう！"
+      flash.now[:success] = "ルーティーン or 行動記録を選択してToDoリストへアップロードしましょう！"
     end
 
     @routines = @user.routines.where(status: 0).order(created_at: :desc).page(params[:page]).per(MYPAGE)
